@@ -42,6 +42,12 @@ npm run build
 - `/writing`: short technical writing
 - `/resume`: experience snapshot, stack, and contact
 
+## Roadmap
+
+- [ ] Move from preview URL to a clean production domain
+- [ ] Add more operational evidence to the strongest public case studies
+- [ ] Expand writing with short backend and product-engineering notes
+
 ## Intent
 
 The site is intentionally editorial instead of SaaS-template styled. The goal is to make the portfolio feel authored, specific, and human.
