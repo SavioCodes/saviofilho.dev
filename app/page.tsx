@@ -28,14 +28,14 @@ export default async function HomePage() {
     },
   ] as const;
   const currentFocus = [
-    "Backend systems with billing, auth, quotas, and review loops.",
-    "Applied AI features that still respect cost, fallback paths, and audits.",
-    "Portfolio work that reads like engineering evidence, not startup theater.",
+    "Billing, auth, queue, and review flows that still behave after day one.",
+    "Applied AI with cost ceilings, fallback paths, and logs instead of magic prompts.",
+    "Systems writeups that show boundaries, failure modes, and operator-facing detail.",
   ] as const;
   const proofMarks = [
-    "Architecture notes and runbooks stay visible.",
-    "Public repos carry tests, build steps, and trade-offs.",
-    "Private work is turned into readable case studies instead of hidden away.",
+    "Runbooks, QA lists, and architecture notes stay visible.",
+    "Public repos ship with tests, build steps, and explicit trade-offs.",
+    "Private systems still show workflow design, constraints, and audit trails.",
   ] as const;
 
   return (
@@ -45,12 +45,12 @@ export default async function HomePage() {
           <p className="eyebrow">Savio Filho / Portfolio / 2026</p>
           <p className="home-kicker">Backend product engineer from Brazil</p>
           <h1>
-            Software with paper trails, boring ops, and decisions you can inspect.
+            I build product systems with clear boundaries, boring operations, and proof you can inspect.
           </h1>
           <p className="lead">
-            I work across SaaS, automation, and applied AI with a product lens:
-            auth, billing, queues, data contracts, docs, and the operational details
-            that make a system trustworthy after launch, not just during the demo.
+            The work here is centered on tenant isolation, webhook lifecycles, upload
+            pipelines, billing states, AI cost controls, and the docs that keep those
+            systems understandable once another engineer or operator has to touch them.
           </p>
           <div className="hero-actions">
             <Link className="button-primary" href="/work">
@@ -123,7 +123,7 @@ export default async function HomePage() {
         <div className="section-heading-row">
           <div>
             <p className="section-label">Selected work</p>
-            <h2>Public repos with real system boundaries</h2>
+            <h2>Flagship repos shaped like real operating systems</h2>
           </div>
           <Link className="text-link" href="/work">
             See all 6 case studies
@@ -171,9 +171,8 @@ export default async function HomePage() {
           <h2>Code can stay private. Decision-making should not.</h2>
           <p>
             Two of the projects here stay private at the repo level but are
-            documented openly: a WhatsApp quote workflow and a QR-based
-            accessibility audit platform. The code stays private; the decisions
-            do not.
+            still documented with the same standard: workflow boundaries,
+            operational constraints, and the trade-offs that shaped the build.
           </p>
         </article>
 

@@ -48,6 +48,23 @@ npm run build
 - [ ] Add more operational evidence to the strongest public case studies
 - [ ] Expand writing with short backend and product-engineering notes
 
+## Deployment
+
+The build is configured through explicit environment variables instead of
+inferring behavior from the CI runtime:
+
+```bash
+SITE_URL=https://saviocodes.github.io
+SITE_BASE_PATH=/saviofilho.dev
+```
+
+When the custom domain is ready, switch to:
+
+```bash
+SITE_URL=https://saviofilho.dev
+SITE_BASE_PATH=
+```
+
 ## Intent
 
 The site is intentionally editorial instead of SaaS-template styled. The goal is to make the portfolio feel authored, specific, and human.

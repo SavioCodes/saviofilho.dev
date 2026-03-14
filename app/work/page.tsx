@@ -4,7 +4,7 @@ import { getWorkEntries } from "@/lib/content";
 
 export const metadata = {
   title: "Work",
-  description: "Case studies across public repositories and private product work.",
+  description: "Case studies across public repositories and private product systems.",
 };
 
 export default async function WorkPage() {
@@ -17,11 +17,11 @@ export default async function WorkPage() {
       <section className="page-masthead">
         <div className="page-masthead__copy">
           <p className="eyebrow">Work</p>
-          <h1>Six projects that define the current portfolio.</h1>
+          <h1>Six systems that hold up under technical scrutiny.</h1>
           <p className="lead">
-            Four are public repositories. Two remain private but are documented as
-            product and systems case studies because the engineering decisions are
-            still worth showing.
+            Four are public repositories with runnable engineering proof. Two stay
+            private, but the cases still show architecture, constraints, operating
+            flows, and why the system was shaped the way it was.
           </p>
         </div>
 

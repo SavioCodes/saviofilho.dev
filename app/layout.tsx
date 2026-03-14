@@ -4,7 +4,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
 
 import "./globals.css";
 
-import { siteUrl } from "@/lib/site-config";
+import { absoluteUrl, siteUrl, toSitePath } from "@/lib/site-config";
 import { contactLinks, navigation } from "@/lib/site";
 
 const displayFont = Newsreader({
@@ -33,21 +33,30 @@ export const metadata: Metadata = {
   description:
     "Portfolio and case studies for Savio Filho, a software engineer focused on backend products, SaaS systems, and applied AI.",
   alternates: {
-    canonical: "/",
+    canonical: toSitePath("/"),
   },
   openGraph: {
     title: "Savio Filho | Backend Product Engineer",
     description:
       "Case studies, technical writing, and product systems work across SaaS, automation, and applied AI.",
-    url: siteUrl,
+    url: absoluteUrl("/"),
     siteName: "Savio Filho",
     type: "website",
+    images: [
+      {
+        url: absoluteUrl("/og/site-card.svg"),
+        width: 1200,
+        height: 630,
+        alt: "Savio Filho portfolio social card",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Savio Filho | Backend Product Engineer",
     description:
       "Case studies, technical writing, and product systems work across SaaS, automation, and applied AI.",
+    images: [absoluteUrl("/og/site-card.svg")],
   },
 };
 

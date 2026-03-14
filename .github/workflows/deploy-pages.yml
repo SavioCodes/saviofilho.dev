@@ -18,6 +18,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      SITE_URL: https://saviocodes.github.io
+      SITE_BASE_PATH: /saviofilho.dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
