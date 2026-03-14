@@ -32,6 +32,21 @@ Most "AI study app" projects stop at prompt orchestration. I wanted the harder l
 - The review queue needed idempotent sync behavior per user and artifact.
 - Setup needed to be reproducible enough for CI and another engineer.
 
+<SignalGrid>
+  <SignalCard
+    label="Core proof"
+    value="Upload -> generate -> review pipeline"
+  />
+  <SignalCard
+    label="Repository signal"
+    value="Docs, runbook, tests, and CI"
+  />
+  <SignalCard
+    label="Operational concern"
+    value="Auth, billing hooks, storage"
+  />
+</SignalGrid>
+
 ## Architecture
 
 ```text
@@ -75,12 +90,12 @@ upload
 
 ## Evidence
 
-```bash
-corepack pnpm check
-corepack pnpm lint
-corepack pnpm test
-corepack pnpm build
-```
+<TerminalFrame title="Quality gates" subtitle="App Nota10 repository">
+{`$ corepack pnpm check
+$ corepack pnpm lint
+$ corepack pnpm test
+$ corepack pnpm build`}
+</TerminalFrame>
 
 ```text
 Incident checklist from the runbook:

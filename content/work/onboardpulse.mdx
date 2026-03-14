@@ -32,6 +32,21 @@ Client onboarding tends to fragment quickly: document requests, reminders, payme
 - File uploads had to support local development and S3-compatible production.
 - AI usage needed cost ceilings instead of unlimited calls.
 
+<SignalGrid>
+  <SignalCard
+    label="Core proof"
+    value="Tenant isolation + billing lifecycle"
+  />
+  <SignalCard
+    label="Repository signal"
+    value="Launch docs and Vercel runbook"
+  />
+  <SignalCard
+    label="Operational concern"
+    value="Cron, webhooks, storage modes"
+  />
+</SignalGrid>
+
 ## Architecture
 
 ```text
@@ -71,11 +86,11 @@ late portal -> cron job -> follow-up generation -> usage budget checks
 
 ## Evidence
 
-```bash
-npm run lint
-npm test
-npm run build
-```
+<TerminalFrame title="Quality gates" subtitle="OnboardPulse repository">
+{`$ npm run lint
+$ npm test
+$ npm run build`}
+</TerminalFrame>
 
 ```text
 Vercel cron target:

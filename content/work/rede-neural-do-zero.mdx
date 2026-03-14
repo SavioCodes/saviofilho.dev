@@ -29,6 +29,21 @@ I wanted to understand the mechanics of a neural network without hiding behind f
 - Reproducible results for CI and portfolio demos.
 - Simple artifacts that can be inspected later.
 
+<SignalGrid>
+  <SignalCard
+    label="Core proof"
+    value="Deterministic evaluation script"
+  />
+  <SignalCard
+    label="Repository signal"
+    value="Logs and smoke checks in CI"
+  />
+  <SignalCard
+    label="Operational concern"
+    value="Portable JSON and JSONL artifacts"
+  />
+</SignalGrid>
+
 ## Architecture
 
 ```text
@@ -59,10 +74,10 @@ dataset utils
 
 ## Evidence
 
-```bash
-pytest -q
-python scripts/evaluate.py --seed 42 --epochs 400 --samples 240
-```
+<TerminalFrame title="Evaluation flow" subtitle="Neural Network From Scratch repository">
+{`$ pytest -q
+$ python scripts/evaluate.py --seed 42 --epochs 400 --samples 240`}
+</TerminalFrame>
 
 ```text
 Outputs:

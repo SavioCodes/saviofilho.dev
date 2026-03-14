@@ -31,6 +31,21 @@ Small APIs usually fail the portfolio test because they look too thin. To be wor
 - Public documentation needed to cover both local running and paid distribution.
 - The repository name needed cleanup; `MailSieve-repositorio` sounded unfinished.
 
+<SignalGrid>
+  <SignalCard
+    label="Core proof"
+    value="OpenAPI + auth + verify flow"
+  />
+  <SignalCard
+    label="Repository signal"
+    value="Docker Compose and smoke deploy"
+  />
+  <SignalCard
+    label="Operational concern"
+    value="Rate limits and key rotation"
+  />
+</SignalGrid>
+
 ## Architecture
 
 ```text
@@ -62,12 +77,12 @@ client
 
 ## Evidence
 
-```bash
-npm test
-npm run build
-npm run verify
-docker compose up --build
-```
+<TerminalFrame title="Verification flow" subtitle="MailSieve repository">
+{`$ npm test
+$ npm run build
+$ npm run verify
+$ docker compose up --build`}
+</TerminalFrame>
 
 ```text
 Publishing checklist:

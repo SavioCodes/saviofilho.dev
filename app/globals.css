@@ -554,6 +554,103 @@ img {
   padding: 0.8rem 0.4rem;
 }
 
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.signal-card {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1.15rem;
+  background: rgba(255, 250, 240, 0.6);
+  border: 1px solid rgba(30, 67, 55, 0.12);
+}
+
+.signal-card span {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.77rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.signal-card strong {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.terminal-frame {
+  overflow: hidden;
+  border-radius: 1.35rem;
+  border: 1px solid rgba(30, 67, 55, 0.16);
+  background: #121713;
+  box-shadow: 0 18px 44px rgba(28, 30, 24, 0.18);
+}
+
+.terminal-frame__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.terminal-frame__lights {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.terminal-frame__lights span {
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 999px;
+}
+
+.terminal-frame__lights span:nth-child(1) {
+  background: #d1793e;
+}
+
+.terminal-frame__lights span:nth-child(2) {
+  background: #d7c277;
+}
+
+.terminal-frame__lights span:nth-child(3) {
+  background: #6eaf82;
+}
+
+.terminal-frame__meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.1rem;
+  color: #eff1e7;
+}
+
+.terminal-frame__meta strong {
+  font-size: 0.95rem;
+}
+
+.terminal-frame__meta span {
+  color: rgba(239, 241, 231, 0.62);
+  font-size: 0.8rem;
+}
+
+.terminal-frame__body {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.terminal-frame__body pre {
+  margin: 0;
+  white-space: pre-wrap;
+  color: #eff1e7;
+  font-family: var(--font-mono), monospace;
+  line-height: 1.8;
+}
+
 .site-footer {
   display: flex;
   align-items: flex-start;
@@ -589,6 +686,7 @@ img {
   .hero,
   .detail-hero,
   .grid-two,
+  .signal-grid,
   .card-grid,
   .card-grid-tight {
     grid-template-columns: 1fr;
