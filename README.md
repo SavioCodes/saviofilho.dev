@@ -2,6 +2,10 @@
 
 Editorial portfolio for Savio Filho with public repository case studies, private product case studies, short technical writing, and a resume page.
 
+## Live preview
+
+- Portfolio preview: https://skill-deploy-0zec2oswbv-codex-agent-deploys.vercel.app
+
 ## Stack
 
 - Next.js 16
@@ -30,6 +34,18 @@ npm run build
 - `content/writing/*.mdx`: short technical notes
 - `lib/content.ts`: loader and frontmatter handling
 
+## Routes
+
+- `/`: positioning, featured work, writing, and contact
+- `/work`: all case studies
+- `/work/[slug]`: detailed technical case studies
+- `/writing`: short technical writing
+- `/resume`: experience snapshot, stack, and contact
+
 ## Intent
 
 The site is intentionally editorial instead of SaaS-template styled. The goal is to make the portfolio feel authored, specific, and human.
+
+## License
+
+MIT. See [LICENSE](./LICENSE).
