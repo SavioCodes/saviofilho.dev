@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 
 import { getStaticSlugs, getWorkEntries, getWorkEntry } from "@/lib/content";
@@ -90,9 +91,9 @@ export default async function WorkDetailPage({ params }: WorkDetailPageProps) {
           <p className="section-label">Next case study</p>
           <h2>{nextEntry.frontmatter.title}</h2>
           <p>{nextEntry.frontmatter.summary}</p>
-          <a className="text-link" href={`/work/${nextEntry.slug}`}>
+          <Link className="text-link" href={`/work/${nextEntry.slug}`}>
             Continue reading
-          </a>
+          </Link>
         </section>
       ) : null}
     </div>

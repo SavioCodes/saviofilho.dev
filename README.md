@@ -4,7 +4,7 @@ Editorial portfolio for Savio Filho with public repository case studies, private
 
 ## Live preview
 
-- Portfolio preview: https://skill-deploy-0zec2oswbv-codex-agent-deploys.vercel.app
+- Portfolio URL: https://saviocodes.github.io/saviofilho.dev/
 
 ## Stack
 

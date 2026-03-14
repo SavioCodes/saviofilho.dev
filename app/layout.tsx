@@ -4,6 +4,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
 
 import "./globals.css";
 
+import { siteUrl } from "@/lib/site-config";
 import { contactLinks, navigation } from "@/lib/site";
 
 const displayFont = Newsreader({
@@ -24,7 +25,7 @@ const monoFont = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://saviofilho.dev"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Savio Filho | Backend Product Engineer",
     template: "%s | Savio Filho",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: "Savio Filho | Backend Product Engineer",
     description:
       "Case studies, technical writing, and product systems work across SaaS, automation, and applied AI.",
-    url: "https://saviofilho.dev",
+    url: siteUrl,
     siteName: "Savio Filho",
     type: "website",
   },
