@@ -1,0 +1,71 @@
+---
+title: "Neural Network From Scratch"
+summary: "An educational neural network implementation with deterministic evaluation, logs, tests, and a reproducible pipeline."
+order: 4
+year: "2026"
+role: "Solo builder"
+status: "Public repo, educational but well-scoped"
+highlight: "This stays public because it shows engineering discipline inside a study project: reproducible evaluation, smoke checks, and structured docs."
+kind: "public"
+stack:
+  - "Python"
+  - "NumPy"
+  - "pytest"
+  - "JSONL logs"
+repo: "https://github.com/SavioCodes/rede-neural-do-zero"
+---
+
+## Context
+
+Study repositories only help a portfolio when they show craft, not just curiosity. I kept this one because it moved beyond a notebook exercise into a small, testable system with deterministic evaluation and report artifacts.
+
+## Problem
+
+I wanted to understand the mechanics of a neural network without hiding behind framework abstractions. At the same time, I wanted the repo to prove that learning projects can still honor engineering standards.
+
+## Constraints
+
+- No high-level ML framework.
+- Reproducible results for CI and portfolio demos.
+- Simple artifacts that can be inspected later.
+
+## Architecture
+
+```text
+dataset utils
+  -> normalization and split
+  -> model
+  -> backprop training
+  -> evaluation metrics
+  -> JSON / JSONL logs
+```
+
+## Decisions and trade-offs
+
+- I used framework-free implementation because the learning value was the point.
+- I added a deterministic evaluation script because reproducibility is what separates a study repo from a throwaway experiment.
+- I kept logs in JSON and JSONL rather than adding a heavier experiment tracker too early.
+
+## What worked
+
+- The repo now communicates rigor instead of just enthusiasm.
+- The evaluation script provides an easy conversation path in interviews.
+- The CI-oriented smoke evaluation is stronger than a basic `pytest -q` alone.
+
+## What is still incomplete
+
+- A small benchmark report or confusion matrix export would strengthen the artifact story further.
+- There is room for richer experiment configuration without losing the repo's educational focus.
+
+## Evidence
+
+```bash
+pytest -q
+python scripts/evaluate.py --seed 42 --epochs 400 --samples 240
+```
+
+```text
+Outputs:
+- logs/eval-summary.json
+- logs/eval-history.jsonl
+```

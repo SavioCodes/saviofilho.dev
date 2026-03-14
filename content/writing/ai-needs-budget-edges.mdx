@@ -1,0 +1,31 @@
+---
+title: "Applied AI needs budget edges"
+summary: "The interesting engineering work around AI is often cost control, validation, and fallback behavior."
+order: 2
+publishedAt: "2026-03-13"
+tags:
+  - "ai"
+  - "backend"
+  - "product"
+---
+
+## The anti-pattern
+
+It is easy to wire an LLM call into a feature and call the project "AI-powered". It is much harder, and more useful, to specify when the feature should run, what it is allowed to cost, and how the product behaves when the model fails.
+
+## What I prefer shipping
+
+In the projects I keep in the portfolio, AI is constrained:
+
+- by usage budgets,
+- by narrow workflow boundaries,
+- by explicit environment requirements,
+- and by docs that describe the failure modes.
+
+## Why this matters
+
+An AI feature that quietly burns money or creates silent bad output is not a product advantage. It is a hidden reliability problem.
+
+## The portfolio signal
+
+When I document AI features now, I try to show the guardrails around them. That is usually a stronger signal of engineering judgment than the prompt itself.

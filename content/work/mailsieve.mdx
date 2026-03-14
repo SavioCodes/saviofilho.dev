@@ -1,0 +1,78 @@
+---
+title: "MailSieve"
+summary: "A lightweight signup risk API with OpenAPI contract, key management workflow, rate limits, and deploy verification scripts."
+order: 3
+year: "2026"
+role: "Solo builder"
+status: "Public repo, renamed from MailSieve-repositorio"
+highlight: "MailSieve is a good example of a small API product where contract clarity, ops scripts, and monetization readiness matter more than feature count."
+kind: "public"
+stack:
+  - "Node.js"
+  - "Express"
+  - "TypeScript"
+  - "OpenAPI"
+  - "Docker Compose"
+repo: "https://github.com/SavioCodes/MailSieve"
+---
+
+## Context
+
+I wanted one repository that looked like a productized API instead of an internal service. MailSieve classifies signup emails against disposable-domain and lightweight risk signals, with a strong emphasis on contract clarity and deploy verification.
+
+## Problem
+
+Small APIs usually fail the portfolio test because they look too thin. To be worth showing publicly, this one had to prove more than "it responds with JSON". It needed auth, rate limiting, an OpenAPI contract, environment validation, smoke tests, and a credible path to publishing.
+
+## Constraints
+
+- The API had to run offline, without forcing an external provider.
+- It needed simple operational storage options for early-stage deployment.
+- Public documentation needed to cover both local running and paid distribution.
+- The repository name needed cleanup; `MailSieve-repositorio` sounded unfinished.
+
+## Architecture
+
+```text
+client
+  -> API key auth
+  -> rate limiter
+  -> MailSieve service
+  -> disposable and typo signal lists
+  -> optional external provider
+```
+
+## Decisions and trade-offs
+
+- I kept persistence modes lightweight because the goal was a deployable early product, not a full platform.
+- I added Docker Compose and healthchecks because operational confidence matters even for a narrow API.
+- I documented RapidAPI publishing steps because monetization-readiness is part of the product story.
+
+## What worked
+
+- The OpenAPI contract gives the repo a clear entry point.
+- The key management scripts and smoke deploy script make the repo feel usable by another engineer.
+- The rename to `MailSieve` fixes a branding problem that was dragging down the portfolio.
+
+## What is still incomplete
+
+- The API would benefit from stronger high-volume performance evidence.
+- There is no public hosted endpoint linked from the repo yet.
+- Social preview imagery still needs manual setup in GitHub settings.
+
+## Evidence
+
+```bash
+npm test
+npm run build
+npm run verify
+docker compose up --build
+```
+
+```text
+Publishing checklist:
+1. import openapi.yaml
+2. configure x-api-key auth
+3. publish listing
+4. run BASE_URL=<url> API_KEY=<key> npm run smoke:deploy
+```

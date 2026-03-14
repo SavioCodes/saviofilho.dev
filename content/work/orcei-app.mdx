@@ -1,0 +1,75 @@
+---
+title: "ORCEI"
+summary: "A private case study for quote generation and WhatsApp-based sharing, built as a mobile-first SaaS workflow on Next.js and Supabase."
+order: 5
+year: "2025"
+role: "Solo builder"
+status: "Private case study"
+highlight: "The strongest signal here is product workflow design: quotes, public share links, mobile-first UX, and AI-assisted copy in a small but real business flow."
+kind: "private"
+stack:
+  - "Next.js"
+  - "Supabase"
+  - "PostgreSQL"
+  - "OpenAI"
+  - "PWA"
+---
+
+## Context
+
+ORCEI is a private project for generating professional quotes that can be shared through WhatsApp. I am keeping the repository private, but the product decisions are useful as a portfolio case because the system sits in the messy overlap between mobile usage, client communication, and document-style outputs.
+
+## Problem
+
+Small service businesses often still create quotes manually or in ad hoc documents. The product needed to make quote generation fast, mobile-friendly, and easy to share with clients through a public link and WhatsApp.
+
+## Constraints
+
+- The app needed to feel comfortable on mobile first.
+- Public quote views had to work without exposing private account data.
+- AI assistance had to stay bounded to one narrow workflow: improving service descriptions.
+- The team surface area was small, so the system needed a compact stack.
+
+## Architecture
+
+```text
+authenticated app
+  -> quote wizard
+  -> Supabase-backed profiles, clients, quotes, quote_items
+  -> public /q/[token] route for client-facing quote views
+  -> WhatsApp sharing utilities
+```
+
+## Decisions and trade-offs
+
+- I used Supabase with RLS because the project benefits from quick iteration and clear per-user data boundaries.
+- The AI feature is intentionally narrow; it improves quote descriptions instead of trying to run the whole workflow.
+- Printing support shipped before server-side PDF generation because that solved the user problem faster.
+
+## What worked
+
+- The route structure makes the product legible: authenticated app, auth area, public quote pages, and small server actions.
+- The feature checklist shows a healthy product shape already: profile, settings, public links, dashboard, and share actions.
+- The documentation around environment setup and database schema made it easy to keep the project maintainable despite staying private.
+
+## What is still incomplete
+
+- Editing, duplication, and deletion flows for quotes were still planned at the time of the last update.
+- Offline support and server-generated PDF downloads were not complete.
+- This should eventually evolve into the stronger public-facing concept I now call `QuoteFlow BR`.
+
+## Evidence
+
+```text
+Implemented:
+- 3-step quote wizard
+- public token route for quote sharing
+- WhatsApp share utilities
+- AI endpoint for improving descriptions
+- mobile-first layout and PWA shell
+```
+
+```text
+Database core:
+profiles -> clients -> quotes -> quote_items
+```

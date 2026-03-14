@@ -1,0 +1,88 @@
+---
+title: "OnboardPulse"
+summary: "A multi-tenant onboarding SaaS with billing, follow-up automation, storage controls, and product-like operational docs."
+order: 2
+year: "2026"
+role: "Solo builder"
+status: "Public repo, active portfolio project"
+highlight: "This project shows that I can work beyond CRUD: tenant isolation, budgeted AI usage, billing webhooks, storage policy, and cron-driven follow-ups."
+kind: "public"
+stack:
+  - "Next.js"
+  - "TypeScript"
+  - "Prisma"
+  - "PostgreSQL"
+  - "NextAuth"
+  - "Mercado Pago"
+repo: "https://github.com/SavioCodes/OnboardPulse"
+---
+
+## Context
+
+I wanted a SaaS project that felt closer to day-two operations than landing-page polish. OnboardPulse is an onboarding product for agencies and B2B teams where the hard parts are not the forms but the tenant boundaries, billing lifecycle, uploads, and follow-up jobs.
+
+## Problem
+
+Client onboarding tends to fragment quickly: document requests, reminders, payment state, trial logic, and account isolation all drift into manual work. The product needed to centralize that workflow in one system that could still be explained to another engineer.
+
+## Constraints
+
+- Every domain entity had to remain scoped by `organizationId`.
+- Billing needed idempotent Mercado Pago webhook handling.
+- File uploads had to support local development and S3-compatible production.
+- AI usage needed cost ceilings instead of unlimited calls.
+
+## Architecture
+
+```text
+Next.js App Router
+  -> server actions / routes
+  -> domain services
+  -> Prisma + Postgres
+  -> Mercado Pago + Gemini + S3-compatible storage
+```
+
+The operational shape matters as much as the features:
+
+```text
+signup -> organization -> trial state
+upgrade -> Mercado Pago preference -> webhook -> subscription activation
+late portal -> cron job -> follow-up generation -> usage budget checks
+```
+
+## Decisions and trade-offs
+
+- Tenant isolation is explicit in the application layer instead of relying on RLS from day one.
+- AI budget enforcement is conservative and approximate, which is the right trade for early cost control.
+- Storage defaults to local in development but switches cleanly to S3/R2 for real deployments.
+- The docs are intentionally practical: launch guide, Vercel deployment, and QA checklist instead of abstract architecture prose only.
+
+## What worked
+
+- The repo demonstrates product engineering breadth: auth, quotas, billing, cron, storage, and CSP.
+- The deployment docs make the project feel operationally real instead of aspirational.
+- The QA checklist is useful interview material because it exposes the exact failure modes I considered.
+
+## What is still incomplete
+
+- A few roadmap items still need stronger automated coverage, especially around billing lifecycle transitions.
+- There is no production URL attached yet, so the repo carries more credibility than reach.
+- RLS is documented as a later move, not yet implemented.
+
+## Evidence
+
+```bash
+npm run lint
+npm test
+npm run build
+```
+
+```text
+Vercel cron target:
+POST /api/jobs/run-followups?secret=CRON_SECRET
+
+Quick QA:
+- trial expiry blocks actions with 402
+- webhook replay does not duplicate PaymentLog
+- org A cannot access org B data
+```
