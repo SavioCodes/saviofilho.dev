@@ -65,6 +65,11 @@ export default function RootLayout({
       <body className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable}`}>
         <div className="page-backdrop" />
         <div className="site-shell">
+          <div className="site-utility">
+            <p>Brazil / backend product systems / PT-BR native / English-ready docs</p>
+            <span>Open to software engineering roles</span>
+          </div>
+
           <header className="site-header">
             <Link className="site-mark" href="/">
               <span className="site-mark-monogram">SF</span>
@@ -87,9 +92,10 @@ export default function RootLayout({
 
           <footer className="site-footer">
             <div>
-              <p className="eyebrow">Open to software engineering roles</p>
+              <p className="eyebrow">Colophon</p>
               <p className="footer-copy">
-                Focused on backend products, applied AI, and operationally sound SaaS.
+                Built as an editorial index of case studies, notes, and systems work.
+                Warm paper, straight edges, and technical detail over startup gloss.
               </p>
             </div>
             <div className="footer-links">

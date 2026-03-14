@@ -9,23 +9,47 @@ export const metadata = {
 
 export default async function WorkPage() {
   const entries = await getWorkEntries();
+  const publicCount = entries.filter((entry) => entry.frontmatter.kind === "public").length;
+  const privateCount = entries.length - publicCount;
 
   return (
     <div className="page-section-stack">
-      <section className="page-intro">
-        <p className="eyebrow">Work</p>
-        <h1>Six projects that define the current portfolio.</h1>
-        <p className="lead">
-          Four are public repositories. Two remain private but are documented as
-          product and systems case studies because the engineering decisions are
-          still worth showing.
-        </p>
+      <section className="page-masthead">
+        <div className="page-masthead__copy">
+          <p className="eyebrow">Work</p>
+          <h1>Six projects that define the current portfolio.</h1>
+          <p className="lead">
+            Four are public repositories. Two remain private but are documented as
+            product and systems case studies because the engineering decisions are
+            still worth showing.
+          </p>
+        </div>
+
+        <aside className="paper-panel page-masthead__aside">
+          <p className="micro-label">Index notes</p>
+          <div className="fact-list">
+            <div className="fact-list__item">
+              <span>Public repos</span>
+              <strong>{publicCount} case studies</strong>
+            </div>
+            <div className="fact-list__item">
+              <span>Private systems</span>
+              <strong>{privateCount} documented without public code</strong>
+            </div>
+            <div className="fact-list__item">
+              <span>Selection rule</span>
+              <strong>Keep only projects that hold up in technical interviews</strong>
+            </div>
+          </div>
+        </aside>
       </section>
 
-      <section className="card-grid">
-        {entries.map((entry) => (
-          <article className="project-card" key={entry.slug}>
-            <div className="project-meta">
+      <section className="folio-list">
+        {entries.map((entry, index) => (
+          <article className="folio-entry" key={entry.slug}>
+            <div className="folio-entry__number">{String(index + 1).padStart(2, "0")}</div>
+
+            <div className="folio-entry__meta">
               <span className={`pill pill-${entry.frontmatter.kind}`}>
                 {entry.frontmatter.kind === "public"
                   ? "Public repository"
@@ -33,15 +57,19 @@ export default async function WorkPage() {
               </span>
               <span>{entry.frontmatter.year}</span>
             </div>
-            <h2>{entry.frontmatter.title}</h2>
-            <p>{entry.frontmatter.summary}</p>
-            <p className="project-highlight">{entry.frontmatter.highlight}</p>
-            <ul className="tag-list">
-              {entry.frontmatter.stack.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-            <div className="project-links">
+
+            <div className="folio-entry__body">
+              <h2>{entry.frontmatter.title}</h2>
+              <p>{entry.frontmatter.summary}</p>
+              <p className="project-highlight">{entry.frontmatter.highlight}</p>
+              <ul className="tag-list">
+                {entry.frontmatter.stack.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="folio-entry__links">
               <Link className="text-link" href={`/work/${entry.slug}`}>
                 Read case study
               </Link>

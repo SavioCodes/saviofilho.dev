@@ -11,31 +11,47 @@ export default async function HomePage() {
 
   const featuredWork = workEntries.slice(0, 3);
   const latestWriting = writingEntries.slice(0, 3);
+  const publicWorkCount = workEntries.filter((entry) => entry.frontmatter.kind === "public").length;
+  const privateWorkCount = workEntries.length - publicWorkCount;
+  const notebookFacts = [
+    {
+      label: "Public engineering surface",
+      value: `${publicWorkCount} repository-backed case studies`,
+    },
+    {
+      label: "Private work still documented",
+      value: `${privateWorkCount} product systems with code kept private`,
+    },
+    {
+      label: "Writing rhythm",
+      value: `${writingEntries.length} short notes about product systems and AI edges`,
+    },
+  ] as const;
+  const currentFocus = [
+    "Backend systems with billing, auth, quotas, and review loops.",
+    "Applied AI features that still respect cost, fallback paths, and audits.",
+    "Portfolio work that reads like engineering evidence, not startup theater.",
+  ] as const;
+  const proofMarks = [
+    "Architecture notes and runbooks stay visible.",
+    "Public repos carry tests, build steps, and trade-offs.",
+    "Private work is turned into readable case studies instead of hidden away.",
+  ] as const;
 
   return (
-    <div className="page-section-stack">
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Portfolio / 2026</p>
+    <div className="page-section-stack home-stack">
+      <section className="home-masthead">
+        <div className="home-masthead__copy">
+          <p className="eyebrow">Savio Filho / Portfolio / 2026</p>
+          <p className="home-kicker">Backend product engineer from Brazil</p>
           <h1>
-            I build backend-heavy products that survive first contact with real
-            operations.
+            Software with paper trails, boring ops, and decisions you can inspect.
           </h1>
           <p className="lead">
             I work across SaaS, automation, and applied AI with a product lens:
-            auth, billing, queues, data contracts, docs, and the operational
-            details that make a system trustworthy.
+            auth, billing, queues, data contracts, docs, and the operational details
+            that make a system trustworthy after launch, not just during the demo.
           </p>
-        </div>
-
-        <div className="hero-aside card">
-          <p className="micro-label">Current narrative</p>
-          <ul className="metric-list">
-            <li>Backend + product systems</li>
-            <li>TypeScript / Node.js / Python</li>
-            <li>Public repos + private case studies</li>
-            <li>PT-BR native, English-ready documentation</li>
-          </ul>
           <div className="hero-actions">
             <Link className="button-primary" href="/work">
               Browse case studies
@@ -45,30 +61,65 @@ export default async function HomePage() {
             </Link>
           </div>
         </div>
+
+        <aside className="home-masthead__rail">
+          <article className="paper-panel paper-panel-accent">
+            <p className="micro-label">Current focus</p>
+            <ul className="dossier-list">
+              {currentFocus.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="paper-panel">
+            <p className="micro-label">What is inside this portfolio</p>
+            <div className="fact-list">
+              {notebookFacts.map((fact) => (
+                <div className="fact-list__item" key={fact.label}>
+                  <span>{fact.label}</span>
+                  <strong>{fact.value}</strong>
+                </div>
+              ))}
+            </div>
+          </article>
+        </aside>
       </section>
 
-      <section className="grid-two">
-        <article className="card">
+      <section className="proof-band">
+        {proofMarks.map((mark, index) => (
+          <article className="proof-band__item" key={mark}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <p>{mark}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="editorial-columns">
+        <article className="paper-panel manifesto-panel">
           <p className="section-label">Why this site exists</p>
-          <h2>A curated portfolio, not a project dump.</h2>
+          <h2>This is a case file, not a gallery wall.</h2>
           <p>
             GitHub is where I keep the code. This site is where I explain why
-            the work mattered, what constraints shaped it, and which trade-offs
-            I made on purpose.
+            the work mattered, which constraints shaped it, and how the system
+            behaves once real operations start touching it.
           </p>
         </article>
 
-        <article className="card">
-          <p className="section-label">What I optimize for</p>
-          <ul className="stack-list">
-            {principles.map((principle) => (
-              <li key={principle}>{principle}</li>
+        <article className="paper-panel principles-panel">
+          <p className="section-label">Operating principles</p>
+          <div className="principle-notes">
+            {principles.map((principle, index) => (
+              <div className="principle-note" key={principle}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <p>{principle}</p>
+              </div>
             ))}
-          </ul>
+          </div>
         </article>
       </section>
 
-      <section className="section-block">
+      <section className="section-block section-block-editorial">
         <div className="section-heading-row">
           <div>
             <p className="section-label">Selected work</p>
@@ -79,10 +130,12 @@ export default async function HomePage() {
           </Link>
         </div>
 
-        <div className="card-grid">
-          {featuredWork.map((entry) => (
-            <article className="project-card" key={entry.slug}>
-              <div className="project-meta">
+        <div className="case-index">
+          {featuredWork.map((entry, index) => (
+            <article className="case-index__item" key={entry.slug}>
+              <div className="case-index__number">{String(index + 1).padStart(2, "0")}</div>
+
+              <div className="case-index__meta">
                 <span className={`pill pill-${entry.frontmatter.kind}`}>
                   {entry.frontmatter.kind === "public"
                     ? "Public repository"
@@ -90,26 +143,32 @@ export default async function HomePage() {
                 </span>
                 <span>{entry.frontmatter.year}</span>
               </div>
-              <h3>{entry.frontmatter.title}</h3>
-              <p>{entry.frontmatter.summary}</p>
-              <p className="project-highlight">{entry.frontmatter.highlight}</p>
-              <ul className="tag-list">
-                {entry.frontmatter.stack.slice(0, 4).map((tag) => (
-                  <li key={tag}>{tag}</li>
-                ))}
-              </ul>
-              <Link className="text-link" href={`/work/${entry.slug}`}>
-                Read case study
-              </Link>
+
+              <div className="case-index__body">
+                <h3>{entry.frontmatter.title}</h3>
+                <p>{entry.frontmatter.summary}</p>
+                <p className="project-highlight">{entry.frontmatter.highlight}</p>
+                <ul className="tag-list">
+                  {entry.frontmatter.stack.slice(0, 4).map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="case-index__action">
+                <Link className="text-link" href={`/work/${entry.slug}`}>
+                  Read case study
+                </Link>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="grid-two">
-        <article className="card">
-          <p className="section-label">Private work, still usable</p>
-          <h2>Client-sensitive systems can still become strong case studies.</h2>
+      <section className="editorial-columns editorial-columns-bottom">
+        <article className="paper-panel private-work-panel">
+          <p className="section-label">Private work, still legible</p>
+          <h2>Code can stay private. Decision-making should not.</h2>
           <p>
             Two of the projects here stay private at the repo level but are
             documented openly: a WhatsApp quote workflow and a QR-based
@@ -118,21 +177,22 @@ export default async function HomePage() {
           </p>
         </article>
 
-        <article className="card">
+        <article className="paper-panel writing-panel">
           <p className="section-label">Writing</p>
-          <h2>Short technical notes with operational bias.</h2>
-          <div className="writing-list compact">
+          <h2>Short notes, written like field reports.</h2>
+          <div className="note-ledger">
             {latestWriting.map((entry) => (
-              <Link key={entry.slug} className="writing-item" href={`/writing/${entry.slug}`}>
-                <span>{entry.frontmatter.title}</span>
-                <span>{entry.readingMinutes} min</span>
+              <Link key={entry.slug} className="note-ledger__item" href={`/writing/${entry.slug}`}>
+                <span className="note-ledger__date">{entry.frontmatter.publishedAt}</span>
+                <span className="note-ledger__title">{entry.frontmatter.title}</span>
+                <span className="note-ledger__meta">{entry.readingMinutes} min</span>
               </Link>
             ))}
           </div>
         </article>
       </section>
 
-      <section className="section-block">
+      <section className="section-block section-block-editorial">
         <div className="section-heading-row">
           <div>
             <p className="section-label">Next bets</p>
@@ -140,9 +200,10 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div className="card-grid card-grid-tight">
-          {nextBets.map((project) => (
-            <article className="card" key={project.title}>
+        <div className="bet-grid">
+          {nextBets.map((project, index) => (
+            <article className="bet-card" key={project.title}>
+              <span className="bet-card__index">{String(index + 1).padStart(2, "0")}</span>
               <h3>{project.title}</h3>
               <p>{project.summary}</p>
             </article>
