@@ -1,0 +1,32 @@
+---
+title: "Filas precisam de visibilidade boring"
+summary: "Retries, motivo de falha e rastros para operador importam mais do que fingir que o trabalho em background e invisivel."
+order: 5
+publishedAt: "2026-03-10"
+tags:
+  - "backend"
+  - "filas"
+  - "operacao"
+theme: "backend-systems"
+---
+
+## O erro comum
+
+Jobs em background costumam ser tratados como caixa-preta. A fila existe, o worker roda e o produto so percebe quando alguma coisa para de andar em silencio.
+
+## O que eu quero no lugar
+
+Sistemas com fila deveriam expor algumas verdades boring:
+
+- o que entrou na fila,
+- o que falhou,
+- o que esta em retry,
+- e o que um operador deveria verificar em seguida.
+
+## Por que isso importa
+
+Sem visibilidade, fila vira complexidade escondida. Com visibilidade, ela passa a ser uma parte controlada do comportamento do sistema.
+
+## Sinal de portfolio
+
+Se um projeto publico usa jobs ou execucao assincrona, eu quero que o repo e o case deixem esses caminhos legiveis, nao magicos.

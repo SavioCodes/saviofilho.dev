@@ -12,6 +12,7 @@ import {
   getWritingEntry,
 } from "@/lib/content";
 import { absoluteUrl } from "@/lib/site-config";
+import type { Entry, WritingFrontmatter, WritingTheme } from "@/types/content";
 
 function buildAlternates(locale: Locale, path = "/") {
   return {
@@ -53,6 +54,44 @@ export function buildMetadata(
   };
 }
 
+const writingThemeOrder: WritingTheme[] = [
+  "ai-guardrails",
+  "saas-ops",
+  "backend-systems",
+  "builder-notes",
+];
+
+const featuredWritingSlugOrder = [
+  "simulation-before-execution",
+  "billing-webhooks-need-replay-discipline",
+  "contracts-beat-clever-apis",
+] as const;
+
+function getFeaturedWritingEntries(entries: Entry<WritingFrontmatter>[]) {
+  const featuredEntries = featuredWritingSlugOrder
+    .map((slug) => entries.find((entry) => entry.slug === slug && entry.frontmatter.featured))
+    .filter((entry): entry is Entry<WritingFrontmatter> => Boolean(entry));
+
+  if (featuredEntries.length >= 3) {
+    return featuredEntries.slice(0, 3);
+  }
+
+  const fallbackEntries = entries.filter(
+    (entry) => !featuredEntries.some((featured) => featured.slug === entry.slug),
+  );
+
+  return [...featuredEntries, ...fallbackEntries].slice(0, 3);
+}
+
+function getWritingThemeGroups(entries: Entry<WritingFrontmatter>[]) {
+  return writingThemeOrder
+    .map((theme) => ({
+      theme,
+      entries: entries.filter((entry) => entry.frontmatter.theme === theme),
+    }))
+    .filter((group) => group.entries.length > 0);
+}
+
 export async function HomePage({ locale }: { locale: Locale }) {
   const copy = getSiteCopy(locale);
   const [workEntries, writingEntries] = await Promise.all([
@@ -61,7 +100,9 @@ export async function HomePage({ locale }: { locale: Locale }) {
   ]);
 
   const featuredWork = workEntries.filter((entry) => entry.frontmatter.kind === "public").slice(0, 3);
-  const latestWriting = writingEntries.slice(0, 3);
+  const featuredWriting = getFeaturedWritingEntries(writingEntries);
+  const leadWriting = featuredWriting[0];
+  const secondaryWriting = featuredWriting.slice(1, 3);
   const publicWorkCount = workEntries.filter((entry) => entry.frontmatter.kind === "public").length;
   const privateWorkCount = workEntries.length - publicWorkCount;
 
@@ -214,21 +255,46 @@ export async function HomePage({ locale }: { locale: Locale }) {
           <article className="paper-panel writing-panel">
             <p className="section-label">{copy.home.writingLabel}</p>
             <h2>{copy.home.writingTitle}</h2>
-            <div className="note-ledger">
-              {latestWriting.map((entry) => (
+            <p>{copy.home.writingBody}</p>
+            {leadWriting ? (
+              <Link
+                className="featured-note-card"
+                href={localizePath(locale, `/writing/${leadWriting.slug}`)}
+              >
+                <span className="section-label">{copy.writing.featuredLabel}</span>
+                <strong>{leadWriting.frontmatter.title}</strong>
+                <p>{leadWriting.frontmatter.summary}</p>
+                <div className="featured-note-card__meta">
+                  <span>{copy.writing.themes[leadWriting.frontmatter.theme].title}</span>
+                  <span>
+                    {leadWriting.readingMinutes} {copy.writing.minutes}
+                  </span>
+                </div>
+              </Link>
+            ) : null}
+            <div className="writing-list compact">
+              {secondaryWriting.map((entry) => (
                 <Link
                   key={entry.slug}
-                  className="note-ledger__item"
+                  className="writing-item writing-item-note"
                   href={localizePath(locale, `/writing/${entry.slug}`)}
                 >
-                  <span className="note-ledger__date">{entry.frontmatter.publishedAt}</span>
-                  <span className="note-ledger__title">{entry.frontmatter.title}</span>
-                  <span className="note-ledger__meta">
-                    {entry.readingMinutes} {copy.writing.minutes}
-                  </span>
+                  <div className="writing-item__body">
+                    <strong>{entry.frontmatter.title}</strong>
+                    <p>{copy.writing.themes[entry.frontmatter.theme].title}</p>
+                  </div>
+                  <div className="writing-item__meta">
+                    <span>{entry.frontmatter.publishedAt}</span>
+                    <span>
+                      {entry.readingMinutes} {copy.writing.minutes}
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
+            <Link className="text-link" href={localizePath(locale, "/writing")}>
+              {copy.home.writingCta}
+            </Link>
           </article>
         </section>
 
@@ -347,6 +413,8 @@ export async function WorkPage({ locale }: { locale: Locale }) {
 export async function WritingPage({ locale }: { locale: Locale }) {
   const copy = getSiteCopy(locale);
   const entries = await getWritingEntries(locale);
+  const featuredEntries = getFeaturedWritingEntries(entries);
+  const writingThemeGroups = getWritingThemeGroups(entries);
 
   return (
     <SiteShell locale={locale}>
@@ -364,12 +432,25 @@ export async function WritingPage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
-        <section className="notes-ledger">
-          {entries.map((entry, index) => (
-            <article className="notes-ledger__row" key={entry.slug}>
-              <div className="notes-ledger__index">{String(index + 1).padStart(2, "0")}</div>
-              <div className="notes-ledger__date">{entry.frontmatter.publishedAt}</div>
-              <div className="notes-ledger__body">
+        <section className="section-block section-block-editorial">
+          <div className="section-heading-row">
+            <div>
+              <p className="section-label">{copy.writing.featuredLabel}</p>
+              <h2>{copy.writing.featuredTitle}</h2>
+            </div>
+          </div>
+
+          <div className="card-grid writing-featured-grid">
+            {featuredEntries.map((entry) => (
+              <Link
+                className="writing-card writing-card-featured"
+                key={entry.slug}
+                href={localizePath(locale, `/writing/${entry.slug}`)}
+              >
+                <div className="project-meta">
+                  <span>{copy.writing.themes[entry.frontmatter.theme].title}</span>
+                  <span>{entry.frontmatter.publishedAt}</span>
+                </div>
                 <h2>{entry.frontmatter.title}</h2>
                 <p>{entry.frontmatter.summary}</p>
                 <ul className="tag-list">
@@ -377,17 +458,83 @@ export async function WritingPage({ locale }: { locale: Locale }) {
                     <li key={tag}>{tag}</li>
                   ))}
                 </ul>
+                <div className="project-links">
+                  <span className="text-link">{copy.writing.readNote}</span>
+                  <span className="muted-copy">
+                    {entry.readingMinutes} {copy.writing.minutes}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="writing-theme-stack">
+          {writingThemeGroups.map((group) => (
+            <article className="paper-panel writing-theme-section" key={group.theme}>
+              <div className="writing-theme-section__header">
+                <p className="section-label">{copy.writing.themeLabel}</p>
+                <h2>{copy.writing.themes[group.theme].title}</h2>
+                <p>{copy.writing.themes[group.theme].description}</p>
               </div>
-              <div className="notes-ledger__meta">
-                <span>
-                  {entry.readingMinutes} {copy.writing.minutes}
-                </span>
-                <Link className="text-link" href={localizePath(locale, `/writing/${entry.slug}`)}>
-                  {copy.writing.readNote}
-                </Link>
+              <div className="writing-list writing-list-themed">
+                {group.entries.map((entry) => (
+                  <Link
+                    className="writing-item writing-item-note"
+                    key={entry.slug}
+                    href={localizePath(locale, `/writing/${entry.slug}`)}
+                  >
+                    <div className="writing-item__body">
+                      <strong>{entry.frontmatter.title}</strong>
+                      <p>{entry.frontmatter.summary}</p>
+                    </div>
+                    <div className="writing-item__meta">
+                      <span>{entry.frontmatter.publishedAt}</span>
+                      <span>
+                        {entry.readingMinutes} {copy.writing.minutes}
+                      </span>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </article>
           ))}
+        </section>
+
+        <section className="section-block section-block-editorial">
+          <div className="section-heading-row">
+            <div>
+              <p className="section-label">{copy.writing.ledgerLabel}</p>
+              <h2>{copy.writing.ledgerTitle}</h2>
+            </div>
+          </div>
+
+          <section className="notes-ledger">
+            {entries.map((entry, index) => (
+              <article className="notes-ledger__row" key={entry.slug}>
+                <div className="notes-ledger__index">{String(index + 1).padStart(2, "0")}</div>
+                <div className="notes-ledger__date">{entry.frontmatter.publishedAt}</div>
+                <div className="notes-ledger__body">
+                  <h2>{entry.frontmatter.title}</h2>
+                  <p>{entry.frontmatter.summary}</p>
+                  <ul className="tag-list">
+                    <li>{copy.writing.themes[entry.frontmatter.theme].title}</li>
+                    {entry.frontmatter.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="notes-ledger__meta">
+                  <span>
+                    {entry.readingMinutes} {copy.writing.minutes}
+                  </span>
+                  <Link className="text-link" href={localizePath(locale, `/writing/${entry.slug}`)}>
+                    {copy.writing.readNote}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </section>
         </section>
       </div>
     </SiteShell>
@@ -546,7 +693,16 @@ export async function WritingDetailPage({
   slug: string;
 }) {
   const copy = getSiteCopy(locale);
-  const entry = await getWritingEntry(locale, slug);
+  const [entry, allEntries] = await Promise.all([
+    getWritingEntry(locale, slug),
+    getWritingEntries(locale),
+  ]);
+  const relatedEntries = allEntries
+    .filter(
+      (item) => item.slug !== slug && item.frontmatter.theme === entry.frontmatter.theme,
+    )
+    .slice(0, 3);
+  const themeCopy = copy.writing.themes[entry.frontmatter.theme];
 
   return (
     <SiteShell locale={locale}>
@@ -560,10 +716,41 @@ export async function WritingDetailPage({
             <span>
               {entry.readingMinutes} {copy.writing.minutes}
             </span>
+            <span className="pill pill-theme">
+              {copy.detail.theme}: {themeCopy.title}
+            </span>
           </div>
         </section>
 
         <article className="rich-article">{entry.content}</article>
+
+        {relatedEntries.length > 0 ? (
+          <section className="paper-panel related-notes-panel">
+            <p className="section-label">{copy.detail.relatedNotes}</p>
+            <h2>{themeCopy.title}</h2>
+            <p>{copy.detail.relatedNotesBody}</p>
+            <div className="writing-list compact">
+              {relatedEntries.map((relatedEntry) => (
+                <Link
+                  className="writing-item writing-item-note"
+                  key={relatedEntry.slug}
+                  href={localizePath(locale, `/writing/${relatedEntry.slug}`)}
+                >
+                  <div className="writing-item__body">
+                    <strong>{relatedEntry.frontmatter.title}</strong>
+                    <p>{relatedEntry.frontmatter.summary}</p>
+                  </div>
+                  <div className="writing-item__meta">
+                    <span>{relatedEntry.frontmatter.publishedAt}</span>
+                    <span>
+                      {relatedEntry.readingMinutes} {copy.writing.minutes}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
     </SiteShell>
   );

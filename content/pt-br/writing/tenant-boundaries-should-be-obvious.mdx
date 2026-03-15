@@ -1,0 +1,32 @@
+---
+title: "Limites entre tenants deveriam ser obvios"
+summary: "Produtos multi-tenant ficam mais seguros quando o escopo por organizacao aparece no codigo, nas queries e nas docs em vez de ficar implicito."
+order: 7
+publishedAt: "2026-03-11"
+tags:
+  - "saas"
+  - "multitenancy"
+  - "auth"
+theme: "saas-ops"
+---
+
+## O perigo sutil
+
+Muitos bugs de multi-tenancy nao sao falhas dramaticas de arquitetura. Sao vazamentos silenciosos causados por um escopo ausente, uma query frouxa ou um helper que esqueceu de qual organizacao a request veio.
+
+## O que eu prefiro
+
+Eu gosto de limites entre tenants que continuem obvios:
+
+- identificadores de organizacao nos lugares certos,
+- queries escopadas por padrao,
+- docs que nomeiam a regra de isolamento,
+- e testes que provam que um tenant nao enxerga o outro.
+
+## Por que isso importa
+
+Confiabilidade multi-tenant nao e so uma escolha de banco. E um habito repetido em handlers, services e workflows operacionais.
+
+## Sinal de portfolio
+
+Se um repo SaaS esta publico, eu quero que o modelo de tenancy dele seja entendivel sem uma explicacao longa do autor.

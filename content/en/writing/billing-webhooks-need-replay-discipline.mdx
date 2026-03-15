@@ -1,0 +1,33 @@
+---
+title: "Billing webhooks need replay discipline"
+summary: "The hard part of billing is rarely the happy path. It is replay safety, idempotency, and keeping state changes boring under stress."
+order: 6
+publishedAt: "2026-03-14"
+tags:
+  - "billing"
+  - "webhooks"
+  - "saas"
+theme: "saas-ops"
+featured: true
+---
+
+## Where billing gets risky
+
+The first successful payment is usually the easy part. The harder part is everything around it: duplicate deliveries, delayed events, retries, and product state drifting because handlers are not strict enough.
+
+## What I look for
+
+Billing webhook code should make replay safety obvious:
+
+- idempotent writes,
+- event logs,
+- stable identifiers,
+- and narrow transitions for subscription state.
+
+## Why this matters
+
+When money is involved, hidden ambiguity is expensive. Replay discipline is one of the clearest signs that a product is built to survive real traffic instead of only demo traffic.
+
+## Portfolio signal
+
+I want SaaS repos in the portfolio to show that billing is not just an integration. It is an operational boundary that needs boring, careful handling.

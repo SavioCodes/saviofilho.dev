@@ -26,10 +26,16 @@ function getCollectionDirectory(locale: Locale, collection: CollectionName) {
 async function readCollectionFiles(locale: Locale, collection: CollectionName) {
   const directory = getCollectionDirectory(locale, collection);
   const files = await fs.readdir(directory);
-  return files
+  const slugs = files
     .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""))
-    .sort();
+    .map((file) => file.replace(/\.mdx$/, ""));
+
+  const normalized = slugs.map((slug) => slug.toLowerCase());
+  if (new Set(normalized).size !== normalized.length) {
+    throw new Error(`Duplicate slugs detected in ${collection}/${locale}`);
+  }
+
+  return slugs.sort();
 }
 
 async function assertLocaleParity(collection: CollectionName) {

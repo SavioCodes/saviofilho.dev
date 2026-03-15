@@ -1,0 +1,32 @@
+---
+title: "Tenant boundaries should be obvious"
+summary: "Multi-tenant products get safer when organization scoping is visible in code, queries, and docs instead of implied by habit."
+order: 7
+publishedAt: "2026-03-11"
+tags:
+  - "saas"
+  - "multitenancy"
+  - "auth"
+theme: "saas-ops"
+---
+
+## The subtle danger
+
+Many multi-tenant bugs are not dramatic architecture failures. They are quiet leaks caused by a missing scope, a loose query, or a helper that forgot which organization the request belongs to.
+
+## What I prefer
+
+I like tenant boundaries that stay obvious:
+
+- organization identifiers in the right places,
+- scoped queries by default,
+- docs that name the isolation rule,
+- and tests that prove one tenant cannot see another.
+
+## Why this matters
+
+Multi-tenant reliability is not just a database choice. It is a habit repeated across handlers, services, and operator workflows.
+
+## Portfolio signal
+
+If a SaaS repo is public, I want its tenant model to be understandable without a long explanation from the author.

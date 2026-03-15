@@ -670,6 +670,10 @@ img {
   margin-top: 1rem;
 }
 
+.writing-list-themed {
+  margin-top: 1rem;
+}
+
 .case-index,
 .folio-list,
 .notes-ledger {
@@ -791,6 +795,41 @@ img {
   line-height: 1.5;
 }
 
+.featured-note-card {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 0.35rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(24, 58, 52, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0)),
+    rgba(255, 248, 238, 0.72);
+}
+
+.featured-note-card strong {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.featured-note-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.featured-note-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .bet-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -845,9 +884,9 @@ img {
 }
 
 .writing-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
   gap: 1rem;
   padding: 0.75rem 0.9rem;
   border-radius: 1rem;
@@ -857,6 +896,61 @@ img {
 
 .writing-item:hover {
   border-color: rgba(30, 67, 55, 0.32);
+}
+
+.writing-item__body {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.writing-item__body strong {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.writing-item__body p {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.writing-item__meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.writing-theme-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.writing-theme-section {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.writing-theme-section__header {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.writing-theme-section__header p:last-child,
+.related-notes-panel > p:last-of-type {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.writing-featured-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.writing-card-featured {
+  min-height: 100%;
 }
 
 .page-intro {
@@ -1103,6 +1197,18 @@ img {
   max-width: 52rem;
 }
 
+.pill-theme {
+  background: rgba(24, 58, 52, 0.08);
+  color: var(--accent);
+  border-color: rgba(24, 58, 52, 0.14);
+}
+
+.related-notes-panel {
+  max-width: 52rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -1152,13 +1258,15 @@ img {
   .case-index__item,
   .folio-entry,
   .notes-ledger__row,
-  .resume-strip {
+  .resume-strip,
+  .writing-item {
     grid-template-columns: 1fr;
   }
 
   .case-index__action,
   .folio-entry__links,
-  .notes-ledger__meta {
+  .notes-ledger__meta,
+  .writing-item__meta {
     justify-items: start;
     align-content: start;
   }

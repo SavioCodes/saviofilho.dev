@@ -1,0 +1,33 @@
+---
+title: "Contracts beat clever APIs"
+summary: "The API surface gets easier to trust when response shape, validation, and shared schemas stay more explicit than clever."
+order: 4
+publishedAt: "2026-03-13"
+tags:
+  - "backend"
+  - "api"
+  - "contracts"
+theme: "backend-systems"
+featured: true
+---
+
+## The failure mode
+
+Small APIs get over-designed in the wrong place. People make the transport layer look clever, but leave the contract vague enough that every client has to rediscover what the system means.
+
+## What I prefer
+
+I would rather ship:
+
+- a narrow response shape,
+- shared validation or schema artifacts,
+- boring error envelopes,
+- and docs that show the same contract the code enforces.
+
+## Why this matters
+
+The easier the contract is to read, the easier it is to test, review, and change without hidden breakage. That is a stronger signal than squeezing one more abstraction into the route layer.
+
+## Portfolio signal
+
+When I keep a backend project public now, I want the contract to be one of the first things another engineer can trust.

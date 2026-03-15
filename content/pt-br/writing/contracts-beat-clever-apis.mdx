@@ -1,0 +1,33 @@
+---
+title: "Contratos vencem APIs espertinhas"
+summary: "A superficie da API fica mais confiavel quando formato de resposta, validacao e schemas compartilhados sao mais explicitos do que cleverness."
+order: 4
+publishedAt: "2026-03-13"
+tags:
+  - "backend"
+  - "api"
+  - "contratos"
+theme: "backend-systems"
+featured: true
+---
+
+## O modo de falha
+
+APIs pequenas costumam ser over-designed no lugar errado. A camada de transporte fica "esperta", mas o contrato continua vago o bastante para cada cliente ter que redescobrir o que o sistema realmente quer dizer.
+
+## O que eu prefiro
+
+Eu prefiro colocar no ar:
+
+- formato de resposta estreito,
+- validacao ou schema compartilhado,
+- envelope de erro previsivel,
+- e docs que mostram o mesmo contrato que o codigo reforca.
+
+## Por que isso importa
+
+Quanto mais facil o contrato e de ler, mais facil ele e de testar, revisar e mudar sem quebra escondida. Esse sinal vale mais do que uma camada extra de abstracao nas rotas.
+
+## Sinal de portfolio
+
+Quando eu mantenho um projeto backend publico, eu quero que o contrato seja uma das primeiras coisas em que outro engenheiro consiga confiar.

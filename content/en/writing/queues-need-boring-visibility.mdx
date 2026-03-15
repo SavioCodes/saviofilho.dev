@@ -1,0 +1,32 @@
+---
+title: "Queues need boring visibility"
+summary: "Retries, failure reasons, and operator-facing traces matter more than pretending background work is invisible."
+order: 5
+publishedAt: "2026-03-10"
+tags:
+  - "backend"
+  - "queues"
+  - "ops"
+theme: "backend-systems"
+---
+
+## The common mistake
+
+Background jobs often get treated like a black box. The queue exists, the worker runs, and the product only notices it when something quietly stops moving.
+
+## What I want instead
+
+Queue-backed systems should expose a few boring truths:
+
+- what got queued,
+- what failed,
+- what retried,
+- and what an operator should check next.
+
+## Why this matters
+
+Without visibility, a queue is just hidden complexity. With visibility, it becomes a controlled piece of system behavior that another engineer can reason about.
+
+## Portfolio signal
+
+If a public project uses jobs or asynchronous execution, I want the repo and the case study to make those paths legible, not magical.

@@ -1,4 +1,5 @@
 import type { Locale } from "@/config/i18n";
+import type { WritingTheme } from "@/types/content";
 
 export const contactLinks = [
   { href: "mailto:codessavio@gmail.com", label: "Email" },
@@ -43,6 +44,8 @@ type SiteLocaleCopy = {
     privateWorkBody: string;
     writingLabel: string;
     writingTitle: string;
+    writingBody: string;
+    writingCta: string;
     systemsLabel: string;
     systemsTitle: string;
     systemsMap: Array<{ title: string; summary: string }>;
@@ -65,6 +68,12 @@ type SiteLocaleCopy = {
     lead: string;
     ruleLabel: string;
     ruleBody: string;
+    featuredLabel: string;
+    featuredTitle: string;
+    themeLabel: string;
+    themes: Record<WritingTheme, { title: string; description: string }>;
+    ledgerLabel: string;
+    ledgerTitle: string;
     readNote: string;
     minutes: string;
   };
@@ -91,6 +100,9 @@ type SiteLocaleCopy = {
     nextCase: string;
     continueReading: string;
     writingEyebrow: string;
+    theme: string;
+    relatedNotes: string;
+    relatedNotesBody: string;
     minutes: string;
   };
   metadata: {
@@ -156,6 +168,9 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
         "The private projects here are documented with the same standard as the public ones: workflow boundaries, operational constraints, and the trade-offs that shaped the build.",
       writingLabel: "Writing",
       writingTitle: "Short notes written like engineering field reports.",
+      writingBody:
+        "The writing index is organized by the system edges I care about most: AI guardrails, SaaS operations, backend contracts, and a small builder-notes track.",
+      writingCta: "Browse all notes",
       systemsLabel: "Operating map",
       systemsTitle: "The public stack I want recruiters to understand first",
       systemsMap: [
@@ -195,12 +210,39 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     },
     writing: {
       eyebrow: "Writing",
-      title: "Notes about systems, cost, and product reality.",
+      title: "Notes organized by the system edges that matter in real products.",
       lead:
-        "I keep these short on purpose. The goal is to make my thinking legible, not to publish broad thought leadership.",
+        "This is not a generic article feed. It is a structured note index about backend contracts, SaaS operations, AI guardrails, and the builder decisions behind the portfolio.",
       ruleLabel: "Writing rule",
       ruleBody:
         "Every note should clarify a decision or constraint I actually care about in products: money, operations, interfaces, and where AI helps without taking over the product.",
+      featuredLabel: "Featured notes",
+      featuredTitle: "Three notes I want read first",
+      themeLabel: "Theme",
+      themes: {
+        "ai-guardrails": {
+          title: "AI Guardrails",
+          description:
+            "Budget limits, approval paths, simulation, and the product boundaries that make AI features safer to ship.",
+        },
+        "saas-ops": {
+          title: "SaaS Operations",
+          description:
+            "Billing, tenant separation, replay discipline, and the boring details that keep smaller SaaS products credible.",
+        },
+        "backend-systems": {
+          title: "Backend Systems",
+          description:
+            "Contracts, queues, response shape, and the habits that keep APIs legible after the first release.",
+        },
+        "builder-notes": {
+          title: "Builder Notes",
+          description:
+            "Short notes about portfolio positioning, case-study writing, and how I present technical work without hiding the trade-offs.",
+        },
+      },
+      ledgerLabel: "Archive",
+      ledgerTitle: "All notes in chronological order",
       readNote: "Read note",
       minutes: "min read",
     },
@@ -245,6 +287,10 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       nextCase: "Next case study",
       continueReading: "Continue reading",
       writingEyebrow: "Writing",
+      theme: "Theme",
+      relatedNotes: "Related notes",
+      relatedNotesBody:
+        "A few more notes from the same track, so the writing surface feels organized instead of flat.",
       minutes: "min read",
     },
     metadata: {
@@ -310,6 +356,9 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
         "Os projetos privados aqui sao documentados com o mesmo padrao dos publicos: limites de fluxo, restricoes operacionais e trade-offs que moldaram a implementacao.",
       writingLabel: "Textos",
       writingTitle: "Notas curtas escritas como relatorios de engenharia.",
+      writingBody:
+        "A area de escrita agora fica organizada pelos limites de sistema que mais importam para mim: guardrails de IA, operacao SaaS, contratos de backend e notas de construcao.",
+      writingCta: "Ver todos os textos",
       systemsLabel: "Mapa operacional",
       systemsTitle: "A pilha publica que eu quero que um recrutador entenda primeiro",
       systemsMap: [
@@ -349,12 +398,39 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     },
     writing: {
       eyebrow: "Textos",
-      title: "Notas sobre sistemas, custo e realidade de produto.",
+      title: "Notas organizadas pelos limites de sistema que importam em produto real.",
       lead:
-        "Eu mantenho esses textos curtos de proposito. A meta e deixar meu raciocinio visivel, nao publicar pensamento generico.",
+        "Isto nao e um feed generico de artigos. E um indice editorial sobre contratos de backend, operacao SaaS, guardrails de IA e decisoes de construcao por tras do portfolio.",
       ruleLabel: "Regra dos textos",
       ruleBody:
         "Cada nota precisa esclarecer uma decisao ou restricao que eu realmente considero importante em produtos: dinheiro, operacao, interfaces e onde IA ajuda sem dominar o produto.",
+      featuredLabel: "Textos em destaque",
+      featuredTitle: "Tres notas para ler primeiro",
+      themeLabel: "Tema",
+      themes: {
+        "ai-guardrails": {
+          title: "Guardrails de IA",
+          description:
+            "Limites de custo, caminhos de aprovacao, simulacao e as fronteiras de produto que tornam IA mais segura de colocar no ar.",
+        },
+        "saas-ops": {
+          title: "Operacao SaaS",
+          description:
+            "Billing, separacao entre tenants, disciplina de replay e os detalhes operacionais que fazem SaaS pequeno parecer serio.",
+        },
+        "backend-systems": {
+          title: "Sistemas de Backend",
+          description:
+            "Contratos, filas, formato de resposta e os habitos que mantem APIs legiveis depois da primeira release.",
+        },
+        "builder-notes": {
+          title: "Notas de Construcao",
+          description:
+            "Notas curtas sobre posicionamento de portfolio, estudos de caso e como apresentar trabalho tecnico sem esconder trade-offs.",
+        },
+      },
+      ledgerLabel: "Arquivo",
+      ledgerTitle: "Todos os textos em ordem cronologica",
       readNote: "Ler nota",
       minutes: "min de leitura",
     },
@@ -399,6 +475,10 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       nextCase: "Proximo estudo de caso",
       continueReading: "Continuar leitura",
       writingEyebrow: "Textos",
+      theme: "Tema",
+      relatedNotes: "Notas relacionadas",
+      relatedNotesBody:
+        "Mais algumas notas do mesmo trilho editorial, para a area de escrita ficar organizada e coerente.",
       minutes: "min de leitura",
     },
     metadata: {
