@@ -1,0 +1,101 @@
+---
+title: "OnboardPulse"
+summary: "Um SaaS multi-tenant de onboarding com billing, automação de follow-up, storage controlado e documentação operacional."
+order: 2
+year: "2026"
+role: "Solo builder"
+status: "Repo público, projeto ativo do portfólio"
+highlight: "Este projeto mostra trabalho além de CRUD: isolamento entre tenants, orçamento de IA, webhooks de cobrança, política de storage e follow-ups via cron."
+kind: "public"
+stack:
+  - "Next.js"
+  - "TypeScript"
+  - "Prisma"
+  - "PostgreSQL"
+  - "NextAuth"
+  - "Mercado Pago"
+repo: "https://github.com/SavioCodes/OnboardPulse"
+---
+
+## Contexto
+
+Eu queria um projeto SaaS que parecesse mais com operação de dia dois do que com landing page bonita. OnboardPulse é um produto de onboarding para agências e times B2B onde a parte difícil não são os formulários, mas sim isolamento entre tenants, ciclo de cobrança, uploads e jobs de follow-up.
+
+## Problema
+
+Onboarding de cliente se fragmenta rápido: pedidos de documento, lembretes, estado de pagamento, trial e isolamento de conta acabam virando trabalho manual. O produto precisava centralizar esse fluxo em um sistema que também fosse explicável para outro engenheiro.
+
+## Restrições
+
+- Toda entidade de domínio precisava ficar escopada por `organizationId`.
+- Billing precisava de tratamento idempotente para webhooks do Mercado Pago.
+- Uploads precisavam suportar desenvolvimento local e produção com S3 compatível.
+- Uso de IA precisava de teto de custo em vez de chamadas irrestritas.
+
+<SignalGrid>
+  <SignalCard
+    label="Prova central"
+    value="Isolamento multi-tenant + ciclo de billing"
+  />
+  <SignalCard
+    label="Sinal do repositório"
+    value="Docs de launch e runbook de deploy"
+  />
+  <SignalCard
+    label="Preocupação operacional"
+    value="Cron, webhooks e modos de storage"
+  />
+</SignalGrid>
+
+## Arquitetura
+
+```text
+Next.js App Router
+  -> server actions / routes
+  -> services de domínio
+  -> Prisma + Postgres
+  -> Mercado Pago + Gemini + storage S3-compatible
+```
+
+```text
+signup -> organization -> trial state
+upgrade -> preference do Mercado Pago -> webhook -> ativação da assinatura
+portal parado -> cron job -> geração de follow-up -> checagem de orçamento de IA
+```
+
+## Decisões e trade-offs
+
+- O isolamento entre tenants é explícito na aplicação, em vez de depender de RLS desde o primeiro dia.
+- O controle de orçamento de IA é conservador e aproximado, que é o trade certo para custo inicial.
+- Storage fica local no desenvolvimento, mas troca de forma limpa para S3/R2 em deploy real.
+- A documentação é prática de propósito: launch guide, deploy em Vercel e checklist de QA em vez de só texto abstrato.
+
+## O que funcionou
+
+- O repo demonstra amplitude de engenharia de produto: auth, cotas, billing, cron, storage e CSP.
+- A documentação de deploy faz o projeto parecer operacional, não aspiracional.
+- O checklist de QA é bom material de entrevista porque mostra exatamente os modos de falha considerados.
+
+## O que ainda está incompleto
+
+- Alguns itens do roadmap ainda precisam de cobertura automatizada mais forte, principalmente em billing.
+- Ainda não existe URL pública de produção anexada.
+- RLS está documentado como etapa futura, mas ainda não foi implementado.
+
+## Evidência
+
+<TerminalFrame title="Quality gates" subtitle="Repositório OnboardPulse">
+{`$ npm run lint
+$ npm test
+$ npm run build`}
+</TerminalFrame>
+
+```text
+Target do cron no Vercel:
+POST /api/jobs/run-followups?secret=CRON_SECRET
+
+QA rápido:
+- trial expirado bloqueia ações com 402
+- replay de webhook não duplica PaymentLog
+- org A não acessa dados da org B
+```

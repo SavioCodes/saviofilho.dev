@@ -1,6 +1,6 @@
 # saviofilho.dev
 
-Editorial portfolio for Savio Filho with public repository case studies, private product case studies, short technical writing, and a resume page.
+Editorial portfolio for Savio Filho with bilingual case studies, technical notes, and a resume surface that mirrors the public GitHub narrative.
 
 ## Live preview
 
@@ -13,6 +13,7 @@ Editorial portfolio for Savio Filho with public repository case studies, private
 - TypeScript
 - MDX via `next-mdx-remote`
 - Custom CSS, no Tailwind
+- Locale-aware content loaders with hard parity between `en` and `pt-br`
 
 ## Local development
 
@@ -30,23 +31,38 @@ npm run build
 
 ## Content model
 
-- `content/work/*.mdx`: case studies
-- `content/writing/*.mdx`: short technical notes
-- `lib/content.ts`: loader and frontmatter handling
+- `content/en/work/*.mdx`: English case studies
+- `content/en/writing/*.mdx`: English notes
+- `content/pt-br/work/*.mdx`: PT-BR case studies
+- `content/pt-br/writing/*.mdx`: PT-BR notes
+- `src/lib/content.ts`: locale-aware loader and parity checks
+
+## Repository structure
+
+- `src/app`: App Router entrypoints and locale routes
+- `src/components`: shared site chrome
+- `src/features`: page composition and MDX evidence components
+- `src/config`: locale copy and site dictionaries
+- `src/lib`: content loading and site URL helpers
+- `src/types`: content frontmatter types
+- `content`: editorial source of truth split by locale
+
+Detailed notes: see [docs/REPO_STRUCTURE.md](./docs/REPO_STRUCTURE.md).
 
 ## Routes
 
-- `/`: positioning, featured work, writing, and contact
-- `/work`: all case studies
-- `/work/[slug]`: detailed technical case studies
-- `/writing`: short technical writing
-- `/resume`: experience snapshot, stack, and contact
+- `/`, `/work`, `/writing`, `/resume`: English default routes
+- `/pt-br`, `/pt-br/work`, `/pt-br/writing`, `/pt-br/resume`: PT-BR mirrored routes
+- `/work/[slug]` and `/pt-br/work/[slug]`: locale-matched case studies
+- `/writing/[slug]` and `/pt-br/writing/[slug]`: locale-matched notes
+
+Builds fail if a published slug exists in one locale but not the other.
 
 ## Roadmap
 
-- [ ] Move from preview URL to a clean production domain
-- [ ] Add more operational evidence to the strongest public case studies
-- [ ] Expand writing with short backend and product-engineering notes
+- [ ] Move from GitHub Pages to a clean production domain
+- [ ] Add custom social cards for each flagship public repository
+- [ ] Keep `VOWGRID-API`, `OnboardPulse`, `MailSieve`, and `rede-neural-do-zero` aligned with portfolio case updates
 
 ## Deployment
 

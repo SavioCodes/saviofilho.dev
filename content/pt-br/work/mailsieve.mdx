@@ -1,0 +1,93 @@
+---
+title: "MailSieve"
+summary: "Uma API enxuta de risco para signup com contrato OpenAPI, fluxo de chaves, rate limits e scripts de verificação de deploy."
+order: 3
+year: "2026"
+role: "Solo builder"
+status: "Repo público, renomeado de MailSieve-repositorio"
+highlight: "MailSieve é um bom exemplo de produto API pequeno em que clareza de contrato, scripts operacionais e prontidão para monetização importam mais que volume de features."
+kind: "public"
+stack:
+  - "Node.js"
+  - "Express"
+  - "TypeScript"
+  - "OpenAPI"
+  - "Docker Compose"
+repo: "https://github.com/SavioCodes/MailSieve"
+---
+
+## Contexto
+
+Eu queria um repositório que parecesse uma API produtizada e não um serviço interno. MailSieve classifica e-mails de signup contra domínios descartáveis e sinais leves de risco, com forte ênfase em clareza de contrato e verificação de deploy.
+
+## Problema
+
+APIs pequenas normalmente falham no teste de portfólio porque parecem finas demais. Para valer a pena publicamente, esta precisava provar mais do que "responde JSON". Precisava de auth, rate limit, contrato OpenAPI, validação de ambiente, smoke tests e um caminho crível para publicação.
+
+## Restrições
+
+- A API precisava rodar offline, sem forçar provedor externo.
+- Ela precisava de opções simples de storage operacional para deploy inicial.
+- A documentação pública precisava cobrir execução local e distribuição paga.
+- O nome do repositório precisava de limpeza; `MailSieve-repositorio` soava inacabado.
+
+<SignalGrid>
+  <SignalCard
+    label="Prova central"
+    value="OpenAPI + auth + fluxo de verificação"
+  />
+  <SignalCard
+    label="Sinal do repositório"
+    value="Docker Compose e smoke deploy"
+  />
+  <SignalCard
+    label="Preocupação operacional"
+    value="Rate limits e rotação de chaves"
+  />
+</SignalGrid>
+
+## Arquitetura
+
+```text
+client
+  -> API key auth
+  -> rate limiter
+  -> MailSieve service
+  -> listas de disposable e typo
+  -> provedor externo opcional
+```
+
+## Decisões e trade-offs
+
+- Eu mantive os modos de persistência enxutos porque a meta era um produto inicial implantável, não uma plataforma completa.
+- Eu adicionei Docker Compose e healthchecks porque confiança operacional importa até em API estreita.
+- Eu documentei a publicação em RapidAPI porque prontidão para monetização faz parte da história do produto.
+
+## O que funcionou
+
+- O contrato OpenAPI dá um ponto de entrada muito claro para o repo.
+- Os scripts de chaves e de smoke deploy fazem o projeto parecer usável por outro engenheiro.
+- A troca do nome para `MailSieve` corrige um problema de branding que puxava o portfólio para baixo.
+
+## O que ainda está incompleto
+
+- A API ganharia força com evidência melhor de performance sob volume.
+- Ainda não existe endpoint público hospedado ligado ao repositório.
+- A imagem social do repo ainda depende de configuração manual no GitHub.
+
+## Evidência
+
+<TerminalFrame title="Fluxo de verificação" subtitle="Repositório MailSieve">
+{`$ npm test
+$ npm run build
+$ npm run verify
+$ docker compose up --build`}
+</TerminalFrame>
+
+```text
+Checklist de publicação:
+1. importar openapi.yaml
+2. configurar auth x-api-key
+3. publicar listing
+4. rodar BASE_URL=<url> API_KEY=<key> npm run smoke:deploy
+```

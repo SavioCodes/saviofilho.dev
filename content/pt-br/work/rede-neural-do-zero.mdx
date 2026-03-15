@@ -1,0 +1,86 @@
+---
+title: "Neural Network From Scratch"
+summary: "Uma implementação educacional de rede neural com avaliação determinística, logs, testes e pipeline reproduzível."
+order: 4
+year: "2026"
+role: "Solo builder"
+status: "Repo público, educacional mas bem delimitado"
+highlight: "Ele continua público porque mostra disciplina de engenharia dentro de um projeto de estudo: avaliação reproduzível, smoke checks e documentação estruturada."
+kind: "public"
+stack:
+  - "Python"
+  - "NumPy"
+  - "pytest"
+  - "JSONL logs"
+repo: "https://github.com/SavioCodes/rede-neural-do-zero"
+---
+
+## Contexto
+
+Repositórios de estudo só ajudam o portfólio quando mostram cuidado técnico, não só curiosidade. Eu mantive este porque ele saiu do nível de notebook e virou um sistema pequeno, testável e com avaliação determinística.
+
+## Problema
+
+Eu queria entender a mecânica de uma rede neural sem me esconder atrás de frameworks. Ao mesmo tempo, eu queria provar que projetos de aprendizado ainda podem respeitar padrões reais de engenharia.
+
+## Restrições
+
+- Nada de framework alto nível de ML.
+- Resultados reproduzíveis para CI e demos de portfólio.
+- Artefatos simples que possam ser inspecionados depois.
+
+<SignalGrid>
+  <SignalCard
+    label="Prova central"
+    value="Script de avaliação determinística"
+  />
+  <SignalCard
+    label="Sinal do repositório"
+    value="Logs e smoke checks no CI"
+  />
+  <SignalCard
+    label="Preocupação operacional"
+    value="Artefatos portáteis em JSON e JSONL"
+  />
+</SignalGrid>
+
+## Arquitetura
+
+```text
+dataset utils
+  -> normalization and split
+  -> model
+  -> backprop training
+  -> evaluation metrics
+  -> JSON / JSONL logs
+```
+
+## Decisões e trade-offs
+
+- Eu usei implementação sem framework porque o valor de aprendizado era o objetivo.
+- Eu adicionei script determinístico de avaliação porque reproduzibilidade é o que separa um repo de estudo de um experimento descartável.
+- Eu mantive logs em JSON e JSONL em vez de colocar um experiment tracker pesado cedo demais.
+
+## O que funcionou
+
+- O repositório agora comunica rigor em vez de só entusiasmo.
+- O script de avaliação gera uma trilha fácil de conversar em entrevista.
+- O smoke evaluation orientado a CI é mais forte do que um `pytest -q` básico.
+
+## O que ainda está incompleto
+
+- Um benchmark curto ou export de confusion matrix deixaria a história dos artefatos ainda mais forte.
+- Ainda existe espaço para configuração mais rica de experimentos sem perder o foco educacional.
+
+## Evidência
+
+<TerminalFrame title="Fluxo de avaliação" subtitle="Repositório Neural Network From Scratch">
+{`$ pytest -q
+$ python scripts/evaluate.py --seed 42 --epochs 400 --samples 240`}
+</TerminalFrame>
+
+```text
+Saídas:
+- logs/eval-summary.json
+- logs/eval-history.jsonl
+```

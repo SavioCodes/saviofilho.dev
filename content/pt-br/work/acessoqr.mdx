@@ -1,0 +1,78 @@
+---
+title: "AcessoQR"
+summary: "Um estudo de caso privado para auditorias colaborativas de acessibilidade, certificados públicos via QR e scoring guiado por evidência."
+order: 6
+year: "2025"
+role: "Solo builder"
+status: "Estudo de caso privado"
+highlight: "Este é o projeto privado com ângulo público mais forte: checklists ponderados, captura de evidência, moderação e uma camada pública de certificação."
+kind: "private"
+stack:
+  - "Next.js"
+  - "Supabase"
+  - "PostgreSQL"
+  - "RLS"
+  - "QR Code"
+---
+
+## Contexto
+
+AcessoQR é uma plataforma para auditorias estruturadas de acessibilidade em espaços comerciais e públicos. A ideia central é simples: auditar um local com checklist ponderado e evidência fotográfica, depois expor um certificado público por QR code. O repo continua privado, mas o desenho do sistema merece documentação.
+
+## Problema
+
+Declarações de acessibilidade são vagas e difíceis de verificar. Eu queria um sistema capaz de capturar evidência, calcular uma nota transparente e publicar um resultado público sem expor o backoffice operacional.
+
+## Restrições
+
+- As políticas de acesso precisavam ser rígidas porque evidência e moderação são sensíveis.
+- A certificação pública precisava continuar simples enquanto a lógica interna de scoring permanecia estruturada.
+- O produto precisava equilibrar credibilidade, moderação e usabilidade para pessoas não técnicas.
+
+## Arquitetura
+
+```text
+fluxo do auditor
+  -> checklist ponderado + upload de evidencias
+  -> fila de moderacao
+  -> calculo de score
+  -> certificado publico
+  -> camada de acesso via QR
+```
+
+## Decisões e trade-offs
+
+- Eu escolhi Supabase com RLS obrigatória porque o modelo de confiança importa muito aqui.
+- A camada de certificado é pública, mas o sistema operacional continua fechado.
+- Um modelo de moderação em fila torna o produto mais crível do que autopublicação direta.
+
+## O que funcionou
+
+- O README já enquadra o produto com clareza suficiente para sobreviver fora do código.
+- O conjunto de documentação é forte: arquitetura, ERD, segurança, scoring e QA de apresentação.
+- Este é um bom exemplo de projeto que deve continuar privado, mas ainda assim pertencer a um portfólio profissional.
+
+## O que ainda está incompleto
+
+- Um slice público e operacional deixaria o projeto mais fácil de demonstrar em escala.
+- A próxima evolução é extrair um `AcessoQR Public Core` com ferramentas operacionais mais fortes e check-in mais robusto.
+
+## Evidência
+
+```text
+Stack:
+- Next.js 14 App Router
+- Supabase Postgres, Auth, Storage, Edge Functions
+- RLS obrigatoria
+- scoring ponderado + captura de evidencia
+- certificado publico com QR
+```
+
+```text
+Docs presentes:
+- arquitetura
+- diagrama ER
+- seguranca
+- metodologia de scoring
+- QA
+```

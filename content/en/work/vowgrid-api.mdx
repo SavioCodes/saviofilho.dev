@@ -1,0 +1,113 @@
+---
+title: "VOWGRID-API"
+summary: "An agent-trust platform with simulation, policy evaluation, approvals, execution receipts, and rollback visibility."
+order: 1
+year: "2026"
+role: "Solo builder"
+status: "Public repo, flagship portfolio project"
+highlight: "The core signal is not just AI orchestration. It is the trust layer around execution: propose, simulate, evaluate, approve, execute, receipt, and rollback visibility."
+kind: "public"
+stack:
+  - "Fastify"
+  - "Next.js"
+  - "Prisma"
+  - "BullMQ"
+  - "Redis"
+  - "Zod"
+repo: "https://github.com/SavioCodes/VOWGRID-API"
+---
+
+## Context
+
+I wanted one public project that treated AI-triggered actions like a real systems problem instead of a demo flow. VOWGRID-API became that project: a trust layer between AI agents and real-world actions, with policy checks, approvals, execution tracking, receipts, and rollback visibility.
+
+## Problem
+
+Most agent projects focus on what the model can decide. I wanted to focus on what happens after that. Once an action could touch a real connector, the project needed simulation, policy evaluation, auditability, queue-backed execution, and a readable control plane.
+
+## Constraints
+
+- The product had to explain a full action lifecycle, not just an API endpoint.
+- The backend needed clear module boundaries inside a modular monolith.
+- Local setup had to be reproducible with Docker, Prisma migrations, and seeded development data.
+- The web app needed to work against a live API but still expose provisional data flows when the backend was unavailable.
+
+<SignalGrid>
+  <SignalCard
+    label="Core proof"
+    value="Simulation + policy + approval + execution"
+  />
+  <SignalCard
+    label="Repository signal"
+    value="Monorepo with docs, contracts, and runbook"
+  />
+  <SignalCard
+    label="Operational concern"
+    value="Receipts, audit trail, rollback visibility"
+  />
+</SignalGrid>
+
+## Architecture
+
+```text
+agent intent
+  -> propose
+  -> simulate
+  -> evaluate policy
+  -> approval workflow
+  -> BullMQ execution queue
+  -> receipt generation
+  -> rollback visibility
+```
+
+```text
+monorepo
+  -> apps/api (Fastify + Prisma + BullMQ)
+  -> apps/web (Next.js control plane)
+  -> packages/contracts (shared schemas)
+  -> packages/ui (shared primitives)
+  -> docs + infra
+```
+
+## Decisions and trade-offs
+
+- I kept the backend as a modular monolith because operational simplicity mattered more than service sprawl.
+- The trust model is layered explicitly: simulation first, then policy, then approval, then execution.
+- I used BullMQ because queued execution and retry visibility are part of the product story, not an implementation detail.
+- The repo includes both docs and working flows because a trust-oriented product should be understandable before it is impressive.
+
+## What worked
+
+- The project has a clear public identity that is stronger than a generic "AI agents" repo.
+- The runbook, seed flow, and local Docker setup make the system easy to evaluate technically.
+- The monorepo structure keeps contracts, UI, API, and operational docs aligned around one intent lifecycle.
+
+## What is still incomplete
+
+- Rollback processing is visible but not yet completed by a dedicated worker.
+- JWT-based dashboard auth is still missing.
+- User-facing API key management and stronger E2E coverage still need to be added.
+
+## Evidence
+
+<TerminalFrame title="Verified workspace flow" subtitle="VOWGRID-API repository">
+{`$ pnpm install
+$ pnpm docker:up
+$ pnpm migrate
+$ pnpm seed
+$ pnpm lint
+$ pnpm test
+$ pnpm build`}
+</TerminalFrame>
+
+```text
+Intent lifecycle:
+- create draft
+- propose
+- simulate
+- evaluate policy
+- approve
+- execute
+- generate receipt
+- inspect rollback visibility
+```

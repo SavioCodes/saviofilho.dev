@@ -1,0 +1,570 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+
+import { SiteShell } from "@/components/chrome/site-shell";
+import type { Locale } from "@/config/i18n";
+import { localizePath, toHreflang } from "@/config/i18n";
+import { contactLinks, getSiteCopy } from "@/config/site";
+import {
+  getWorkEntries,
+  getWritingEntries,
+  getWorkEntry,
+  getWritingEntry,
+} from "@/lib/content";
+import { absoluteUrl } from "@/lib/site-config";
+
+function buildAlternates(locale: Locale, path = "/") {
+  return {
+    canonical: localizePath(locale, path),
+    languages: {
+      en: absoluteUrl(localizePath("en", path)),
+      "pt-BR": absoluteUrl(localizePath("pt-br", path)),
+    },
+  };
+}
+
+export function buildMetadata(
+  locale: Locale,
+  path: string,
+  title?: string,
+  description?: string,
+): Metadata {
+  const copy = getSiteCopy(locale);
+  const finalTitle = title ?? copy.metadata.title;
+  const finalDescription = description ?? copy.metadata.description;
+  const localeTag = toHreflang(locale);
+
+  return {
+    title: finalTitle,
+    description: finalDescription,
+    alternates: buildAlternates(locale, path),
+    openGraph: {
+      title: finalTitle,
+      description: finalDescription,
+      url: absoluteUrl(localizePath(locale, path)),
+      locale: localeTag,
+      alternateLocale: locale === "en" ? ["pt-BR"] : ["en"],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: finalTitle,
+      description: finalDescription,
+    },
+  };
+}
+
+export async function HomePage({ locale }: { locale: Locale }) {
+  const copy = getSiteCopy(locale);
+  const [workEntries, writingEntries] = await Promise.all([
+    getWorkEntries(locale),
+    getWritingEntries(locale),
+  ]);
+
+  const featuredWork = workEntries.filter((entry) => entry.frontmatter.kind === "public").slice(0, 3);
+  const latestWriting = writingEntries.slice(0, 3);
+  const publicWorkCount = workEntries.filter((entry) => entry.frontmatter.kind === "public").length;
+  const privateWorkCount = workEntries.length - publicWorkCount;
+
+  const notebookFacts = [
+    {
+      label: copy.home.factLabels.publicSurface,
+      value:
+        locale === "pt-br"
+          ? `${publicWorkCount} estudos de caso com repositorio publico`
+          : `${publicWorkCount} repository-backed case studies`,
+    },
+    {
+      label: copy.home.factLabels.privateSurface,
+      value:
+        locale === "pt-br"
+          ? `${privateWorkCount} sistemas privados documentados sem expor codigo`
+          : `${privateWorkCount} product systems with code kept private`,
+    },
+    {
+      label: copy.home.factLabels.writing,
+      value:
+        locale === "pt-br"
+          ? `${writingEntries.length} notas curtas sobre sistemas de produto e IA`
+          : `${writingEntries.length} short notes about product systems and AI edges`,
+    },
+  ] as const;
+
+  return (
+    <SiteShell locale={locale}>
+      <div className="page-section-stack home-stack">
+        <section className="home-masthead">
+          <div className="home-masthead__copy">
+            <p className="eyebrow">{copy.home.eyebrow}</p>
+            <p className="home-kicker">{copy.home.kicker}</p>
+            <h1>{copy.home.title}</h1>
+            <p className="lead">{copy.home.lead}</p>
+            <div className="hero-actions">
+              <Link className="button-primary" href={localizePath(locale, "/work")}>
+                {copy.home.primaryCta}
+              </Link>
+              <Link className="button-secondary" href={localizePath(locale, "/resume")}>
+                {copy.home.secondaryCta}
+              </Link>
+            </div>
+          </div>
+
+          <aside className="home-masthead__rail">
+            <article className="paper-panel paper-panel-accent">
+              <p className="micro-label">{copy.home.currentFocusTitle}</p>
+              <ul className="dossier-list">
+                {copy.home.currentFocus.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="paper-panel">
+              <p className="micro-label">{copy.home.insideTitle}</p>
+              <div className="fact-list">
+                {notebookFacts.map((fact) => (
+                  <div className="fact-list__item" key={fact.label}>
+                    <span>{fact.label}</span>
+                    <strong>{fact.value}</strong>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </aside>
+        </section>
+
+        <section className="proof-band">
+          {copy.home.proofMarks.map((mark, index) => (
+            <article className="proof-band__item" key={mark}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <p>{mark}</p>
+            </article>
+          ))}
+        </section>
+
+        <section className="editorial-columns">
+          <article className="paper-panel manifesto-panel">
+            <p className="section-label">{copy.home.whyExistsLabel}</p>
+            <h2>{copy.home.whyExistsTitle}</h2>
+            <p>{copy.home.whyExistsBody}</p>
+          </article>
+
+          <article className="paper-panel principles-panel">
+            <p className="section-label">{copy.home.principlesLabel}</p>
+            <div className="principle-notes">
+              {copy.home.currentFocus.map((principle, index) => (
+                <div className="principle-note" key={principle}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <p>{principle}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        <section className="section-block section-block-editorial">
+          <div className="section-heading-row">
+            <div>
+              <p className="section-label">{copy.home.selectedWorkLabel}</p>
+              <h2>{copy.home.selectedWorkTitle}</h2>
+            </div>
+            <Link className="text-link" href={localizePath(locale, "/work")}>
+              {copy.home.selectedWorkCta}
+            </Link>
+          </div>
+
+          <div className="case-index">
+            {featuredWork.map((entry, index) => (
+              <article className="case-index__item" key={entry.slug}>
+                <div className="case-index__number">{String(index + 1).padStart(2, "0")}</div>
+                <div className="case-index__meta">
+                  <span className={`pill pill-${entry.frontmatter.kind}`}>
+                    {entry.frontmatter.kind === "public"
+                      ? copy.work.repoLabel
+                      : copy.work.privateLabel}
+                  </span>
+                  <span>{entry.frontmatter.year}</span>
+                </div>
+                <div className="case-index__body">
+                  <h3>{entry.frontmatter.title}</h3>
+                  <p>{entry.frontmatter.summary}</p>
+                  <p className="project-highlight">{entry.frontmatter.highlight}</p>
+                  <ul className="tag-list">
+                    {entry.frontmatter.stack.slice(0, 4).map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="case-index__action">
+                  <Link className="text-link" href={localizePath(locale, `/work/${entry.slug}`)}>
+                    {copy.work.readCase}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="editorial-columns editorial-columns-bottom">
+          <article className="paper-panel private-work-panel">
+            <p className="section-label">{copy.home.privateWorkLabel}</p>
+            <h2>{copy.home.privateWorkTitle}</h2>
+            <p>{copy.home.privateWorkBody}</p>
+          </article>
+
+          <article className="paper-panel writing-panel">
+            <p className="section-label">{copy.home.writingLabel}</p>
+            <h2>{copy.home.writingTitle}</h2>
+            <div className="note-ledger">
+              {latestWriting.map((entry) => (
+                <Link
+                  key={entry.slug}
+                  className="note-ledger__item"
+                  href={localizePath(locale, `/writing/${entry.slug}`)}
+                >
+                  <span className="note-ledger__date">{entry.frontmatter.publishedAt}</span>
+                  <span className="note-ledger__title">{entry.frontmatter.title}</span>
+                  <span className="note-ledger__meta">
+                    {entry.readingMinutes} {copy.writing.minutes}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        <section className="section-block section-block-editorial">
+          <div className="section-heading-row">
+            <div>
+              <p className="section-label">{copy.home.systemsLabel}</p>
+              <h2>{copy.home.systemsTitle}</h2>
+            </div>
+          </div>
+
+          <div className="bet-grid">
+            {copy.home.systemsMap.map((item, index) => (
+              <article className="bet-card" key={item.title}>
+                <span className="bet-card__index">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{item.title}</h3>
+                <p>{item.summary}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+    </SiteShell>
+  );
+}
+
+export async function WorkPage({ locale }: { locale: Locale }) {
+  const copy = getSiteCopy(locale);
+  const entries = await getWorkEntries(locale);
+  const publicCount = entries.filter((entry) => entry.frontmatter.kind === "public").length;
+  const privateCount = entries.length - publicCount;
+
+  return (
+    <SiteShell locale={locale}>
+      <div className="page-section-stack">
+        <section className="page-masthead">
+          <div className="page-masthead__copy">
+            <p className="eyebrow">{copy.work.eyebrow}</p>
+            <h1>{copy.work.title}</h1>
+            <p className="lead">{copy.work.lead}</p>
+          </div>
+
+          <aside className="paper-panel page-masthead__aside">
+            <p className="micro-label">{copy.work.statsLabel}</p>
+            <div className="fact-list">
+              <div className="fact-list__item">
+                <span>{copy.work.stats.publicRepos}</span>
+                <strong>
+                  {locale === "pt-br"
+                    ? `${publicCount} casos publicos`
+                    : `${publicCount} case studies`}
+                </strong>
+              </div>
+              <div className="fact-list__item">
+                <span>{copy.work.stats.privateSystems}</span>
+                <strong>
+                  {locale === "pt-br"
+                    ? `${privateCount} sistemas documentados sem codigo publico`
+                    : `${privateCount} documented without public code`}
+                </strong>
+              </div>
+              <div className="fact-list__item">
+                <span>{copy.work.stats.rule}</span>
+                <strong>
+                  {locale === "pt-br"
+                    ? "So entram projetos que se sustentam em entrevista tecnica"
+                    : "Keep only projects that hold up in technical interviews"}
+                </strong>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section className="folio-list">
+          {entries.map((entry, index) => (
+            <article className="folio-entry" key={entry.slug}>
+              <div className="folio-entry__number">{String(index + 1).padStart(2, "0")}</div>
+              <div className="folio-entry__meta">
+                <span className={`pill pill-${entry.frontmatter.kind}`}>
+                  {entry.frontmatter.kind === "public"
+                    ? copy.work.repoLabel
+                    : copy.work.privateLabel}
+                </span>
+                <span>{entry.frontmatter.year}</span>
+              </div>
+              <div className="folio-entry__body">
+                <h2>{entry.frontmatter.title}</h2>
+                <p>{entry.frontmatter.summary}</p>
+                <p className="project-highlight">{entry.frontmatter.highlight}</p>
+                <ul className="tag-list">
+                  {entry.frontmatter.stack.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="folio-entry__links">
+                <Link className="text-link" href={localizePath(locale, `/work/${entry.slug}`)}>
+                  {copy.work.readCase}
+                </Link>
+                {entry.frontmatter.repo ? (
+                  <a href={entry.frontmatter.repo} target="_blank" rel="noreferrer">
+                    {copy.work.openRepo}
+                  </a>
+                ) : (
+                  <span className="muted-copy">{copy.work.repoPrivate}</span>
+                )}
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+    </SiteShell>
+  );
+}
+
+export async function WritingPage({ locale }: { locale: Locale }) {
+  const copy = getSiteCopy(locale);
+  const entries = await getWritingEntries(locale);
+
+  return (
+    <SiteShell locale={locale}>
+      <div className="page-section-stack">
+        <section className="page-masthead">
+          <div className="page-masthead__copy">
+            <p className="eyebrow">{copy.writing.eyebrow}</p>
+            <h1>{copy.writing.title}</h1>
+            <p className="lead">{copy.writing.lead}</p>
+          </div>
+
+          <aside className="paper-panel page-masthead__aside">
+            <p className="micro-label">{copy.writing.ruleLabel}</p>
+            <p>{copy.writing.ruleBody}</p>
+          </aside>
+        </section>
+
+        <section className="notes-ledger">
+          {entries.map((entry, index) => (
+            <article className="notes-ledger__row" key={entry.slug}>
+              <div className="notes-ledger__index">{String(index + 1).padStart(2, "0")}</div>
+              <div className="notes-ledger__date">{entry.frontmatter.publishedAt}</div>
+              <div className="notes-ledger__body">
+                <h2>{entry.frontmatter.title}</h2>
+                <p>{entry.frontmatter.summary}</p>
+                <ul className="tag-list">
+                  {entry.frontmatter.tags.map((tag) => (
+                    <li key={tag}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="notes-ledger__meta">
+                <span>
+                  {entry.readingMinutes} {copy.writing.minutes}
+                </span>
+                <Link className="text-link" href={localizePath(locale, `/writing/${entry.slug}`)}>
+                  {copy.writing.readNote}
+                </Link>
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+    </SiteShell>
+  );
+}
+
+export function ResumePage({ locale }: { locale: Locale }) {
+  const copy = getSiteCopy(locale);
+
+  return (
+    <SiteShell locale={locale}>
+      <div className="page-section-stack">
+        <section className="resume-sheet">
+          <div className="resume-sheet__intro">
+            <p className="eyebrow">{copy.resume.eyebrow}</p>
+            <h1>{copy.resume.title}</h1>
+            <p className="lead">{copy.resume.lead}</p>
+          </div>
+
+          <aside className="paper-panel resume-sheet__aside">
+            <p className="micro-label">{copy.resume.availabilityLabel}</p>
+            <p>{copy.resume.availability}</p>
+            <div className="footer-links">
+              {contactLinks.map((link) => (
+                <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </aside>
+        </section>
+
+        <section className="resume-strip-grid">
+          <article className="resume-strip">
+            <p className="section-label">{copy.resume.sectionLabels.focus}</p>
+            <ul className="stack-list">
+              {copy.resume.focus.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="resume-strip">
+            <p className="section-label">{copy.resume.sectionLabels.capabilities}</p>
+            <ul className="stack-list">
+              {copy.resume.capabilities.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+
+          <article className="resume-strip">
+            <p className="section-label">{copy.resume.sectionLabels.stack}</p>
+            <ul className="stack-list">
+              {copy.resume.stack.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+      </div>
+    </SiteShell>
+  );
+}
+
+export async function WorkDetailPage({
+  locale,
+  slug,
+}: {
+  locale: Locale;
+  slug: string;
+}) {
+  const copy = getSiteCopy(locale);
+  const entry = await getWorkEntry(locale, slug);
+  const allEntries = await getWorkEntries(locale);
+  const nextEntry = allEntries.find(
+    (item) => item.frontmatter.order === entry.frontmatter.order + 1,
+  );
+
+  return (
+    <SiteShell locale={locale}>
+      <div className="page-section-stack">
+        <section className="detail-hero">
+          <div className="detail-copy">
+            <p className="eyebrow">
+              {entry.frontmatter.kind === "public"
+                ? copy.detail.publicRepo
+                : copy.detail.privateCase}
+            </p>
+            <h1>{entry.frontmatter.title}</h1>
+            <p className="lead">{entry.frontmatter.summary}</p>
+          </div>
+
+          <aside className="detail-aside card">
+            <dl className="meta-grid">
+              <div>
+                <dt>{copy.detail.role}</dt>
+                <dd>{entry.frontmatter.role}</dd>
+              </div>
+              <div>
+                <dt>{copy.detail.year}</dt>
+                <dd>{entry.frontmatter.year}</dd>
+              </div>
+              <div>
+                <dt>{copy.detail.status}</dt>
+                <dd>{entry.frontmatter.status}</dd>
+              </div>
+              <div>
+                <dt>{copy.detail.readingTime}</dt>
+                <dd>
+                  {entry.readingMinutes} {copy.detail.minutes}
+                </dd>
+              </div>
+            </dl>
+
+            <div className="detail-links">
+              {entry.frontmatter.repo ? (
+                <a href={entry.frontmatter.repo} target="_blank" rel="noreferrer">
+                  {copy.detail.openRepository}
+                </a>
+              ) : (
+                <span className="muted-copy">{copy.detail.repoPrivate}</span>
+              )}
+            </div>
+
+            <ul className="tag-list">
+              {entry.frontmatter.stack.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul>
+          </aside>
+        </section>
+
+        <article className="rich-article">{entry.content}</article>
+
+        {nextEntry ? (
+          <section className="card next-card">
+            <p className="section-label">{copy.detail.nextCase}</p>
+            <h2>{nextEntry.frontmatter.title}</h2>
+            <p>{nextEntry.frontmatter.summary}</p>
+            <Link className="text-link" href={localizePath(locale, `/work/${nextEntry.slug}`)}>
+              {copy.detail.continueReading}
+            </Link>
+          </section>
+        ) : null}
+      </div>
+    </SiteShell>
+  );
+}
+
+export async function WritingDetailPage({
+  locale,
+  slug,
+}: {
+  locale: Locale;
+  slug: string;
+}) {
+  const copy = getSiteCopy(locale);
+  const entry = await getWritingEntry(locale, slug);
+
+  return (
+    <SiteShell locale={locale}>
+      <div className="page-section-stack">
+        <section className="page-intro narrow">
+          <p className="eyebrow">{copy.detail.writingEyebrow}</p>
+          <h1>{entry.frontmatter.title}</h1>
+          <p className="lead">{entry.frontmatter.summary}</p>
+          <div className="project-meta">
+            <span>{entry.frontmatter.publishedAt}</span>
+            <span>
+              {entry.readingMinutes} {copy.writing.minutes}
+            </span>
+          </div>
+        </section>
+
+        <article className="rich-article">{entry.content}</article>
+      </div>
+    </SiteShell>
+  );
+}

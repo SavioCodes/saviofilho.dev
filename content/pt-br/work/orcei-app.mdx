@@ -1,0 +1,75 @@
+---
+title: "ORCEI"
+summary: "Um estudo de caso privado para geração de orçamentos e compartilhamento por WhatsApp, construído como fluxo SaaS mobile-first em Next.js e Supabase."
+order: 5
+year: "2025"
+role: "Solo builder"
+status: "Estudo de caso privado"
+highlight: "O sinal mais forte aqui é desenho de workflow de produto: orçamentos, links públicos, UX mobile-first e IA assistindo um fluxo real de negócio."
+kind: "private"
+stack:
+  - "Next.js"
+  - "Supabase"
+  - "PostgreSQL"
+  - "OpenAI"
+  - "PWA"
+---
+
+## Contexto
+
+ORCEI é um projeto privado para gerar orçamentos profissionais que podem ser compartilhados por WhatsApp. O repositório fica privado, mas as decisões de produto são boas o suficiente para entrar no portfólio porque o sistema mora no encontro confuso entre mobile, comunicação com cliente e saída em formato de documento.
+
+## Problema
+
+Pequenos negócios de serviço ainda fazem orçamento na mão ou em documentos improvisados. O produto precisava tornar a geração rápida, confortável no celular e simples de compartilhar com o cliente via link público e WhatsApp.
+
+## Restrições
+
+- O app precisava ser confortável em mobile primeiro.
+- A visualização pública do orçamento precisava funcionar sem expor dados privados da conta.
+- A IA precisava ficar limitada a um fluxo estreito: melhorar descrições de serviço.
+- A superfície de time era pequena, então o sistema precisava de stack compacta.
+
+## Arquitetura
+
+```text
+app autenticado
+  -> quote wizard
+  -> perfis, clientes, quotes e quote_items no Supabase
+  -> rota publica /q/[token] para visualizacao do cliente
+  -> utilitarios de compartilhamento no WhatsApp
+```
+
+## Decisões e trade-offs
+
+- Eu usei Supabase com RLS porque o projeto ganha com iteração rápida e fronteiras claras por usuário.
+- A feature de IA é estreita de propósito; ela melhora descrições de orçamento, não tenta rodar o fluxo inteiro.
+- Suporte a impressão entrou antes de PDF gerado no servidor porque resolvia o problema do usuário mais cedo.
+
+## O que funcionou
+
+- A estrutura de rotas deixa o produto legível: app autenticado, área de auth, páginas públicas de orçamento e pequenas server actions.
+- O checklist de features já mostra boa forma de produto: profile, settings, links públicos, dashboard e share actions.
+- A documentação de ambiente e schema do banco ajudou a manter o projeto sustentável mesmo ficando privado.
+
+## O que ainda está incompleto
+
+- Fluxos de edição, duplicação e remoção de orçamentos ainda estavam planejados na última atualização.
+- Suporte offline e PDF gerado no servidor ainda não ficaram prontos.
+- Isso deve evoluir para o conceito público mais forte que eu hoje chamo de `QuoteFlow BR`.
+
+## Evidência
+
+```text
+Implementado:
+- wizard de orcamento em 3 etapas
+- rota publica com token para compartilhamento
+- utilitarios de compartilhamento no WhatsApp
+- endpoint de IA para melhorar descricoes
+- layout mobile-first e shell PWA
+```
+
+```text
+Nucleo do banco:
+profiles -> clients -> quotes -> quote_items
+```
