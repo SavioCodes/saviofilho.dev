@@ -165,19 +165,19 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       privateWorkLabel: "Private work, still legible",
       privateWorkTitle: "Code can stay private. System thinking should not.",
       privateWorkBody:
-        "The private projects here are documented with the same standard as the public ones: workflow boundaries, operational constraints, and the trade-offs that shaped the build.",
+        "The private projects here still show workflow boundaries, operational constraints, and the trade-offs that shaped the build. VOWGRID, AcessoQR, and ORCEI stay useful even when the code stays closed.",
       writingLabel: "Writing",
       writingTitle: "Short notes written like engineering field reports.",
       writingBody:
         "The writing index is organized by the system edges I care about most: AI guardrails, SaaS operations, backend contracts, and a small builder-notes track.",
       writingCta: "Browse all notes",
       systemsLabel: "Operating map",
-      systemsTitle: "The public stack I want recruiters to understand first",
+      systemsTitle: "The systems I want recruiters to understand first",
       systemsMap: [
         {
           title: "Trust + approval systems",
           summary:
-            "VOWGRID-API focuses on simulation, policy evaluation, approvals, execution receipts, and rollback visibility.",
+            "VOWGRID is now documented as a private case study focused on simulation, policy evaluation, approvals, execution receipts, and rollback visibility.",
         },
         {
           title: "SaaS workflow operations",
@@ -195,7 +195,7 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       eyebrow: "Work",
       title: "Six systems that hold up under technical scrutiny.",
       lead:
-        "Four are public repositories with runnable engineering proof. Two stay private, but the cases still show architecture, constraints, operating flows, and why the system was shaped the way it was.",
+        "Three are public repositories with runnable engineering proof. Three stay private, but the cases still show architecture, constraints, operating flows, and why the system was shaped the way it was.",
       statsLabel: "Index notes",
       stats: {
         publicRepos: "Public repos",
@@ -353,19 +353,19 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       privateWorkLabel: "Projetos privados, ainda legiveis",
       privateWorkTitle: "O codigo pode ser privado. O raciocinio do sistema nao.",
       privateWorkBody:
-        "Os projetos privados aqui sao documentados com o mesmo padrao dos publicos: limites de fluxo, restricoes operacionais e trade-offs que moldaram a implementacao.",
+        "Os projetos privados aqui continuam mostrando limites de fluxo, restricoes operacionais e trade-offs reais. VOWGRID, AcessoQR e ORCEI ainda ajudam a explicar como eu penso mesmo com o codigo fechado.",
       writingLabel: "Textos",
       writingTitle: "Notas curtas escritas como relatorios de engenharia.",
       writingBody:
         "A area de escrita agora fica organizada pelos limites de sistema que mais importam para mim: guardrails de IA, operacao SaaS, contratos de backend e notas de construcao.",
       writingCta: "Ver todos os textos",
       systemsLabel: "Mapa operacional",
-      systemsTitle: "A pilha publica que eu quero que um recrutador entenda primeiro",
+      systemsTitle: "Os sistemas que eu quero que um recrutador entenda primeiro",
       systemsMap: [
         {
           title: "Sistemas de confianca e aprovacao",
           summary:
-            "VOWGRID-API foca em simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback.",
+            "VOWGRID agora aparece como estudo de caso privado com foco em simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback.",
         },
         {
           title: "Operacao de SaaS workflow",
@@ -383,7 +383,7 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       eyebrow: "Projetos",
       title: "Seis sistemas que se sustentam em avaliacao tecnica.",
       lead:
-        "Quatro sao repositorios publicos com prova de engenharia reproduzivel. Dois continuam privados, mas os casos ainda mostram arquitetura, restricoes, fluxos operacionais e o motivo de cada decisao.",
+        "Tres sao repositorios publicos com prova de engenharia reproduzivel. Tres continuam privados, mas os casos ainda mostram arquitetura, restricoes, fluxos operacionais e o motivo de cada decisao.",
       statsLabel: "Notas do indice",
       stats: {
         publicRepos: "Repos publicos",

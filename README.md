@@ -62,7 +62,7 @@ Builds fail if a published slug exists in one locale but not the other.
 
 - [ ] Move from GitHub Pages to a clean production domain
 - [ ] Add custom social cards for each flagship public repository
-- [ ] Keep `VOWGRID-API`, `OnboardPulse`, `MailSieve`, and `rede-neural-do-zero` aligned with portfolio case updates
+- [ ] Keep public flagship repos and the strongest private case studies aligned with GitHub changes
 
 ## Deployment
 

@@ -1,12 +1,12 @@
 ---
-title: "VOWGRID-API"
-summary: "An agent-trust platform with simulation, policy evaluation, approvals, execution receipts, and rollback visibility."
-order: 1
+title: "VOWGRID"
+summary: "A private case study for an agent-trust platform with simulation, policy evaluation, approvals, execution receipts, and rollback visibility."
+order: 4
 year: "2026"
 role: "Solo builder"
-status: "Public repo, flagship portfolio project"
+status: "Private case study, flagship trust-systems project"
 highlight: "The core signal is not just AI orchestration. It is the trust layer around execution: propose, simulate, evaluate, approve, execute, receipt, and rollback visibility."
-kind: "public"
+kind: "private"
 stack:
   - "Fastify"
   - "Next.js"
@@ -14,12 +14,11 @@ stack:
   - "BullMQ"
   - "Redis"
   - "Zod"
-repo: "https://github.com/SavioCodes/VOWGRID-API"
 ---
 
 ## Context
 
-I wanted one public project that treated AI-triggered actions like a real systems problem instead of a demo flow. VOWGRID-API became that project: a trust layer between AI agents and real-world actions, with policy checks, approvals, execution tracking, receipts, and rollback visibility.
+I wanted one project that treated AI-triggered actions like a real systems problem instead of a demo flow. VOWGRID became that project: a trust layer between AI agents and real-world actions, with policy checks, approvals, execution tracking, receipts, and rollback visibility. The repository now stays private while the product surface matures, but the system design remains strong enough to document publicly.
 
 ## Problem
 
@@ -78,7 +77,7 @@ monorepo
 
 ## What worked
 
-- The project has a clear public identity that is stronger than a generic "AI agents" repo.
+- The project has a clear systems identity that is stronger than a generic "AI agents" repo.
 - The runbook, seed flow, and local Docker setup make the system easy to evaluate technically.
 - The monorepo structure keeps contracts, UI, API, and operational docs aligned around one intent lifecycle.
 
@@ -90,7 +89,7 @@ monorepo
 
 ## Evidence
 
-<TerminalFrame title="Verified workspace flow" subtitle="VOWGRID-API repository">
+<TerminalFrame title="Verified workspace flow" subtitle="Private VOWGRID workspace">
 {`$ pnpm install
 $ pnpm docker:up
 $ pnpm migrate

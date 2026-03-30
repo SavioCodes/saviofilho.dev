@@ -1,12 +1,12 @@
 ---
-title: "VOWGRID-API"
-summary: "Uma plataforma de confiança para agentes, com simulação, avaliação de política, aprovações, comprovantes de execução e visibilidade de rollback."
-order: 1
+title: "VOWGRID"
+summary: "Um estudo de caso privado para uma plataforma de confianca entre agentes, com simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback."
+order: 4
 year: "2026"
 role: "Solo builder"
-status: "Repo público, projeto principal do portfólio"
-highlight: "O sinal central não é só orquestrar IA. É a camada de confiança antes da execução: propor, simular, avaliar, aprovar, executar, gerar recibo e expor rollback."
-kind: "public"
+status: "Estudo de caso privado, projeto principal de sistemas de confianca"
+highlight: "O sinal central nao e so orquestrar IA. E a camada de confianca antes da execucao: propor, simular, avaliar, aprovar, executar, gerar recibo e expor rollback."
+kind: "private"
 stack:
   - "Fastify"
   - "Next.js"
@@ -14,12 +14,11 @@ stack:
   - "BullMQ"
   - "Redis"
   - "Zod"
-repo: "https://github.com/SavioCodes/VOWGRID-API"
 ---
 
 ## Contexto
 
-Eu queria um projeto público que tratasse ações disparadas por IA como um problema real de sistema, não como um fluxo de demo. O VOWGRID-API virou isso: uma camada de confiança entre agentes e ações no mundo real, com checagem de política, aprovação, rastreio de execução, recibos e visibilidade de rollback.
+Eu queria um projeto que tratasse acoes disparadas por IA como um problema real de sistema, nao como um fluxo de demo. O VOWGRID virou isso: uma camada de confianca entre agentes e acoes no mundo real, com checagem de politica, aprovacao, rastreio de execucao, recibos e visibilidade de rollback. O repositorio agora fica privado enquanto a superficie do produto amadurece, mas o desenho do sistema continua forte o bastante para documentacao publica.
 
 ## Problema
 
@@ -78,7 +77,7 @@ monorepo
 
 ## O que funcionou
 
-- O projeto tem uma identidade pública muito mais forte do que um repo genérico de "AI agents".
+- O projeto tem uma identidade de sistema muito mais forte do que um repo generico de "AI agents".
 - O runbook, o seed e o setup local com Docker tornam o sistema fácil de avaliar tecnicamente.
 - A estrutura de monorepo mantém contratos, UI, API e docs alinhados em torno do mesmo ciclo de intent.
 
@@ -90,7 +89,7 @@ monorepo
 
 ## Evidência
 
-<TerminalFrame title="Fluxo validado do workspace" subtitle="Repositório VOWGRID-API">
+<TerminalFrame title="Fluxo validado do workspace" subtitle="Workspace privado do VOWGRID">
 {`$ pnpm install
 $ pnpm docker:up
 $ pnpm migrate
