@@ -42,6 +42,9 @@ type SiteLocaleCopy = {
     privateWorkLabel: string;
     privateWorkTitle: string;
     privateWorkBody: string;
+    surfaceLabel: string;
+    surfaceTitle: string;
+    surfaceBody: string;
     writingLabel: string;
     writingTitle: string;
     writingBody: string;
@@ -58,6 +61,10 @@ type SiteLocaleCopy = {
     stats: { publicRepos: string; privateSystems: string; rule: string };
     repoLabel: string;
     privateLabel: string;
+    publicTitle: string;
+    publicBody: string;
+    privateTitle: string;
+    privateBody: string;
     readCase: string;
     openRepo: string;
     repoPrivate: string;
@@ -95,6 +102,10 @@ type SiteLocaleCopy = {
     year: string;
     status: string;
     readingTime: string;
+    highlight: string;
+    inspectFirst: string;
+    inspectPublic: string;
+    inspectPrivate: string;
     openRepository: string;
     repoPrivate: string;
     nextCase: string;
@@ -166,6 +177,11 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       privateWorkTitle: "Code can stay private. System thinking should not.",
       privateWorkBody:
         "The private projects here still show workflow boundaries, operational constraints, and the trade-offs that shaped the build. VOWGRID, AcessoQR, and ORCEI stay useful even when the code stays closed.",
+      surfaceLabel: "Public GitHub surface",
+      surfaceTitle:
+        "The public repos carry the first proof. The private cases carry the deeper system story.",
+      surfaceBody:
+        "I keep the public side narrow on purpose. Each repo needs runnable proof, clean docs, and a believable product or engineering signal before it stays visible.",
       writingLabel: "Writing",
       writingTitle: "Short notes written like engineering field reports.",
       writingBody:
@@ -204,6 +220,12 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       },
       repoLabel: "Public repository",
       privateLabel: "Private case study",
+      publicTitle: "Public repositories with runnable proof",
+      publicBody:
+        "These are the repos I am comfortable putting in front of a recruiter or another engineer first: each one has a clean scope, technical evidence, and a repo surface worth inspecting.",
+      privateTitle: "Private case studies with enough public explanation",
+      privateBody:
+        "These systems stay closed for now, but the cases still document the important parts: workflow shape, trust boundaries, operator concerns, and the trade-offs behind the product.",
       readCase: "Read case study",
       openRepo: "Repository",
       repoPrivate: "Repo stays private",
@@ -282,6 +304,12 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       year: "Year",
       status: "Status",
       readingTime: "Reading time",
+      highlight: "Why this case matters",
+      inspectFirst: "Inspect first",
+      inspectPublic:
+        "Start with the repository surface: README, setup path, CI, docs, and the evidence blocks that show the system survives outside the happy path.",
+      inspectPrivate:
+        "Start with the architecture, constraints, and evidence blocks. The code stays private on purpose, so the value here is in the system explanation and operational trade-offs.",
       openRepository: "Open repository",
       repoPrivate: "Repository intentionally private",
       nextCase: "Next case study",
@@ -354,6 +382,11 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       privateWorkTitle: "O codigo pode ser privado. O raciocinio do sistema nao.",
       privateWorkBody:
         "Os projetos privados aqui continuam mostrando limites de fluxo, restricoes operacionais e trade-offs reais. VOWGRID, AcessoQR e ORCEI ainda ajudam a explicar como eu penso mesmo com o codigo fechado.",
+      surfaceLabel: "Superficie publica no GitHub",
+      surfaceTitle:
+        "Os repositorios publicos carregam a primeira prova. Os casos privados carregam a historia mais profunda do sistema.",
+      surfaceBody:
+        "Eu mantenho o lado publico enxuto de proposito. Cada repo precisa ter prova executavel, docs limpas e um sinal tecnico ou de produto crivel antes de continuar visivel.",
       writingLabel: "Textos",
       writingTitle: "Notas curtas escritas como relatorios de engenharia.",
       writingBody:
@@ -392,6 +425,12 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       },
       repoLabel: "Repositorio publico",
       privateLabel: "Estudo de caso privado",
+      publicTitle: "Repositorios publicos com prova reproduzivel",
+      publicBody:
+        "Estes sao os repos que eu posso colocar primeiro na frente de um recrutador ou de outro engenheiro: cada um tem escopo claro, evidencia tecnica e uma superficie de repo que vale a inspecao.",
+      privateTitle: "Estudos de caso privados com explicacao publica suficiente",
+      privateBody:
+        "Estes sistemas continuam fechados por enquanto, mas os casos ainda documentam o essencial: formato do fluxo, fronteiras de confianca, preocupacoes operacionais e os trade-offs que moldaram o produto.",
       readCase: "Ler estudo de caso",
       openRepo: "Repositorio",
       repoPrivate: "Repo continua privado",
@@ -470,6 +509,12 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       year: "Ano",
       status: "Status",
       readingTime: "Tempo de leitura",
+      highlight: "Por que este caso importa",
+      inspectFirst: "O que inspecionar primeiro",
+      inspectPublic:
+        "Comece pela superficie do repositorio: README, caminho de setup, CI, docs e os blocos de evidencia que mostram que o sistema sobrevive fora do caminho feliz.",
+      inspectPrivate:
+        "Comece pela arquitetura, pelas restricoes e pelos blocos de evidencia. O codigo fica privado de proposito, entao o valor aqui esta na explicacao do sistema e nos trade-offs operacionais.",
       openRepository: "Abrir repositorio",
       repoPrivate: "Repositorio mantido como privado",
       nextCase: "Proximo estudo de caso",

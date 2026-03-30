@@ -436,9 +436,60 @@ img {
 .manifesto-panel,
 .principles-panel,
 .private-work-panel,
-.writing-panel {
+.github-surface-panel,
+.writing-panel,
+.detail-dossier__quote,
+.detail-dossier__note {
   display: grid;
   gap: 0.9rem;
+}
+
+.surface-ledger {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.surface-ledger__item {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(49, 41, 31, 0.2);
+}
+
+.surface-ledger__item:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.surface-ledger__meta,
+.surface-ledger__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.surface-ledger__meta {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.surface-ledger__body {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.surface-ledger__body strong {
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+.surface-ledger__body p {
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .principle-notes {
@@ -573,6 +624,17 @@ img {
   margin-bottom: 1rem;
 }
 
+.section-heading-copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.group-lead {
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 58ch;
+}
+
 .section-block-editorial {
   display: grid;
   gap: 0.3rem;
@@ -670,6 +732,17 @@ img {
   margin-top: 1rem;
 }
 
+.writing-spotlight {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.writing-spotlight__lead {
+  min-height: 100%;
+}
+
 .writing-list-themed {
   margin-top: 1rem;
 }
@@ -678,6 +751,11 @@ img {
 .folio-list,
 .notes-ledger {
   border-top: 1px solid rgba(49, 41, 31, 0.16);
+}
+
+.work-group {
+  display: grid;
+  gap: 0.55rem;
 }
 
 .case-index__item,
@@ -978,6 +1056,32 @@ img {
   padding-top: 0.2rem;
 }
 
+.detail-dossier {
+  max-width: 52rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.detail-dossier__quote h2 {
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.detail-dossier__quote p:last-child,
+.detail-dossier__note p {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.detail-dossier__note a,
+.detail-dossier__note span {
+  margin-top: 0.15rem;
+}
+
 .meta-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1230,6 +1334,8 @@ img {
   .proof-band,
   .editorial-columns,
   .bet-grid,
+  .writing-spotlight,
+  .detail-dossier,
   .home-masthead,
   .page-masthead,
   .resume-sheet {
