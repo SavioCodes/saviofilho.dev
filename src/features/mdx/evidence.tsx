@@ -9,6 +9,16 @@ type SignalGridProps = {
 
 type SignalCardProps = SignalItem;
 
+type FlowGridProps = {
+  children: React.ReactNode;
+};
+
+type FlowStepProps = {
+  step: string;
+  title: string;
+  detail: string;
+};
+
 type TerminalFrameProps = {
   title: string;
   subtitle?: string;
@@ -24,6 +34,20 @@ export function SignalCard({ label, value }: SignalCardProps) {
     <div className="signal-card">
       <span>{label}</span>
       <strong>{value}</strong>
+    </div>
+  );
+}
+
+export function FlowGrid({ children }: FlowGridProps) {
+  return <div className="flow-grid">{children}</div>;
+}
+
+export function FlowStep({ step, title, detail }: FlowStepProps) {
+  return (
+    <div className="flow-step">
+      <span className="flow-step__index">{step}</span>
+      <strong>{title}</strong>
+      <p>{detail}</p>
     </div>
   );
 }

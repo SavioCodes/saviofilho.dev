@@ -22,42 +22,31 @@ Eu queria um projeto que tratasse acoes disparadas por IA como um problema real 
 
 ## Problema
 
-A maior parte dos projetos com agentes foca no que o modelo consegue decidir. Eu quis focar no que acontece depois. Quando uma ação pode tocar um conector real, o projeto precisa de simulação, avaliação de política, auditabilidade, execução com fila e uma control plane legível.
+A maior parte dos projetos com agentes foca no que o modelo consegue decidir. Eu quis focar no que acontece depois. Quando uma acao pode tocar um conector real, o projeto precisa de simulacao, avaliacao de politica, auditabilidade, execucao com fila e uma control plane legivel.
 
-## Restrições
+## Restricoes
 
-- O produto precisava explicar um ciclo completo de ação, não só um endpoint.
-- O backend precisava de fronteiras claras dentro de um monólito modular.
-- O setup local precisava ser reproduzível com Docker, migrations do Prisma e seed de desenvolvimento.
-- O web app precisava funcionar contra a API real, mas também continuar útil quando o backend estivesse indisponível.
+- O produto precisava explicar um ciclo completo de acao, nao so um endpoint.
+- O backend precisava de fronteiras claras dentro de um monolito modular.
+- O setup local precisava ser reproduzivel com Docker, migrations do Prisma e seed de desenvolvimento.
+- O web app precisava funcionar contra a API real, mas tambem continuar util quando o backend estivesse indisponivel.
 
 <SignalGrid>
   <SignalCard
     label="Prova central"
-    value="Simulação + política + aprovação + execução"
+    value="Simulacao + politica + aprovacao + execucao"
   />
   <SignalCard
-    label="Sinal do repositório"
+    label="Sinal do repositorio"
     value="Monorepo com docs, contratos e runbook"
   />
   <SignalCard
-    label="Preocupação operacional"
+    label="Preocupacao operacional"
     value="Recibos, auditoria e visibilidade de rollback"
   />
 </SignalGrid>
 
 ## Arquitetura
-
-```text
-intent do agente
-  -> propose
-  -> simulate
-  -> evaluate policy
-  -> approval workflow
-  -> BullMQ execution queue
-  -> receipt generation
-  -> rollback visibility
-```
 
 ```text
 monorepo
@@ -68,26 +57,54 @@ monorepo
   -> docs + infra
 ```
 
-## Decisões e trade-offs
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Propor a acao"
+    detail="O sistema guarda a intencao como draft em vez de saltar direto para execucao, o que mantem a control plane legivel."
+  />
+  <FlowStep
+    step="02"
+    title="Simular antes de tocar conectores"
+    detail="A simulacao mostra efeito colateral previsto e shape de payload antes que qualquer conector mude algo no mundo externo."
+  />
+  <FlowStep
+    step="03"
+    title="Avaliar politica e aprovacao"
+    detail="Regras, papeis e estado de aprovacao viram gates explicitos, nao detalhe escondido de implementacao."
+  />
+  <FlowStep
+    step="04"
+    title="Executar via fila"
+    detail="BullMQ assume retries, visibilidade e transicoes de execucao para que a operacao continue inspecionavel depois do caminho feliz."
+  />
+  <FlowStep
+    step="05"
+    title="Emitir recibos e rollback visivel"
+    detail="A execucao termina com evidencia: recibos, trilha de auditoria e visibilidade de como o rollback seria tratado se a acao precisasse ser desfeita."
+  />
+</FlowGrid>
 
-- Eu mantive o backend como monólito modular porque simplicidade operacional importava mais do que espalhar serviços.
-- O modelo de confiança é explícito em camadas: primeiro simulação, depois política, depois aprovação, depois execução.
-- Eu usei BullMQ porque execução enfileirada e visibilidade de retry fazem parte da história do produto.
-- O repo inclui docs e fluxo funcional porque um produto de confiança precisa ser compreensível antes de ser impressionante.
+## Decisoes e trade-offs
+
+- Eu mantive o backend como monolito modular porque simplicidade operacional importava mais do que espalhar servicos.
+- O modelo de confianca e explicito em camadas: primeiro simulacao, depois politica, depois aprovacao, depois execucao.
+- Eu usei BullMQ porque execucao enfileirada e visibilidade de retry fazem parte da historia do produto.
+- O repo inclui docs e fluxo funcional porque um produto de confianca precisa ser compreensivel antes de ser impressionante.
 
 ## O que funcionou
 
 - O projeto tem uma identidade de sistema muito mais forte do que um repo generico de "AI agents".
-- O runbook, o seed e o setup local com Docker tornam o sistema fácil de avaliar tecnicamente.
-- A estrutura de monorepo mantém contratos, UI, API e docs alinhados em torno do mesmo ciclo de intent.
+- O runbook, o seed e o setup local com Docker tornam o sistema facil de avaliar tecnicamente.
+- A estrutura de monorepo mantem contratos, UI, API e docs alinhados em torno do mesmo ciclo de intent.
 
-## O que ainda está incompleto
+## O que ainda esta incompleto
 
-- O processamento de rollback ainda não foi fechado por um worker dedicado.
-- Ainda falta autenticação JWT para o dashboard.
-- Gestão de API key para usuários finais e cobertura E2E mais forte ainda precisam entrar.
+- O processamento de rollback ainda nao foi fechado por um worker dedicado.
+- Ainda falta autenticacao JWT para o dashboard.
+- Gestao de API key para usuarios finais e cobertura E2E mais forte ainda precisam entrar.
 
-## Evidência
+## Evidencia
 
 <TerminalFrame title="Fluxo validado do workspace" subtitle="Workspace privado do VOWGRID">
 {`$ pnpm install
@@ -104,7 +121,7 @@ Ciclo do intent:
 - criar draft
 - propor
 - simular
-- avaliar política
+- avaliar politica
 - aprovar
 - executar
 - gerar recibo

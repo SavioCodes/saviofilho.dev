@@ -444,6 +444,66 @@ img {
   line-height: 1.45;
 }
 
+.cover-ledger {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.15fr) minmax(280px, 0.82fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.cover-ledger__intro,
+.cover-ledger__notes {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.cover-ledger__intro p:last-child,
+.cover-ledger__notes h2 + ul {
+  max-width: 36ch;
+}
+
+.cover-ledger__routes {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.route-sheet {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.15rem 1.1rem;
+  border: 1px solid rgba(49, 41, 31, 0.16);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0)),
+    rgba(251, 246, 236, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.route-sheet__index {
+  color: var(--accent-warm);
+  font-family: var(--font-display), serif;
+  font-size: clamp(1.95rem, 3vw, 2.45rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.route-sheet__body {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.route-sheet__body strong {
+  font-size: 1.05rem;
+  line-height: 1.42;
+}
+
+.route-sheet__body p {
+  color: var(--muted);
+  line-height: 1.72;
+}
+
 .proof-band {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1298,6 +1358,41 @@ img {
   line-height: 1.45;
 }
 
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.flow-step {
+  display: grid;
+  gap: 0.45rem;
+  padding: 1rem 1rem 1.05rem;
+  border: 1px solid rgba(49, 41, 31, 0.16);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)),
+    rgba(255, 248, 239, 0.8);
+}
+
+.flow-step__index {
+  color: var(--accent);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.flow-step strong {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.flow-step p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .terminal-frame {
   overflow: hidden;
   border-radius: 1.35rem;
@@ -1423,9 +1518,11 @@ img {
   .card-grid,
   .card-grid-tight,
   .proof-band,
+  .cover-ledger,
   .editorial-columns,
   .bet-grid,
   .writing-spotlight,
+  .flow-grid,
   .detail-dossier,
   .home-masthead,
   .page-masthead,
@@ -1459,6 +1556,7 @@ img {
   .case-index__item,
   .folio-entry,
   .notes-ledger__row,
+  .route-sheet,
   .resume-strip,
   .writing-item {
     grid-template-columns: 1fr;

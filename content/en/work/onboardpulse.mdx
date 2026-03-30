@@ -23,7 +23,7 @@ I wanted a SaaS project that felt closer to day-two operations than landing-page
 
 ## Problem
 
-Client onboarding tends to fragment quickly: document requests, reminders, payment state, trial logic, and account isolation all drift into manual work. The product needed to centralize that workflow in one system that could still be explained to another engineer.
+Client onboarding fragments quickly: document requests, reminders, payment state, trial logic, and account isolation drift into manual work. The product needed to centralize that workflow in one system that could still be explained clearly to another engineer.
 
 ## Constraints
 
@@ -57,13 +57,28 @@ Next.js App Router
   -> Mercado Pago + Gemini + S3-compatible storage
 ```
 
-The operational shape matters as much as the features:
-
-```text
-signup -> organization -> trial state
-upgrade -> Mercado Pago preference -> webhook -> subscription activation
-late portal -> cron job -> follow-up generation -> usage budget checks
-```
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Create the tenant boundary"
+    detail="Signup creates an organization-scoped space, trial state, and account ownership that everything else must respect."
+  />
+  <FlowStep
+    step="02"
+    title="Route upgrades through billing"
+    detail="Mercado Pago preferences and webhook replay handling decide whether the subscription becomes active without duplicating state."
+  />
+  <FlowStep
+    step="03"
+    title="Move documents through controlled storage"
+    detail="Uploads work locally in development and switch cleanly to S3-compatible storage when the deployment surface becomes real."
+  />
+  <FlowStep
+    step="04"
+    title="Generate follow-ups with budget checks"
+    detail="Cron-driven follow-ups only happen after usage ceilings and account state are still within acceptable bounds."
+  />
+</FlowGrid>
 
 ## Decisions and trade-offs
 

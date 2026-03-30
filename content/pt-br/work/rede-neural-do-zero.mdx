@@ -1,11 +1,11 @@
 ---
 title: "Neural Network From Scratch"
-summary: "Uma implementação educacional de rede neural com avaliação determinística, logs, testes e pipeline reproduzível."
+summary: "Uma implementacao educacional de rede neural com avaliacao deterministica, logs, testes e pipeline reproduzivel."
 order: 3
 year: "2026"
 role: "Solo builder"
-status: "Repo público, educacional mas bem delimitado"
-highlight: "Ele continua público porque mostra disciplina de engenharia dentro de um projeto de estudo: avaliação reproduzível, smoke checks e documentação estruturada."
+status: "Repo publico, educacional mas bem delimitado"
+highlight: "Ele continua publico porque mostra disciplina de engenharia dentro de um projeto de estudo: avaliacao reproduzivel, smoke checks e documentacao estruturada."
 kind: "public"
 stack:
   - "Python"
@@ -17,30 +17,30 @@ repo: "https://github.com/SavioCodes/rede-neural-do-zero"
 
 ## Contexto
 
-Repositórios de estudo só ajudam o portfólio quando mostram cuidado técnico, não só curiosidade. Eu mantive este porque ele saiu do nível de notebook e virou um sistema pequeno, testável e com avaliação determinística.
+Repositorios de estudo so ajudam o portfolio quando mostram cuidado tecnico, nao so curiosidade. Eu mantive este porque ele saiu do nivel de notebook e virou um sistema pequeno, testavel e com avaliacao deterministica.
 
 ## Problema
 
-Eu queria entender a mecânica de uma rede neural sem me esconder atrás de frameworks. Ao mesmo tempo, eu queria provar que projetos de aprendizado ainda podem respeitar padrões reais de engenharia.
+Eu queria entender a mecanica de uma rede neural sem me esconder atras de frameworks. Ao mesmo tempo, eu queria provar que projetos de aprendizado ainda podem respeitar padroes reais de engenharia.
 
-## Restrições
+## Restricoes
 
-- Nada de framework alto nível de ML.
-- Resultados reproduzíveis para CI e demos de portfólio.
+- Nada de framework alto nivel de ML.
+- Resultados reproduziveis para CI e demos de portfolio.
 - Artefatos simples que possam ser inspecionados depois.
 
 <SignalGrid>
   <SignalCard
     label="Prova central"
-    value="Script de avaliação determinística"
+    value="Script de avaliacao deterministica"
   />
   <SignalCard
-    label="Sinal do repositório"
+    label="Sinal do repositorio"
     value="Logs e smoke checks no CI"
   />
   <SignalCard
-    label="Preocupação operacional"
-    value="Artefatos portáteis em JSON e JSONL"
+    label="Preocupacao operacional"
+    value="Artefatos portateis em JSON e JSONL"
   />
 </SignalGrid>
 
@@ -55,32 +55,55 @@ dataset utils
   -> JSON / JSONL logs
 ```
 
-## Decisões e trade-offs
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Normalizar um dataset pequeno"
+    detail="As utilidades de dados mantem o preprocessing legivel e deterministico para o repo rodar do mesmo jeito em CI e em demos locais."
+  />
+  <FlowStep
+    step="02"
+    title="Treinar sem atalhos de framework"
+    detail="Forward pass e backprop ficam visiveis no codigo, porque esse e o ponto educacional do repositorio."
+  />
+  <FlowStep
+    step="03"
+    title="Avaliar com seed fixa"
+    detail="O script de avaliacao trava seed e parametros para que screenshots do portfolio e saidas de CI sejam reproduziveis."
+  />
+  <FlowStep
+    step="04"
+    title="Guardar artefatos em arquivos simples"
+    detail="Logs em JSON e JSONL deixam o resultado portatil, inspecionavel e facil de discutir sem infraestrutura pesada de experimento."
+  />
+</FlowGrid>
 
-- Eu usei implementação sem framework porque o valor de aprendizado era o objetivo.
-- Eu adicionei script determinístico de avaliação porque reproduzibilidade é o que separa um repo de estudo de um experimento descartável.
+## Decisoes e trade-offs
+
+- Eu usei implementacao sem framework porque o valor de aprendizado era o objetivo.
+- Eu adicionei script deterministico de avaliacao porque reproduzibilidade e o que separa um repo de estudo de um experimento descartavel.
 - Eu mantive logs em JSON e JSONL em vez de colocar um experiment tracker pesado cedo demais.
 
 ## O que funcionou
 
-- O repositório agora comunica rigor em vez de só entusiasmo.
-- O script de avaliação gera uma trilha fácil de conversar em entrevista.
-- O smoke evaluation orientado a CI é mais forte do que um `pytest -q` básico.
+- O repositorio agora comunica rigor em vez de so entusiasmo.
+- O script de avaliacao gera uma trilha facil de conversar em entrevista.
+- O smoke evaluation orientado a CI e mais forte do que um `pytest -q` basico.
 
-## O que ainda está incompleto
+## O que ainda esta incompleto
 
-- Um benchmark curto ou export de confusion matrix deixaria a história dos artefatos ainda mais forte.
-- Ainda existe espaço para configuração mais rica de experimentos sem perder o foco educacional.
+- Um benchmark curto ou export de confusion matrix deixaria a historia dos artefatos ainda mais forte.
+- Ainda existe espaco para configuracao mais rica de experimentos sem perder o foco educacional.
 
-## Evidência
+## Evidencia
 
-<TerminalFrame title="Fluxo de avaliação" subtitle="Repositório Neural Network From Scratch">
+<TerminalFrame title="Fluxo de avaliacao" subtitle="Repositorio Neural Network From Scratch">
 {`$ pytest -q
 $ python scripts/evaluate.py --seed 42 --epochs 400 --samples 240`}
 </TerminalFrame>
 
 ```text
-Saídas:
+Saidas:
 - logs/eval-summary.json
 - logs/eval-history.jsonl
 ```

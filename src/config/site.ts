@@ -26,6 +26,18 @@ type SiteLocaleCopy = {
     currentFocusTitle: string;
     currentFocus: string[];
     insideTitle: string;
+    dispatchLabel: string;
+    dispatchTitle: string;
+    dispatchBody: string;
+    dispatchRoutes: Array<{
+      href: "/" | "/work" | "/writing" | "/resume";
+      title: string;
+      body: string;
+      cta: string;
+    }>;
+    readingRulesLabel: string;
+    readingRulesTitle: string;
+    readingRules: string[];
     factLabels: {
       publicSurface: string;
       privateSurface: string;
@@ -155,6 +167,37 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
         "Portfolio writing that shows constraints, failure modes, and operator-facing detail.",
       ],
       insideTitle: "What is inside this portfolio",
+      dispatchLabel: "Start here",
+      dispatchTitle: "Read this portfolio like an operating dossier.",
+      dispatchBody:
+        "The quickest path is not chronological. Start with the systems, then inspect the notes behind the decisions, then finish with stack and availability.",
+      dispatchRoutes: [
+        {
+          href: "/work",
+          title: "Inspect the systems",
+          body: "Start with public repos, then compare them with the private case studies that explain deeper workflow boundaries.",
+          cta: "Open work index",
+        },
+        {
+          href: "/writing",
+          title: "Read the operating notes",
+          body: "Move into short notes about billing, queue visibility, API contracts, and AI guardrails once the cases make sense.",
+          cta: "Browse writing",
+        },
+        {
+          href: "/resume",
+          title: "Close on the role fit",
+          body: "Finish with focus areas, stack, availability, and the contact surface that ties the portfolio back to GitHub.",
+          cta: "View resume",
+        },
+      ],
+      readingRulesLabel: "Reading logic",
+      readingRulesTitle: "How the surface is curated",
+      readingRules: [
+        "Public repos stay visible only when README, setup path, and technical evidence hold up under inspection.",
+        "Private case studies still need enough workflow explanation to teach another engineer how the system behaves.",
+        "Notes stay short and concrete so the site reads like field documentation, not generic thought leadership.",
+      ],
       factLabels: {
         publicSurface: "Public engineering surface",
         privateSurface: "Private systems still documented",
@@ -360,6 +403,37 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
         "Escrita de portfolio que mostra restricoes, falhas provaveis e detalhes para operadores.",
       ],
       insideTitle: "O que existe neste portfolio",
+      dispatchLabel: "Comece por aqui",
+      dispatchTitle: "Leia este portfolio como um dossier operacional.",
+      dispatchBody:
+        "O caminho mais rapido nao e cronologico. Comece pelos sistemas, depois olhe as notas por tras das decisoes e termine no resumo tecnico e de disponibilidade.",
+      dispatchRoutes: [
+        {
+          href: "/work",
+          title: "Inspecione os sistemas",
+          body: "Comece pelos repos publicos e depois compare com os casos privados que explicam fluxos e fronteiras mais profundas.",
+          cta: "Abrir projetos",
+        },
+        {
+          href: "/writing",
+          title: "Leia as notas operacionais",
+          body: "Depois entre nas notas curtas sobre billing, visibilidade de filas, contratos de API e guardrails de IA.",
+          cta: "Ver textos",
+        },
+        {
+          href: "/resume",
+          title: "Feche no encaixe da vaga",
+          body: "Termine com foco, stack, disponibilidade e a camada de contato que conecta o site de volta ao GitHub.",
+          cta: "Abrir resumo",
+        },
+      ],
+      readingRulesLabel: "Logica de leitura",
+      readingRulesTitle: "Como esta superficie e curada",
+      readingRules: [
+        "Repos publicos so continuam visiveis quando README, setup e evidencia tecnica se sustentam em inspecao real.",
+        "Estudos de caso privados ainda precisam explicar fluxo, limites do sistema e impacto operacional de forma util.",
+        "Os textos continuam curtos e concretos para o site parecer documentacao de campo, nao conteudo generico.",
+      ],
       factLabels: {
         publicSurface: "Superficie publica de engenharia",
         privateSurface: "Sistemas privados ainda documentados",

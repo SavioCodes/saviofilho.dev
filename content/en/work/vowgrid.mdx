@@ -49,17 +49,6 @@ Most agent projects focus on what the model can decide. I wanted to focus on wha
 ## Architecture
 
 ```text
-agent intent
-  -> propose
-  -> simulate
-  -> evaluate policy
-  -> approval workflow
-  -> BullMQ execution queue
-  -> receipt generation
-  -> rollback visibility
-```
-
-```text
 monorepo
   -> apps/api (Fastify + Prisma + BullMQ)
   -> apps/web (Next.js control plane)
@@ -67,6 +56,34 @@ monorepo
   -> packages/ui (shared primitives)
   -> docs + infra
 ```
+
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Propose the action"
+    detail="The system stores intent as a draft instead of jumping directly to execution, which keeps the control plane readable."
+  />
+  <FlowStep
+    step="02"
+    title="Simulate before touching connectors"
+    detail="Simulation shows predicted side effects and payload shape before any connector call can mutate the outside world."
+  />
+  <FlowStep
+    step="03"
+    title="Evaluate policy and approval"
+    detail="Rules, roles, and approval state become explicit gates instead of buried implementation detail."
+  />
+  <FlowStep
+    step="04"
+    title="Execute through a queue"
+    detail="BullMQ owns retries, visibility, and execution state transitions so operations remain inspectable after the happy path."
+  />
+  <FlowStep
+    step="05"
+    title="Issue receipts and rollback visibility"
+    detail="Execution ends with evidence: receipts, audit trail, and visibility into how rollback would be handled if the action had to be unwound."
+  />
+</FlowGrid>
 
 ## Decisions and trade-offs
 

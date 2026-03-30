@@ -1,11 +1,11 @@
 ---
 title: "MailSieve"
-summary: "Uma API enxuta de risco para signup com contrato OpenAPI, fluxo de chaves, rate limits e scripts de verificação de deploy."
+summary: "Uma API enxuta de risco para signup com contrato OpenAPI, fluxo de chaves, rate limits e scripts de verificacao de deploy."
 order: 2
 year: "2026"
 role: "Solo builder"
-status: "Repo público, renomeado de MailSieve-repositorio"
-highlight: "MailSieve é um bom exemplo de produto API pequeno em que clareza de contrato, scripts operacionais e prontidão para monetização importam mais que volume de features."
+status: "Repo publico, renomeado de MailSieve-repositorio"
+highlight: "MailSieve e um bom exemplo de produto API pequeno em que clareza de contrato, scripts operacionais e prontidao para monetizacao importam mais que volume de features."
 kind: "public"
 stack:
   - "Node.js"
@@ -18,31 +18,31 @@ repo: "https://github.com/SavioCodes/MailSieve"
 
 ## Contexto
 
-Eu queria um repositório que parecesse uma API produtizada e não um serviço interno. MailSieve classifica e-mails de signup contra domínios descartáveis e sinais leves de risco, com forte ênfase em clareza de contrato e verificação de deploy.
+Eu queria um repositorio que parecesse uma API produtizada e nao um servico interno. MailSieve classifica emails de signup contra dominios descartaveis e sinais leves de risco, com forte enfase em clareza de contrato e verificacao de deploy.
 
 ## Problema
 
-APIs pequenas normalmente falham no teste de portfólio porque parecem finas demais. Para valer a pena publicamente, esta precisava provar mais do que "responde JSON". Precisava de auth, rate limit, contrato OpenAPI, validação de ambiente, smoke tests e um caminho crível para publicação.
+APIs pequenas normalmente falham no teste de portfolio porque parecem finas demais. Para valer a pena publicamente, esta precisava provar mais do que "responde JSON". Precisava de auth, rate limit, contrato OpenAPI, validacao de ambiente, smoke tests e um caminho crivel para publicacao.
 
-## Restrições
+## Restricoes
 
-- A API precisava rodar offline, sem forçar provedor externo.
-- Ela precisava de opções simples de storage operacional para deploy inicial.
-- A documentação pública precisava cobrir execução local e distribuição paga.
-- O nome do repositório precisava de limpeza; `MailSieve-repositorio` soava inacabado.
+- A API precisava rodar offline, sem forcar provedor externo.
+- Ela precisava de opcoes simples de storage operacional para deploy inicial.
+- A documentacao publica precisava cobrir execucao local e distribuicao paga.
+- O nome do repositorio precisava de limpeza; `MailSieve-repositorio` soava inacabado.
 
 <SignalGrid>
   <SignalCard
     label="Prova central"
-    value="OpenAPI + auth + fluxo de verificação"
+    value="OpenAPI + auth + fluxo de verificacao"
   />
   <SignalCard
-    label="Sinal do repositório"
+    label="Sinal do repositorio"
     value="Docker Compose e smoke deploy"
   />
   <SignalCard
-    label="Preocupação operacional"
-    value="Rate limits e rotação de chaves"
+    label="Preocupacao operacional"
+    value="Rate limits e rotacao de chaves"
   />
 </SignalGrid>
 
@@ -57,27 +57,50 @@ client
   -> provedor externo opcional
 ```
 
-## Decisões e trade-offs
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Receber um contrato estreito"
+    detail="A API parte de um schema OpenAPI claro para que request, auth e shape de resposta sejam legiveis antes mesmo da inspecao de codigo."
+  />
+  <FlowStep
+    step="02"
+    title="Conter trafego na borda"
+    detail="API keys e rate limiting entram antes da classificacao profunda para segurar abuso antes da logica principal."
+  />
+  <FlowStep
+    step="03"
+    title="Classificar com sinais em camada"
+    detail="Dominios descartaveis, typos e lookups opcionais produzem uma resposta pequena, mas com cara de produto."
+  />
+  <FlowStep
+    step="04"
+    title="Verificar a superficie de deploy"
+    detail="Docker Compose, healthchecks e smoke scripts fazem o repo parecer algo que outro engenheiro conseguiria publicar sem adivinhacao."
+  />
+</FlowGrid>
 
-- Eu mantive os modos de persistência enxutos porque a meta era um produto inicial implantável, não uma plataforma completa.
-- Eu adicionei Docker Compose e healthchecks porque confiança operacional importa até em API estreita.
-- Eu documentei a publicação em RapidAPI porque prontidão para monetização faz parte da história do produto.
+## Decisoes e trade-offs
+
+- Eu mantive os modos de persistencia enxutos porque a meta era um produto inicial implantavel, nao uma plataforma completa.
+- Eu adicionei Docker Compose e healthchecks porque confianca operacional importa ate em API estreita.
+- Eu documentei a publicacao em RapidAPI porque prontidao para monetizacao faz parte da historia do produto.
 
 ## O que funcionou
 
-- O contrato OpenAPI dá um ponto de entrada muito claro para o repo.
-- Os scripts de chaves e de smoke deploy fazem o projeto parecer usável por outro engenheiro.
-- A troca do nome para `MailSieve` corrige um problema de branding que puxava o portfólio para baixo.
+- O contrato OpenAPI da um ponto de entrada muito claro para o repo.
+- Os scripts de chaves e de smoke deploy fazem o projeto parecer usavel por outro engenheiro.
+- A troca do nome para `MailSieve` corrige um problema de branding que puxava o portfolio para baixo.
 
-## O que ainda está incompleto
+## O que ainda esta incompleto
 
-- A API ganharia força com evidência melhor de performance sob volume.
-- Ainda não existe endpoint público hospedado ligado ao repositório.
-- A imagem social do repo ainda depende de configuração manual no GitHub.
+- A API ganharia forca com evidencia melhor de performance sob volume.
+- Ainda nao existe endpoint publico hospedado ligado ao repositorio.
+- A imagem social do repo ainda depende de configuracao manual no GitHub.
 
-## Evidência
+## Evidencia
 
-<TerminalFrame title="Fluxo de verificação" subtitle="Repositório MailSieve">
+<TerminalFrame title="Fluxo de verificacao" subtitle="Repositorio MailSieve">
 {`$ npm test
 $ npm run build
 $ npm run verify
@@ -85,7 +108,7 @@ $ docker compose up --build`}
 </TerminalFrame>
 
 ```text
-Checklist de publicação:
+Checklist de publicacao:
 1. importar openapi.yaml
 2. configurar auth x-api-key
 3. publicar listing

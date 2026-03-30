@@ -55,6 +55,29 @@ dataset utils
   -> JSON / JSONL logs
 ```
 
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Normalize a tiny dataset"
+    detail="The data utilities keep preprocessing readable and deterministic so the repo can be rerun the same way in CI and local demos."
+  />
+  <FlowStep
+    step="02"
+    title="Train without framework shortcuts"
+    detail="Forward pass and backprop stay visible in code, which is the educational point of the repository."
+  />
+  <FlowStep
+    step="03"
+    title="Evaluate with a fixed seed"
+    detail="The evaluation script locks parameters and seed so portfolio screenshots and CI outputs are reproducible."
+  />
+  <FlowStep
+    step="04"
+    title="Store artifacts in plain files"
+    detail="JSON and JSONL logs make the result surface portable, inspectable, and easy to discuss without heavier tracking infrastructure."
+  />
+</FlowGrid>
+
 ## Decisions and trade-offs
 
 - I used framework-free implementation because the learning value was the point.

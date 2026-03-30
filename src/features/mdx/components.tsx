@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { MDXComponents } from "mdx/types";
 
 import {
+  FlowGrid,
+  FlowStep,
   SignalCard,
   SignalGrid,
   TerminalFrame,
@@ -43,6 +45,8 @@ export const mdxComponents: MDXComponents = {
       <table className="mdx-table" {...props} />
     </div>
   ),
+  FlowGrid,
+  FlowStep,
   SignalCard,
   SignalGrid,
   TerminalFrame,

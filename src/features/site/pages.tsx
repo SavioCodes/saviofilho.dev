@@ -175,6 +175,41 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
+        <section className="cover-ledger">
+          <article className="paper-panel cover-ledger__intro">
+            <p className="section-label">{copy.home.dispatchLabel}</p>
+            <h2>{copy.home.dispatchTitle}</h2>
+            <p>{copy.home.dispatchBody}</p>
+          </article>
+
+          <div className="cover-ledger__routes">
+            {copy.home.dispatchRoutes.map((route, index) => (
+              <Link
+                className="route-sheet"
+                href={localizePath(locale, route.href)}
+                key={route.href}
+              >
+                <span className="route-sheet__index">{String(index + 1).padStart(2, "0")}</span>
+                <div className="route-sheet__body">
+                  <strong>{route.title}</strong>
+                  <p>{route.body}</p>
+                </div>
+                <span className="text-link">{route.cta}</span>
+              </Link>
+            ))}
+          </div>
+
+          <article className="paper-panel cover-ledger__notes">
+            <p className="micro-label">{copy.home.readingRulesLabel}</p>
+            <h2>{copy.home.readingRulesTitle}</h2>
+            <ul className="dossier-list">
+              {copy.home.readingRules.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        </section>
+
         <section className="proof-band">
           {copy.home.proofMarks.map((mark, index) => (
             <article className="proof-band__item" key={mark}>

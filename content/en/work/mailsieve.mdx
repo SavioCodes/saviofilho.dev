@@ -22,7 +22,7 @@ I wanted one repository that looked like a productized API instead of an interna
 
 ## Problem
 
-Small APIs usually fail the portfolio test because they look too thin. To be worth showing publicly, this one had to prove more than "it responds with JSON". It needed auth, rate limiting, an OpenAPI contract, environment validation, smoke tests, and a credible path to publishing.
+Small APIs usually fail the portfolio test because they look too thin. To be worth showing publicly, this one had to prove more than "it responds with JSON". It needed auth, rate limiting, an OpenAPI contract, environment validation, smoke tests, and a believable path to publishing.
 
 ## Constraints
 
@@ -56,6 +56,29 @@ client
   -> disposable and typo signal lists
   -> optional external provider
 ```
+
+<FlowGrid>
+  <FlowStep
+    step="01"
+    title="Accept a narrow contract"
+    detail="The API starts from a clear OpenAPI schema so request shape, auth, and response fields are readable before any code inspection."
+  />
+  <FlowStep
+    step="02"
+    title="Gate traffic at the edge"
+    detail="API keys and rate limiting run before deeper classification so misuse is constrained before the business logic is even reached."
+  />
+  <FlowStep
+    step="03"
+    title="Score with layered signals"
+    detail="Disposable domains, typos, and optional external lookups produce a response that stays small but still feels product-ready."
+  />
+  <FlowStep
+    step="04"
+    title="Verify the deploy surface"
+    detail="Docker Compose, healthchecks, and smoke scripts make the repo feel like something another engineer could publish without guesswork."
+  />
+</FlowGrid>
 
 ## Decisions and trade-offs
 
