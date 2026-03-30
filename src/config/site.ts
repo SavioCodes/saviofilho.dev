@@ -16,7 +16,11 @@ type SiteLocaleCopy = {
   roleLabel: string;
   headerLabel: string;
   headerNote: string;
-  navigation: Array<{ href: "/" | "/work" | "/writing" | "/resume"; label: string }>;
+  navigation: Array<{
+    href: "/" | "/work" | "/writing" | "/resume";
+    label: string;
+    blurb: string;
+  }>;
   footer: {
     eyebrow: string;
     stamp: string;
@@ -165,10 +169,10 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     headerNote:
       "Case studies, systems notes, and role fit organized as one editorial surface.",
     navigation: [
-      { href: "/", label: "Home" },
-      { href: "/work", label: "Work" },
-      { href: "/writing", label: "Writing" },
-      { href: "/resume", label: "Resume" },
+      { href: "/", label: "Home", blurb: "Cover" },
+      { href: "/work", label: "Work", blurb: "Systems" },
+      { href: "/writing", label: "Writing", blurb: "Notes" },
+      { href: "/resume", label: "Resume", blurb: "Role fit" },
     ],
     footer: {
       eyebrow: "Colophon",
@@ -450,10 +454,10 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     headerNote:
       "Estudos de caso, notas de sistema e encaixe de vaga organizados na mesma superficie editorial.",
     navigation: [
-      { href: "/", label: "Inicio" },
-      { href: "/work", label: "Projetos" },
-      { href: "/writing", label: "Textos" },
-      { href: "/resume", label: "Resumo" },
+      { href: "/", label: "Inicio", blurb: "Capa" },
+      { href: "/work", label: "Projetos", blurb: "Sistemas" },
+      { href: "/writing", label: "Textos", blurb: "Notas" },
+      { href: "/resume", label: "Resumo", blurb: "Vaga" },
     ],
     footer: {
       eyebrow: "Colofao",

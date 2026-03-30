@@ -99,7 +99,7 @@ img {
 }
 
 .site-utility__line {
-  max-width: 64ch;
+  max-width: 56ch;
   line-height: 1.68;
   text-wrap: balance;
 }
@@ -198,7 +198,7 @@ img {
 }
 
 .site-header__note {
-  max-width: 42rem;
+  max-width: 34rem;
   color: var(--muted);
   line-height: 1.72;
 }
@@ -221,11 +221,9 @@ img {
 }
 
 .site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.85rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
   padding: 0;
 }
 
@@ -247,12 +245,55 @@ img {
     border-color 160ms ease;
 }
 
+.site-nav__item {
+  display: grid;
+  gap: 0.22rem;
+  padding: 0.8rem 0.9rem 0.86rem !important;
+  border-radius: 0.9rem !important;
+  border: 1px solid rgba(49, 41, 31, 0.12) !important;
+  border-bottom-color: rgba(49, 41, 31, 0.12) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0)),
+    rgba(255, 249, 241, 0.72);
+}
+
+.site-nav__index {
+  color: var(--accent-warm);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.site-nav__item strong {
+  color: var(--text);
+  font-family: var(--font-display), serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+
+.site-nav__item span:last-child {
+  color: var(--muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .site-nav a:hover,
 .footer-links a:hover,
 .detail-links a:hover {
   color: var(--accent);
   border-color: rgba(22, 56, 51, 0.28);
   transform: translateY(-1px);
+}
+
+.site-nav__item:hover {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0)),
+    rgba(250, 244, 235, 0.84);
 }
 
 .locale-switcher {
@@ -325,6 +366,11 @@ img {
   align-content: start;
 }
 
+.home-masthead {
+  grid-template-columns: minmax(0, 1.24fr) minmax(320px, 0.78fr);
+  gap: 1.7rem;
+}
+
 .home-kicker {
   margin-top: 0.75rem;
   color: var(--accent-warm);
@@ -339,6 +385,21 @@ img {
 .resume-sheet__aside {
   display: grid;
   gap: 1rem;
+}
+
+.home-command-sheet {
+  display: grid;
+  gap: 1.05rem;
+}
+
+.home-command-sheet__section {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.home-command-sheet__section--facts {
+  padding-top: 0.95rem;
+  border-top: 1px dashed rgba(49, 41, 31, 0.2);
 }
 
 .hero-copy,
@@ -1883,6 +1944,7 @@ img {
   }
 
   .site-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: flex-start;
   }
 

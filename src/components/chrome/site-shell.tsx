@@ -39,9 +39,11 @@ export function SiteShell({ locale, children }: SiteShellProps) {
         <div className="site-header__panel">
           <p className="micro-label">{copy.headerLabel}</p>
           <nav className="site-nav" aria-label="Primary">
-            {copy.navigation.map((item) => (
-              <Link key={item.href} href={localizePath(locale, item.href)}>
-                {item.label}
+            {copy.navigation.map((item, index) => (
+              <Link key={item.href} className="site-nav__item" href={localizePath(locale, item.href)}>
+                <span className="site-nav__index">{String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.label}</strong>
+                <span>{item.blurb}</span>
               </Link>
             ))}
           </nav>

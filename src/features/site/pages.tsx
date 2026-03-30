@@ -164,24 +164,26 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </div>
 
           <aside className="home-masthead__rail">
-            <article className="paper-panel paper-panel-accent">
-              <p className="micro-label">{copy.home.currentFocusTitle}</p>
-              <ul className="dossier-list">
-                {copy.home.currentFocus.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
+            <article className="paper-panel paper-panel-accent home-command-sheet">
+              <div className="home-command-sheet__section">
+                <p className="micro-label">{copy.home.currentFocusTitle}</p>
+                <ul className="dossier-list">
+                  {copy.home.currentFocus.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
 
-            <article className="paper-panel">
-              <p className="micro-label">{copy.home.insideTitle}</p>
-              <div className="fact-list">
-                {notebookFacts.map((fact) => (
-                  <div className="fact-list__item" key={fact.label}>
-                    <span>{fact.label}</span>
-                    <strong>{fact.value}</strong>
-                  </div>
-                ))}
+              <div className="home-command-sheet__section home-command-sheet__section--facts">
+                <p className="micro-label">{copy.home.insideTitle}</p>
+                <div className="fact-list">
+                  {notebookFacts.map((fact) => (
+                    <div className="fact-list__item" key={fact.label}>
+                      <span>{fact.label}</span>
+                      <strong>{fact.value}</strong>
+                    </div>
+                  ))}
+                </div>
               </div>
             </article>
           </aside>
