@@ -15,7 +15,19 @@ type SiteLocaleCopy = {
   utilityStatus: string;
   roleLabel: string;
   navigation: Array<{ href: "/" | "/work" | "/writing" | "/resume"; label: string }>;
-  footer: { eyebrow: string; copy: string };
+  footer: {
+    eyebrow: string;
+    stamp: string;
+    copy: string;
+    surfaceLabel: string;
+    surfaceValue: string;
+    contactLabel: string;
+    contactValue: string;
+    connectTitle: string;
+    localeTitle: string;
+    localeBody: string;
+    openLabel: string;
+  };
   home: {
     eyebrow: string;
     kicker: string;
@@ -155,8 +167,17 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     ],
     footer: {
       eyebrow: "Colophon",
+      stamp: "Portfolio surface",
       copy:
         "Built as a bilingual editorial index of case studies, notes, and systems work. Clear boundaries first, gloss second.",
+      surfaceLabel: "What this footer does",
+      surfaceValue: "It keeps the portfolio, GitHub, and bilingual reading surface tied together.",
+      contactLabel: "Direct path",
+      contactValue: "Email, GitHub, and LinkedIn stay one click away.",
+      connectTitle: "Connect",
+      localeTitle: "Reading mode",
+      localeBody: "Switch the same dossier between English and PT-BR without changing the structure.",
+      openLabel: "Open",
     },
     home: {
       eyebrow: "Savio Filho / Portfolio / 2026",
@@ -428,8 +449,17 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     ],
     footer: {
       eyebrow: "Colofao",
+      stamp: "Superficie do portfolio",
       copy:
         "Construido como um indice editorial bilingue de estudos de caso, notas e sistemas. Limites claros primeiro, brilho depois.",
+      surfaceLabel: "O que este rodape faz",
+      surfaceValue: "Ele mantem portfolio, GitHub e leitura bilingue alinhados na mesma superficie.",
+      contactLabel: "Caminho direto",
+      contactValue: "Email, GitHub e LinkedIn continuam a um clique.",
+      connectTitle: "Contato",
+      localeTitle: "Modo de leitura",
+      localeBody: "Troque o mesmo dossier entre English e PT-BR sem mudar a estrutura.",
+      openLabel: "Abrir",
     },
     home: {
       eyebrow: "Savio Filho / Portfolio / 2026",

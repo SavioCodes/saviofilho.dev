@@ -44,17 +44,48 @@ export function SiteShell({ locale, children }: SiteShellProps) {
       <main>{children}</main>
 
       <footer className="site-footer">
-        <div>
-          <p className="eyebrow">{copy.footer.eyebrow}</p>
+        <div className="site-footer__lead">
+          <div className="site-footer__heading">
+            <p className="eyebrow">{copy.footer.eyebrow}</p>
+            <span className="site-footer__stamp">{copy.footer.stamp}</span>
+          </div>
           <p className="footer-copy">{copy.footer.copy}</p>
+          <div className="footer-ledger">
+            <div className="footer-ledger__item">
+              <span>{copy.footer.surfaceLabel}</span>
+              <strong>{copy.footer.surfaceValue}</strong>
+            </div>
+            <div className="footer-ledger__item">
+              <span>{copy.footer.contactLabel}</span>
+              <strong>{copy.footer.contactValue}</strong>
+            </div>
+          </div>
         </div>
-        <div className="footer-links footer-links-with-locale">
-          {contactLinks.map((link) => (
-            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-              {link.label}
-            </a>
-          ))}
-          <LocaleSwitcher />
+
+        <div className="site-footer__aside">
+          <article className="paper-panel footer-panel footer-panel--contact">
+            <p className="micro-label">{copy.footer.connectTitle}</p>
+            <div className="footer-contact-list">
+              {contactLinks.map((link) => (
+                <a
+                  className="footer-contact-link"
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>{link.label}</span>
+                  <strong>{copy.footer.openLabel}</strong>
+                </a>
+              ))}
+            </div>
+          </article>
+
+          <article className="paper-panel footer-panel footer-panel--locale">
+            <p className="micro-label">{copy.footer.localeTitle}</p>
+            <p className="footer-panel__copy">{copy.footer.localeBody}</p>
+            <LocaleSwitcher />
+          </article>
         </div>
       </footer>
     </div>
