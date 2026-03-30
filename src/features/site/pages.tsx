@@ -217,7 +217,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
 
           <div className="case-index">
             {featuredWork.map((entry, index) => (
-              <article className="case-index__item" key={entry.slug}>
+              <article className="case-index__item case-index__item-public" key={entry.slug}>
                 <div className="case-index__number">{String(index + 1).padStart(2, "0")}</div>
                 <div className="case-index__meta">
                   <span className={`pill pill-${entry.frontmatter.kind}`}>
@@ -254,7 +254,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
             <p>{copy.home.privateWorkBody}</p>
             <div className="surface-ledger">
               {privateWorkEntries.map((entry) => (
-                <article className="surface-ledger__item" key={entry.slug}>
+                <article className="surface-ledger__item surface-ledger__item-private" key={entry.slug}>
                   <div className="surface-ledger__meta">
                     <span className="pill pill-private">{copy.work.privateLabel}</span>
                     <span>{entry.frontmatter.year}</span>
@@ -279,7 +279,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
             <p>{copy.home.surfaceBody}</p>
             <div className="surface-ledger">
               {publicWorkEntries.map((entry) => (
-                <article className="surface-ledger__item" key={entry.slug}>
+                <article className="surface-ledger__item surface-ledger__item-public" key={entry.slug}>
                   <div className="surface-ledger__meta">
                     <span className="pill pill-public">{copy.work.repoLabel}</span>
                     <span>{entry.frontmatter.year}</span>
@@ -445,7 +445,7 @@ export async function WorkPage({ locale }: { locale: Locale }) {
 
           <section className="folio-list">
             {publicEntries.map((entry, index) => (
-              <article className="folio-entry" key={entry.slug}>
+              <article className="folio-entry folio-entry-public" key={entry.slug}>
                 <div className="folio-entry__number">{String(index + 1).padStart(2, "0")}</div>
                 <div className="folio-entry__meta">
                   <span className="pill pill-public">{copy.work.repoLabel}</span>
@@ -489,7 +489,7 @@ export async function WorkPage({ locale }: { locale: Locale }) {
 
           <section className="folio-list">
             {privateEntries.map((entry, index) => (
-              <article className="folio-entry" key={entry.slug}>
+              <article className="folio-entry folio-entry-private" key={entry.slug}>
                 <div className="folio-entry__number">
                   {String(publicEntries.length + index + 1).padStart(2, "0")}
                 </div>
@@ -740,7 +740,7 @@ export async function WorkDetailPage({
             <p className="lead">{entry.frontmatter.summary}</p>
           </div>
 
-          <aside className="detail-aside card">
+          <aside className="detail-aside detail-aside-sheet paper-panel">
             <dl className="meta-grid">
               <div>
                 <dt>{copy.detail.role}</dt>
@@ -781,7 +781,7 @@ export async function WorkDetailPage({
         </section>
 
         <section className="detail-dossier">
-          <article className="paper-panel detail-dossier__quote">
+          <article className="paper-panel paper-panel-accent detail-dossier__quote">
             <p className="section-label">{copy.detail.highlight}</p>
             <h2>{entry.frontmatter.highlight}</h2>
             <p>{entry.frontmatter.status}</p>
@@ -807,7 +807,7 @@ export async function WorkDetailPage({
         <article className="rich-article">{entry.content}</article>
 
         {nextEntry ? (
-          <section className="card next-card">
+          <section className="paper-panel next-card next-card-sheet">
             <p className="section-label">{copy.detail.nextCase}</p>
             <h2>{nextEntry.frontmatter.title}</h2>
             <p>{nextEntry.frontmatter.summary}</p>

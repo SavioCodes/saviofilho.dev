@@ -16,9 +16,9 @@ export function SiteShell({ locale, children }: SiteShellProps) {
   return (
     <div className="site-shell">
       <div className="site-utility">
-        <p>{copy.utilityLine}</p>
+        <p className="site-utility__line">{copy.utilityLine}</p>
         <div className="site-utility__actions">
-          <span>{copy.utilityStatus}</span>
+          <span className="site-utility__status">{copy.utilityStatus}</span>
           <LocaleSwitcher />
         </div>
       </div>
@@ -28,7 +28,7 @@ export function SiteShell({ locale, children }: SiteShellProps) {
           <span className="site-mark-monogram">SF</span>
           <span className="site-mark-copy">
             <strong>Savio Filho</strong>
-            <span>{copy.roleLabel}</span>
+            <span className="site-mark-role">{copy.roleLabel}</span>
           </span>
         </Link>
 
