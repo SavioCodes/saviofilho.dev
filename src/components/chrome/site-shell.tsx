@@ -19,26 +19,33 @@ export function SiteShell({ locale, children }: SiteShellProps) {
         <p className="site-utility__line">{copy.utilityLine}</p>
         <div className="site-utility__actions">
           <span className="site-utility__status">{copy.utilityStatus}</span>
+          <span className="site-utility__divider" aria-hidden="true"></span>
           <LocaleSwitcher />
         </div>
       </div>
 
       <header className="site-header">
-        <Link className="site-mark" href={localizePath(locale, "/")}>
-          <span className="site-mark-monogram">SF</span>
-          <span className="site-mark-copy">
-            <strong>Savio Filho</strong>
-            <span className="site-mark-role">{copy.roleLabel}</span>
-          </span>
-        </Link>
+        <div className="site-header__identity">
+          <Link className="site-mark" href={localizePath(locale, "/")}>
+            <span className="site-mark-monogram">SF</span>
+            <span className="site-mark-copy">
+              <strong>Savio Filho</strong>
+              <span className="site-mark-role">{copy.roleLabel}</span>
+            </span>
+          </Link>
+          <p className="site-header__note">{copy.headerNote}</p>
+        </div>
 
-        <nav className="site-nav" aria-label="Primary">
-          {copy.navigation.map((item) => (
-            <Link key={item.href} href={localizePath(locale, item.href)}>
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="site-header__panel">
+          <p className="micro-label">{copy.headerLabel}</p>
+          <nav className="site-nav" aria-label="Primary">
+            {copy.navigation.map((item) => (
+              <Link key={item.href} href={localizePath(locale, item.href)}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
       </header>
 
       <main>{children}</main>

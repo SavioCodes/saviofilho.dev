@@ -14,6 +14,8 @@ type SiteLocaleCopy = {
   utilityLine: string;
   utilityStatus: string;
   roleLabel: string;
+  headerLabel: string;
+  headerNote: string;
   navigation: Array<{ href: "/" | "/work" | "/writing" | "/resume"; label: string }>;
   footer: {
     eyebrow: string;
@@ -159,6 +161,9 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     utilityLine: "Brazil / backend product systems / PT-BR native / English-first portfolio",
     utilityStatus: "Open to software engineering roles",
     roleLabel: "Backend product engineer",
+    headerLabel: "Section map",
+    headerNote:
+      "Case studies, systems notes, and role fit organized as one editorial surface.",
     navigation: [
       { href: "/", label: "Home" },
       { href: "/work", label: "Work" },
@@ -441,6 +446,9 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     utilityLine: "Brasil / sistemas de produto backend / nativo em PT-BR / portfolio bilingue",
     utilityStatus: "Aberto a vagas de engenharia de software",
     roleLabel: "Engenheiro de produto backend",
+    headerLabel: "Mapa do site",
+    headerNote:
+      "Estudos de caso, notas de sistema e encaixe de vaga organizados na mesma superficie editorial.",
     navigation: [
       { href: "/", label: "Inicio" },
       { href: "/work", label: "Projetos" },
