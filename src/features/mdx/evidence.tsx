@@ -19,6 +19,13 @@ type FlowStepProps = {
   detail: string;
 };
 
+type SystemDiagramProps = {
+  title: string;
+  subtitle?: string;
+  footer?: string;
+  children: React.ReactNode;
+};
+
 type TerminalFrameProps = {
   title: string;
   subtitle?: string;
@@ -49,6 +56,24 @@ export function FlowStep({ step, title, detail }: FlowStepProps) {
       <strong>{title}</strong>
       <p>{detail}</p>
     </div>
+  );
+}
+
+export function SystemDiagram({
+  title,
+  subtitle,
+  footer,
+  children,
+}: SystemDiagramProps) {
+  return (
+    <figure className="system-diagram">
+      <div className="system-diagram__header">
+        <strong>{title}</strong>
+        {subtitle ? <span>{subtitle}</span> : null}
+      </div>
+      <div className="system-diagram__track">{children}</div>
+      {footer ? <figcaption className="system-diagram__footer">{footer}</figcaption> : null}
+    </figure>
   );
 }
 

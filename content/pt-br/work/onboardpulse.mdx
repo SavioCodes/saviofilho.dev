@@ -57,7 +57,11 @@ Next.js App Router
   -> Mercado Pago + Gemini + storage S3-compatible
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="Rota operacional"
+  subtitle="Fronteira do tenant, billing, storage e follow-up automatizado"
+  footer="O sinal de produto vem de como esses estados se conectam, nao da interface do formulario."
+>
   <FlowStep
     step="01"
     title="Criar a fronteira do tenant"
@@ -78,7 +82,7 @@ Next.js App Router
     title="Gerar follow-up com cheque de custo"
     detail="Os follow-ups via cron so avancam quando teto de uso e estado da conta continuam dentro do que o produto permite."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisoes e trade-offs
 

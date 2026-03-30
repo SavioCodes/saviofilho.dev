@@ -55,7 +55,11 @@ dataset utils
   -> JSON / JSONL logs
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="Reproducibility route"
+  subtitle="Data prep, training, deterministic evaluation, and plain-file artifacts"
+  footer="The educational value stays visible because the system keeps the pipeline small, testable, and rerunnable."
+>
   <FlowStep
     step="01"
     title="Normalize a tiny dataset"
@@ -76,7 +80,7 @@ dataset utils
     title="Store artifacts in plain files"
     detail="JSON and JSONL logs make the result surface portable, inspectable, and easy to discuss without heavier tracking infrastructure."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisions and trade-offs
 

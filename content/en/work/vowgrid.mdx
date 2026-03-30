@@ -57,7 +57,11 @@ monorepo
   -> docs + infra
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="Trust route"
+  subtitle="Propose, simulate, evaluate, approve, execute, receipt"
+  footer="The product value is the control layer around the action, not the model demo that produced the action."
+>
   <FlowStep
     step="01"
     title="Propose the action"
@@ -83,7 +87,7 @@ monorepo
     title="Issue receipts and rollback visibility"
     detail="Execution ends with evidence: receipts, audit trail, and visibility into how rollback would be handled if the action had to be unwound."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisions and trade-offs
 

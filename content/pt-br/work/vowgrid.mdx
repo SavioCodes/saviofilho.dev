@@ -57,7 +57,11 @@ monorepo
   -> docs + infra
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="Rota de confianca"
+  subtitle="Propor, simular, avaliar, aprovar, executar e emitir recibo"
+  footer="O valor do produto esta na camada de controle em volta da acao, nao em uma demo de modelo."
+>
   <FlowStep
     step="01"
     title="Propor a acao"
@@ -83,7 +87,7 @@ monorepo
     title="Emitir recibos e rollback visivel"
     detail="A execucao termina com evidencia: recibos, trilha de auditoria e visibilidade de como o rollback seria tratado se a acao precisasse ser desfeita."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisoes e trade-offs
 

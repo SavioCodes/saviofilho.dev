@@ -63,7 +63,13 @@ type SiteLocaleCopy = {
     writingCta: string;
     systemsLabel: string;
     systemsTitle: string;
-    systemsMap: Array<{ title: string; summary: string }>;
+    systemsMap: Array<{
+      tag: string;
+      title: string;
+      summary: string;
+      href: string;
+      cta: string;
+    }>;
   };
   work: {
     eyebrow: string;
@@ -234,19 +240,28 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       systemsTitle: "The systems I want recruiters to understand first",
       systemsMap: [
         {
+          tag: "Private flagship",
           title: "Trust + approval systems",
           summary:
             "VOWGRID is now documented as a private case study focused on simulation, policy evaluation, approvals, execution receipts, and rollback visibility.",
+          href: "/work/vowgrid",
+          cta: "Open VOWGRID case",
         },
         {
+          tag: "Public repo",
           title: "SaaS workflow operations",
           summary:
             "OnboardPulse shows tenant isolation, billing, follow-up jobs, upload flows, and AI budget edges.",
+          href: "/work/onboardpulse",
+          cta: "Open OnboardPulse",
         },
         {
+          tag: "Public repo",
           title: "Lean product APIs",
           summary:
             "MailSieve and the supporting notes show how narrow products still need contracts, verification, and ops discipline.",
+          href: "/work/mailsieve",
+          cta: "Open MailSieve",
         },
       ],
     },
@@ -470,19 +485,28 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       systemsTitle: "Os sistemas que eu quero que um recrutador entenda primeiro",
       systemsMap: [
         {
+          tag: "Flagship privado",
           title: "Sistemas de confianca e aprovacao",
           summary:
             "VOWGRID agora aparece como estudo de caso privado com foco em simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback.",
+          href: "/work/vowgrid",
+          cta: "Abrir caso do VOWGRID",
         },
         {
+          tag: "Repo publico",
           title: "Operacao de SaaS workflow",
           summary:
             "OnboardPulse mostra isolamento entre tenants, cobranca, jobs de follow-up, uploads e limites de custo para IA.",
+          href: "/work/onboardpulse",
+          cta: "Abrir OnboardPulse",
         },
         {
+          tag: "Repo publico",
           title: "APIs de produto enxutas",
           summary:
             "MailSieve e os textos de apoio mostram como produtos pequenos ainda precisam de contrato, verificacao e disciplina operacional.",
+          href: "/work/mailsieve",
+          cta: "Abrir MailSieve",
         },
       ],
     },

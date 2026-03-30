@@ -57,7 +57,11 @@ Next.js App Router
   -> Mercado Pago + Gemini + S3-compatible storage
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="Operating route"
+  subtitle="Tenant boundary, billing lifecycle, storage, and follow-up automation"
+  footer="The product signal comes from how these states connect, not from the form UI."
+>
   <FlowStep
     step="01"
     title="Create the tenant boundary"
@@ -78,7 +82,7 @@ Next.js App Router
     title="Generate follow-ups with budget checks"
     detail="Cron-driven follow-ups only happen after usage ceilings and account state are still within acceptable bounds."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisions and trade-offs
 

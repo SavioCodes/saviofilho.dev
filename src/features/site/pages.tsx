@@ -405,13 +405,19 @@ export async function HomePage({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          <div className="bet-grid">
+          <div className="atlas-grid">
             {copy.home.systemsMap.map((item, index) => (
-              <article className="bet-card" key={item.title}>
-                <span className="bet-card__index">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{item.title}</h3>
-                <p>{item.summary}</p>
-              </article>
+              <Link className="atlas-card" href={localizePath(locale, item.href)} key={item.title}>
+                <div className="atlas-card__meta">
+                  <span className="atlas-card__index">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="atlas-card__tag">{item.tag}</span>
+                </div>
+                <div className="atlas-card__body">
+                  <h3>{item.title}</h3>
+                  <p>{item.summary}</p>
+                </div>
+                <span className="text-link">{item.cta}</span>
+              </Link>
             ))}
           </div>
         </section>

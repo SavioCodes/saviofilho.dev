@@ -57,7 +57,11 @@ client
   -> optional external provider
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="API trust route"
+  subtitle="Contract first, then auth, then classification, then deploy verification"
+  footer="The interesting part is not that the API responds. It is that another engineer can trust the product surface quickly."
+>
   <FlowStep
     step="01"
     title="Accept a narrow contract"
@@ -78,7 +82,7 @@ client
     title="Verify the deploy surface"
     detail="Docker Compose, healthchecks, and smoke scripts make the repo feel like something another engineer could publish without guesswork."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisions and trade-offs
 

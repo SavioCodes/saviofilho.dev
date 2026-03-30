@@ -57,7 +57,11 @@ client
   -> provedor externo opcional
 ```
 
-<FlowGrid>
+<SystemDiagram
+  title="Rota de confianca da API"
+  subtitle="Contrato primeiro, depois auth, classificacao e verificacao de deploy"
+  footer="A parte interessante nao e so responder. E fazer outro engenheiro confiar rapido na superficie do produto."
+>
   <FlowStep
     step="01"
     title="Receber um contrato estreito"
@@ -78,7 +82,7 @@ client
     title="Verificar a superficie de deploy"
     detail="Docker Compose, healthchecks e smoke scripts fazem o repo parecer algo que outro engenheiro conseguiria publicar sem adivinhacao."
   />
-</FlowGrid>
+</SystemDiagram>
 
 ## Decisoes e trade-offs
 

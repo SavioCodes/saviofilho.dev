@@ -6,6 +6,7 @@ import {
   FlowStep,
   SignalCard,
   SignalGrid,
+  SystemDiagram,
   TerminalFrame,
 } from "@/features/mdx/evidence";
 
@@ -49,5 +50,6 @@ export const mdxComponents: MDXComponents = {
   FlowStep,
   SignalCard,
   SignalGrid,
+  SystemDiagram,
   TerminalFrame,
 };
