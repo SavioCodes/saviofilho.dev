@@ -16,7 +16,7 @@ import type { Entry, WritingFrontmatter, WritingTheme } from "@/types/content";
 
 function buildAlternates(locale: Locale, path = "/") {
   return {
-    canonical: localizePath(locale, path),
+    canonical: absoluteUrl(localizePath(locale, path)),
     languages: {
       en: absoluteUrl(localizePath("en", path)),
       "pt-BR": absoluteUrl(localizePath("pt-br", path)),
