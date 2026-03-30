@@ -29,11 +29,14 @@ export function buildMetadata(
   path: string,
   title?: string,
   description?: string,
+  imagePath = "/og/site-card.svg",
+  imageAlt?: string,
 ): Metadata {
   const copy = getSiteCopy(locale);
   const finalTitle = title ?? copy.metadata.title;
   const finalDescription = description ?? copy.metadata.description;
   const localeTag = toHreflang(locale);
+  const finalImageAlt = imageAlt ?? `${finalTitle} social card`;
 
   return {
     title: finalTitle,
@@ -45,11 +48,20 @@ export function buildMetadata(
       url: absoluteUrl(localizePath(locale, path)),
       locale: localeTag,
       alternateLocale: locale === "en" ? ["pt-BR"] : ["en"],
+      images: [
+        {
+          url: absoluteUrl(imagePath),
+          width: 1200,
+          height: 630,
+          alt: finalImageAlt,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: finalTitle,
       description: finalDescription,
+      images: [absoluteUrl(imagePath)],
     },
   };
 }
@@ -415,6 +427,14 @@ export async function HomePage({ locale }: { locale: Locale }) {
                 <div className="atlas-card__body">
                   <h3>{item.title}</h3>
                   <p>{item.summary}</p>
+                </div>
+                <div className="atlas-card__diagram">
+                  {item.diagram.map((node) => (
+                    <div className="atlas-card__node" key={`${item.title}-${node.step}`}>
+                      <span>{node.step}</span>
+                      <strong>{node.label}</strong>
+                    </div>
+                  ))}
                 </div>
                 <span className="text-link">{item.cta}</span>
               </Link>

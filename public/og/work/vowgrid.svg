@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">VOWGRID social preview</title>
+  <desc id="desc">Editorial social card for the VOWGRID private case study with simulation, policy evaluation, approvals, and execution receipts.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6eddf" />
+      <stop offset="100%" stop-color="#e9dac3" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)" />
+  <rect x="38" y="38" width="1124" height="554" fill="none" stroke="#2b241d" stroke-width="2" />
+  <rect x="72" y="74" width="250" height="34" rx="17" fill="#a45324" />
+  <text x="197" y="96" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="15" letter-spacing="1.6" fill="#f6eddf">PRIVATE CASE STUDY</text>
+  <text x="72" y="188" font-family="'Newsreader', Georgia, serif" font-size="76" fill="#1f1812">VOWGRID</text>
+  <text x="72" y="252" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="28" fill="#41372d">Agent-trust control layer built around simulation, policy evaluation,</text>
+  <text x="72" y="288" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="28" fill="#41372d">approval state, queue-backed execution, receipts, and rollback visibility.</text>
+  <g transform="translate(72 360)">
+    <rect width="510" height="144" fill="#f2e7d5" stroke="#2b241d" stroke-width="2" rx="18" />
+    <text x="24" y="36" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#7a654f">INSPECT FIRST</text>
+    <text x="24" y="76" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="30" font-weight="600" fill="#201913">propose / simulate / approve / execute / receipt</text>
+    <text x="24" y="116" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" fill="#4a4036">monorepo, contracts, runbook, queue visibility, trust layer</text>
+  </g>
+  <g transform="translate(660 116)">
+    <rect width="430" height="346" fill="#1a211d" rx="24" />
+    <text x="28" y="42" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#c6b59f">TRUST ROUTE</text>
+    <g transform="translate(28 78)">
+      <rect width="114" height="94" fill="#24302a" rx="14" />
+      <text x="18" y="28" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#89b09d">01</text>
+      <text x="18" y="58" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" font-weight="600" fill="#f6eddf">Propose</text>
+      <text x="18" y="82" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#d2c4b4">intent</text>
+      <rect x="140" width="114" height="94" fill="#24302a" rx="14" />
+      <text x="158" y="28" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#89b09d">02</text>
+      <text x="158" y="58" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" font-weight="600" fill="#f6eddf">Simulate</text>
+      <text x="158" y="82" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#d2c4b4">and policy</text>
+      <rect x="280" width="122" height="94" fill="#24302a" rx="14" />
+      <text x="298" y="28" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#89b09d">03</text>
+      <text x="298" y="58" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" font-weight="600" fill="#f6eddf">Approve</text>
+      <text x="298" y="82" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#d2c4b4">execute</text>
+    </g>
+  </g>
+  <g transform="translate(660 500)">
+    <rect width="118" height="42" rx="21" fill="#efe3cf" />
+    <text x="59" y="527" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="17" fill="#201913">Fastify</text>
+    <rect x="132" width="122" height="42" rx="21" fill="#efe3cf" />
+    <text x="193" y="527" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="17" fill="#201913">BullMQ</text>
+    <rect x="268" width="112" height="42" rx="21" fill="#efe3cf" />
+    <text x="324" y="527" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="17" fill="#201913">Prisma</text>
+  </g>
+</svg>

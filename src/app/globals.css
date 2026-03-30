@@ -1035,10 +1035,15 @@ img {
   text-transform: uppercase;
 }
 
-.bet-grid,
-.atlas-grid {
+.bet-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -1111,6 +1116,36 @@ img {
 .atlas-card__body p {
   color: var(--muted);
   line-height: 1.78;
+}
+
+.atlas-card__diagram {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.atlas-card__node {
+  display: grid;
+  gap: 0.22rem;
+  padding: 0.65rem 0.7rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(49, 41, 31, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(255, 255, 255, 0)),
+    rgba(255, 249, 241, 0.86);
+}
+
+.atlas-card__node span {
+  color: var(--accent);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.atlas-card__node strong {
+  font-size: 0.88rem;
+  line-height: 1.38;
 }
 
 .page-masthead__aside p,

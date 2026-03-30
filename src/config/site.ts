@@ -69,6 +69,7 @@ type SiteLocaleCopy = {
       summary: string;
       href: string;
       cta: string;
+      diagram: Array<{ step: string; label: string }>;
     }>;
   };
   work: {
@@ -241,27 +242,55 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       systemsMap: [
         {
           tag: "Private flagship",
-          title: "Trust + approval systems",
+          title: "VOWGRID",
           summary:
             "VOWGRID is now documented as a private case study focused on simulation, policy evaluation, approvals, execution receipts, and rollback visibility.",
           href: "/work/vowgrid",
           cta: "Open VOWGRID case",
+          diagram: [
+            { step: "01", label: "Propose" },
+            { step: "02", label: "Simulate" },
+            { step: "03", label: "Approve / execute" },
+          ],
         },
         {
           tag: "Public repo",
-          title: "SaaS workflow operations",
+          title: "OnboardPulse",
           summary:
             "OnboardPulse shows tenant isolation, billing, follow-up jobs, upload flows, and AI budget edges.",
           href: "/work/onboardpulse",
           cta: "Open OnboardPulse",
+          diagram: [
+            { step: "01", label: "Tenant scope" },
+            { step: "02", label: "Billing state" },
+            { step: "03", label: "Follow-up jobs" },
+          ],
         },
         {
           tag: "Public repo",
-          title: "Lean product APIs",
+          title: "MailSieve",
           summary:
             "MailSieve and the supporting notes show how narrow products still need contracts, verification, and ops discipline.",
           href: "/work/mailsieve",
           cta: "Open MailSieve",
+          diagram: [
+            { step: "01", label: "OpenAPI" },
+            { step: "02", label: "Auth / limits" },
+            { step: "03", label: "Verify deploy" },
+          ],
+        },
+        {
+          tag: "Public repo",
+          title: "Neural Network From Scratch",
+          summary:
+            "The neural-network repo stays visible because it shows deterministic evaluation, logs, tests, and a rerunnable study pipeline.",
+          href: "/work/rede-neural-do-zero",
+          cta: "Open NN case",
+          diagram: [
+            { step: "01", label: "Normalize" },
+            { step: "02", label: "Train" },
+            { step: "03", label: "Evaluate / log" },
+          ],
         },
       ],
     },
@@ -486,27 +515,55 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       systemsMap: [
         {
           tag: "Flagship privado",
-          title: "Sistemas de confianca e aprovacao",
+          title: "VOWGRID",
           summary:
             "VOWGRID agora aparece como estudo de caso privado com foco em simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback.",
           href: "/work/vowgrid",
           cta: "Abrir caso do VOWGRID",
+          diagram: [
+            { step: "01", label: "Propor" },
+            { step: "02", label: "Simular" },
+            { step: "03", label: "Aprovar / executar" },
+          ],
         },
         {
           tag: "Repo publico",
-          title: "Operacao de SaaS workflow",
+          title: "OnboardPulse",
           summary:
             "OnboardPulse mostra isolamento entre tenants, cobranca, jobs de follow-up, uploads e limites de custo para IA.",
           href: "/work/onboardpulse",
           cta: "Abrir OnboardPulse",
+          diagram: [
+            { step: "01", label: "Tenant" },
+            { step: "02", label: "Cobranca" },
+            { step: "03", label: "Follow-up" },
+          ],
         },
         {
           tag: "Repo publico",
-          title: "APIs de produto enxutas",
+          title: "MailSieve",
           summary:
             "MailSieve e os textos de apoio mostram como produtos pequenos ainda precisam de contrato, verificacao e disciplina operacional.",
           href: "/work/mailsieve",
           cta: "Abrir MailSieve",
+          diagram: [
+            { step: "01", label: "OpenAPI" },
+            { step: "02", label: "Auth / limite" },
+            { step: "03", label: "Validar deploy" },
+          ],
+        },
+        {
+          tag: "Repo publico",
+          title: "Neural Network From Scratch",
+          summary:
+            "O repositorio de rede neural continua visivel porque mostra avaliacao deterministica, logs, testes e um pipeline de estudo reproduzivel.",
+          href: "/work/rede-neural-do-zero",
+          cta: "Abrir caso da rede",
+          diagram: [
+            { step: "01", label: "Normalizar" },
+            { step: "02", label: "Treinar" },
+            { step: "03", label: "Avaliar / logar" },
+          ],
         },
       ],
     },

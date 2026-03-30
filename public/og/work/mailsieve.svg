@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">MailSieve social preview</title>
+  <desc id="desc">Editorial social card for MailSieve with OpenAPI, auth, rate limits, and deploy verification proof.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6eddf" />
+      <stop offset="100%" stop-color="#e9dac3" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#paper)" />
+  <rect x="38" y="38" width="1124" height="554" fill="none" stroke="#2b241d" stroke-width="2" />
+  <rect x="72" y="74" width="235" height="34" rx="17" fill="#17342c" />
+  <text x="190" y="96" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="15" letter-spacing="1.6" fill="#f6eddf">PUBLIC REPOSITORY</text>
+  <text x="72" y="188" font-family="'Newsreader', Georgia, serif" font-size="76" fill="#1f1812">MailSieve</text>
+  <text x="72" y="252" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="28" fill="#41372d">Signup-risk API with OpenAPI contract discipline, API keys, rate limits,</text>
+  <text x="72" y="288" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="28" fill="#41372d">verification scripts, and a deploy surface that still looks productized.</text>
+  <g transform="translate(72 360)">
+    <rect width="510" height="144" fill="#f2e7d5" stroke="#2b241d" stroke-width="2" rx="18" />
+    <text x="24" y="36" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#7a654f">INSPECT FIRST</text>
+    <text x="24" y="76" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="32" font-weight="600" fill="#201913">contract clarity / auth / smoke deploy</text>
+    <text x="24" y="116" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" fill="#4a4036">OpenAPI, key flow, Docker Compose, verify script</text>
+  </g>
+  <g transform="translate(660 116)">
+    <rect width="430" height="346" fill="#1a211d" rx="24" />
+    <text x="28" y="42" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#c6b59f">API TRUST ROUTE</text>
+    <g transform="translate(28 78)">
+      <rect width="114" height="94" fill="#24302a" rx="14" />
+      <text x="18" y="28" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#89b09d">01</text>
+      <text x="18" y="58" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" font-weight="600" fill="#f6eddf">OpenAPI</text>
+      <text x="18" y="82" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#d2c4b4">contract</text>
+      <rect x="140" width="114" height="94" fill="#24302a" rx="14" />
+      <text x="158" y="28" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#89b09d">02</text>
+      <text x="158" y="58" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" font-weight="600" fill="#f6eddf">Auth</text>
+      <text x="158" y="82" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#d2c4b4">and limits</text>
+      <rect x="280" width="122" height="94" fill="#24302a" rx="14" />
+      <text x="298" y="28" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#89b09d">03</text>
+      <text x="298" y="58" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="22" font-weight="600" fill="#f6eddf">Verify</text>
+      <text x="298" y="82" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="18" fill="#d2c4b4">deploy</text>
+    </g>
+  </g>
+  <g transform="translate(660 500)">
+    <rect width="130" height="42" rx="21" fill="#efe3cf" />
+    <text x="65" y="527" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="17" fill="#201913">Express</text>
+    <rect x="144" width="138" height="42" rx="21" fill="#efe3cf" />
+    <text x="213" y="527" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="17" fill="#201913">OpenAPI</text>
+    <rect x="296" width="170" height="42" rx="21" fill="#efe3cf" />
+    <text x="381" y="527" text-anchor="middle" font-family="'IBM Plex Sans', Arial, sans-serif" font-size="17" fill="#201913">Docker Compose</text>
+  </g>
+</svg>
