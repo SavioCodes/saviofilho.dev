@@ -37,9 +37,10 @@ export function buildMetadata(
   const finalDescription = description ?? copy.metadata.description;
   const localeTag = toHreflang(locale);
   const finalImageAlt = imageAlt ?? `${finalTitle} social card`;
+  const metadataTitle = title ? finalTitle : { absolute: finalTitle };
 
   return {
-    title: finalTitle,
+    title: metadataTitle,
     description: finalDescription,
     alternates: buildAlternates(locale, path),
     openGraph: {

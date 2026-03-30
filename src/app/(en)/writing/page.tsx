@@ -1,6 +1,6 @@
 import { buildMetadata, WritingPage } from "@/features/site/pages";
 
-export const metadata = buildMetadata("en", "/writing", "Writing | Savio Filho");
+export const metadata = buildMetadata("en", "/writing", "Writing");
 
 export default async function EnglishWritingPage() {
   return <WritingPage locale="en" />;
