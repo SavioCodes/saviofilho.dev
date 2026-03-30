@@ -79,6 +79,8 @@ const featuredWritingSlugOrder = [
   "contracts-beat-clever-apis",
 ] as const;
 
+const resumeFeaturedWorkSlugs = ["onboardpulse", "mailsieve", "vowgrid"] as const;
+
 function getFeaturedWritingEntries(entries: Entry<WritingFrontmatter>[]) {
   const featuredEntries = featuredWritingSlugOrder
     .map((slug) => entries.find((entry) => entry.slug === slug && entry.frontmatter.featured))
@@ -716,23 +718,55 @@ export async function WritingPage({ locale }: { locale: Locale }) {
   );
 }
 
-export function ResumePage({ locale }: { locale: Locale }) {
+export async function ResumePage({ locale }: { locale: Locale }) {
   const copy = getSiteCopy(locale);
+  const workEntries = await getWorkEntries(locale);
+  const githubLink = contactLinks.find((link) => link.label === "GitHub");
+  const featuredEntries = resumeFeaturedWorkSlugs
+    .map((slug) => workEntries.find((entry) => entry.slug === slug))
+    .filter((entry): entry is NonNullable<(typeof workEntries)[number]> => Boolean(entry));
 
   return (
     <SiteShell locale={locale}>
       <div className="page-section-stack">
-        <section className="resume-sheet">
-          <div className="resume-sheet__intro">
+        <section className="resume-hero">
+          <div className="resume-hero__copy">
             <p className="eyebrow">{copy.resume.eyebrow}</p>
-            <h1>{copy.resume.title}</h1>
+            <p className="resume-nameplate">{copy.resume.title}</p>
+            <h1>{copy.resume.headline}</h1>
             <p className="lead">{copy.resume.lead}</p>
+            <p className="resume-hero__body">{copy.resume.summary}</p>
+            <div className="hero-actions">
+              <Link className="button-primary" href={localizePath(locale, "/work")}>
+                {copy.resume.primaryCta}
+              </Link>
+              <a
+                className="button-secondary"
+                href={githubLink?.href ?? "https://github.com/SavioCodes"}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {copy.resume.secondaryCta}
+              </a>
+            </div>
           </div>
 
-          <aside className="paper-panel resume-sheet__aside">
+          <aside className="paper-panel paper-panel-accent resume-hero__aside">
             <p className="micro-label">{copy.resume.availabilityLabel}</p>
-            <p>{copy.resume.availability}</p>
-            <div className="footer-links">
+            <p className="resume-status-copy">{copy.resume.availability}</p>
+            <p className="resume-status-note">{copy.resume.availabilityNote}</p>
+            <div className="resume-fact-block">
+              <p className="micro-label">{copy.resume.quickFactsLabel}</p>
+              <div className="fact-list">
+                {copy.resume.quickFacts.map((fact) => (
+                  <div className="fact-list__item" key={fact.label}>
+                    <span>{fact.label}</span>
+                    <strong>{fact.value}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="resume-contact-inline">
               {contactLinks.map((link) => (
                 <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
                   {link.label}
@@ -742,32 +776,143 @@ export function ResumePage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
-        <section className="resume-strip-grid">
-          <article className="resume-strip">
-            <p className="section-label">{copy.resume.sectionLabels.focus}</p>
-            <ul className="stack-list">
-              {copy.resume.focus.map((item) => (
+        <section className="resume-feature-grid">
+          <article className="paper-panel resume-panel">
+            <div className="resume-panel__header">
+              <p className="section-label">{copy.resume.specialtiesLabel}</p>
+              <h2>{copy.resume.specialtiesTitle}</h2>
+              <p>{copy.resume.specialtiesBody}</p>
+            </div>
+            <div className="resume-point-list">
+              {copy.resume.specialties.map((item, index) => (
+                <article className="resume-point" key={item.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div className="resume-point__body">
+                    <strong>{item.title}</strong>
+                    <p>{item.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+
+          <article className="paper-panel resume-panel">
+            <div className="resume-panel__header">
+              <p className="section-label">{copy.resume.capabilitiesLabel}</p>
+              <h2>{copy.resume.capabilitiesTitle}</h2>
+              <p>{copy.resume.capabilitiesBody}</p>
+            </div>
+            <div className="resume-point-list">
+              {copy.resume.capabilities.map((item, index) => (
+                <article className="resume-point" key={item.title}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div className="resume-point__body">
+                    <strong>{item.title}</strong>
+                    <p>{item.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </article>
+        </section>
+
+        <section className="section-block section-block-editorial">
+          <div className="section-heading-row">
+            <div className="section-heading-copy">
+              <p className="section-label">{copy.resume.stackLabel}</p>
+              <h2>{copy.resume.stackTitle}</h2>
+              <p className="group-lead">{copy.resume.stackBody}</p>
+            </div>
+          </div>
+
+          <div className="resume-stack-grid">
+            {copy.resume.stackGroups.map((group) => (
+              <article className="paper-panel resume-stack-card" key={group.title}>
+                <p className="micro-label">{group.title}</p>
+                <ul className="resume-layer-list">
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section-block section-block-editorial">
+          <div className="section-heading-row">
+            <div className="section-heading-copy">
+              <p className="section-label">{copy.resume.readFirstLabel}</p>
+              <h2>{copy.resume.readFirstTitle}</h2>
+              <p className="group-lead">{copy.resume.readFirstBody}</p>
+            </div>
+            <Link className="text-link" href={localizePath(locale, "/work")}>
+              {copy.work.readCase}
+            </Link>
+          </div>
+
+          <div className="resume-case-grid">
+            {featuredEntries.map((entry, index) => (
+              <article className="resume-case-card" key={entry.slug}>
+                <div className="resume-case-card__header">
+                  <span className="resume-case-card__index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className={`pill ${
+                      entry.frontmatter.kind === "public" ? "pill-public" : "pill-private"
+                    }`}
+                  >
+                    {entry.frontmatter.kind === "public"
+                      ? copy.work.repoLabel
+                      : copy.work.privateLabel}
+                  </span>
+                </div>
+                <div className="resume-case-card__body">
+                  <h3>{entry.frontmatter.title}</h3>
+                  <p>{entry.frontmatter.summary}</p>
+                  <p className="project-highlight">{entry.frontmatter.highlight}</p>
+                </div>
+                <div className="resume-case-card__footer">
+                  <span>{entry.frontmatter.year}</span>
+                  <Link className="text-link" href={localizePath(locale, `/work/${entry.slug}`)}>
+                    {copy.work.readCase}
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="resume-closing">
+          <article className="paper-panel paper-panel-accent resume-closing__copy">
+            <p className="section-label">{copy.resume.closingLabel}</p>
+            <h2>{copy.resume.closingTitle}</h2>
+            <p>{copy.resume.closingBody}</p>
+            <ul className="dossier-list">
+              {copy.resume.closingChecklist.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </article>
 
-          <article className="resume-strip">
-            <p className="section-label">{copy.resume.sectionLabels.capabilities}</p>
-            <ul className="stack-list">
-              {copy.resume.capabilities.map((item) => (
-                <li key={item}>{item}</li>
+          <article className="paper-panel resume-closing__contact">
+            <p className="micro-label">{copy.resume.contactTitle}</p>
+            <p className="resume-contact-copy">{copy.resume.contactBody}</p>
+            <div className="footer-contact-list">
+              {contactLinks.map((link) => (
+                <a
+                  className="footer-contact-link"
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>{link.label}</span>
+                  <strong>{copy.footer.openLabel}</strong>
+                </a>
               ))}
-            </ul>
-          </article>
-
-          <article className="resume-strip">
-            <p className="section-label">{copy.resume.sectionLabels.stack}</p>
-            <ul className="stack-list">
-              {copy.resume.stack.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            </div>
           </article>
         </section>
       </div>

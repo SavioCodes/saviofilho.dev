@@ -124,13 +124,37 @@ type SiteLocaleCopy = {
   resume: {
     eyebrow: string;
     title: string;
+    headline: string;
     lead: string;
+    summary: string;
+    primaryCta: string;
+    secondaryCta: string;
     availabilityLabel: string;
-    sectionLabels: { focus: string; capabilities: string; stack: string };
     availability: string;
-    focus: string[];
-    capabilities: string[];
-    stack: string[];
+    availabilityNote: string;
+    quickFactsLabel: string;
+    quickFacts: Array<{ label: string; value: string }>;
+    specialtiesLabel: string;
+    specialtiesTitle: string;
+    specialtiesBody: string;
+    specialties: Array<{ title: string; body: string }>;
+    capabilitiesLabel: string;
+    capabilitiesTitle: string;
+    capabilitiesBody: string;
+    capabilities: Array<{ title: string; body: string }>;
+    stackLabel: string;
+    stackTitle: string;
+    stackBody: string;
+    stackGroups: Array<{ title: string; items: string[] }>;
+    readFirstLabel: string;
+    readFirstTitle: string;
+    readFirstBody: string;
+    closingLabel: string;
+    closingTitle: string;
+    closingBody: string;
+    closingChecklist: string[];
+    contactTitle: string;
+    contactBody: string;
   };
   detail: {
     publicRepo: string;
@@ -388,31 +412,125 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     resume: {
       eyebrow: "Resume",
       title: "Savio Filho",
+      headline: "Software engineer for backend product systems, SaaS operations, and applied AI.",
       lead:
-        "Software engineer focused on backend products, SaaS systems, and applied AI with a strong bias toward documentation and operational clarity.",
+        "My best fit is in products that need clear backend structure, predictable operations, reliable contracts, and documentation that stays useful after the first release.",
+      summary:
+        "I am most useful in systems that do not live only on the happy path: billing, auth, queues, uploads, tenant boundaries, approval trails, and AI features that need cost limits and human-readable guardrails. I care about the repository surface, handoff quality, and the boring details that let another engineer or operator understand the product quickly.",
+      primaryCta: "Browse case studies",
+      secondaryCta: "Open GitHub",
       availabilityLabel: "Availability",
-      sectionLabels: {
-        focus: "Focus",
-        capabilities: "Capabilities",
-        stack: "Stack",
-      },
       availability:
         "Open to Software Engineer roles with a strong backend or product systems component, remote or hybrid.",
-      focus: [
-        "Backend product engineering for SaaS, internal tooling, and automation-heavy workflows.",
-        "TypeScript and Node.js for APIs and service layers; Python for evaluation pipelines and systems scripts.",
-        "Applied AI with cost, auditability, and deterministic fallbacks in mind.",
+      availabilityNote:
+        "I tend to add the most value in teams that care about system clarity, written communication, and ownership beyond the launch path.",
+      quickFactsLabel: "Role fit",
+      quickFacts: [
+        { label: "Base", value: "Brazil / remote or hybrid" },
+        { label: "Language", value: "PT-BR native / technical communication in English" },
+        {
+          label: "Best use",
+          value: "Backend product systems, SaaS operations, and AI-backed workflows",
+        },
       ],
+      specialtiesLabel: "Best fit",
+      specialtiesTitle: "Where I tend to create the most leverage",
+      specialtiesBody:
+        "The kinds of products and teams where my profile usually compounds well.",
+      specialties: [
+        {
+          title: "Backend product systems",
+          body:
+            "APIs, service layers, approval flows, and repository surfaces that still make sense after the initial push.",
+        },
+        {
+          title: "Real SaaS operations",
+          body:
+            "Billing, auth, queue-backed jobs, tenant isolation, and the operational detail that keeps a smaller product credible.",
+        },
+        {
+          title: "Applied AI with boundaries",
+          body:
+            "AI features with cost limits, predictable fallbacks, auditable steps, and decisions that do not take the product away from operators.",
+        },
+      ],
+      capabilitiesLabel: "Capabilities",
+      capabilitiesTitle: "What I can usually take ownership of",
+      capabilitiesBody:
+        "The scope that tends to make sense when a team needs execution with system thinking attached.",
       capabilities: [
-        "API design, auth flows, billing integrations, background jobs, and operational runbooks.",
-        "Multi-tenant products with data isolation, quota controls, and developer-focused repository standards.",
-        "Docs-first communication: architecture notes, launch checklists, deployment guides, and case studies.",
+        {
+          title: "Contracts, APIs, and integrations",
+          body:
+            "API design, authentication flows, webhooks, billing integrations, and service-to-service boundaries with clear failure modes.",
+        },
+        {
+          title: "Jobs, pipelines, and operational behavior",
+          body:
+            "Queues, background tasks, upload pipelines, release checklists, runbooks, and the inspection points that keep systems predictable.",
+        },
+        {
+          title: "Docs and technical handoff",
+          body:
+            "Architecture notes, READMEs, deployment guides, case studies, and repository organization that helps another engineer get to useful context faster.",
+        },
       ],
-      stack: [
-        "TypeScript, Node.js, Next.js, Express, Fastify, React Native, Python",
-        "PostgreSQL, Prisma, Drizzle ORM, Supabase, object storage, Redis, BullMQ",
-        "GitHub Actions, Vitest, Jest, pytest, OpenAPI, Docker Compose",
+      stackLabel: "Stack",
+      stackTitle: "Tools and layers I work with most comfortably",
+      stackBody:
+        "The emphasis here is not tool volume. It is familiarity with what tends to show up in product systems that need to survive real usage.",
+      stackGroups: [
+        {
+          title: "Languages and runtimes",
+          items: [
+            "TypeScript",
+            "Node.js",
+            "Next.js",
+            "Express and Fastify",
+            "Python",
+            "React Native",
+          ],
+        },
+        {
+          title: "Data and infrastructure",
+          items: [
+            "PostgreSQL",
+            "Prisma and Drizzle ORM",
+            "Supabase",
+            "Redis and BullMQ",
+            "Object storage",
+            "Docker Compose",
+          ],
+        },
+        {
+          title: "Quality and delivery",
+          items: [
+            "GitHub Actions",
+            "Vitest and Jest",
+            "pytest",
+            "OpenAPI",
+            "Technical documentation",
+            "Repository standards",
+          ],
+        },
       ],
+      readFirstLabel: "Start with these cases",
+      readFirstTitle: "Three reads that explain my work better than a bullet list",
+      readFirstBody:
+        "If I were introducing my work to a serious founder, recruiter, or tech lead, I would start with these paths first.",
+      closingLabel: "Direct close",
+      closingTitle:
+        "If the role needs backend product work with operational clarity, this is probably worth a conversation.",
+      closingBody:
+        "The clearest picture of my work lives in the combination of GitHub, case studies, and technical writing. The resume helps, but the proof gets stronger when those three surfaces are read together.",
+      closingChecklist: [
+        "Products with billing, auth, queues, uploads, or automation that need to stay legible after launch.",
+        "Teams that value documentation, explicit trade-offs, and ownership beyond the happy path.",
+        "Remote or hybrid environments where written clarity and technical handoff matter.",
+      ],
+      contactTitle: "Direct paths",
+      contactBody:
+        "Email, GitHub, and LinkedIn stay as the fastest way to reach me and inspect more context.",
     },
     detail: {
       publicRepo: "Public repo",
@@ -673,31 +791,125 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     resume: {
       eyebrow: "Resumo",
       title: "Savio Filho",
+      headline: "Engenheiro de software para sistemas de produto backend, SaaS e IA aplicada.",
       lead:
-        "Engenheiro de software focado em produtos backend, sistemas SaaS e IA aplicada, com forte vies para documentacao e clareza operacional.",
+        "Meu melhor encaixe esta em produtos que precisam de backend claro, operacao previsivel, contratos confiaveis e documentacao que continue util depois da primeira release.",
+      summary:
+        "Eu sou mais util em sistemas que nao vivem so do caminho feliz: billing, auth, filas, uploads, isolamento entre tenants, trilhas de aprovacao e features com IA que precisam de limite de custo e guardrails legiveis. Tambem me importo com a superficie do repositorio, com a qualidade do handoff e com a parte chata que ajuda outro engenheiro ou operador a entender o produto rapido.",
+      primaryCta: "Ver estudos de caso",
+      secondaryCta: "Abrir GitHub",
       availabilityLabel: "Disponibilidade",
-      sectionLabels: {
-        focus: "Foco",
-        capabilities: "Capacidades",
-        stack: "Stack",
-      },
       availability:
         "Aberto a vagas de Software Engineer com componente forte de backend ou sistemas de produto, remoto ou hibrido.",
-      focus: [
-        "Engenharia de produto backend para SaaS, ferramentas internas e workflows com muita automacao.",
-        "TypeScript e Node.js para APIs e camadas de servico; Python para pipelines de avaliacao e scripts de sistema.",
-        "IA aplicada com custo, auditabilidade e fallback deterministico em mente.",
+      availabilityNote:
+        "Eu costumo render mais em times que valorizam clareza de sistema, comunicacao escrita e ownership alem da entrega inicial.",
+      quickFactsLabel: "Encaixe",
+      quickFacts: [
+        { label: "Base", value: "Brasil / remoto ou hibrido" },
+        { label: "Idioma", value: "PT-BR nativo / comunicacao tecnica em English" },
+        {
+          label: "Melhor uso",
+          value: "Sistemas de produto backend, operacao SaaS e fluxos com IA",
+        },
       ],
+      specialtiesLabel: "Melhor encaixe",
+      specialtiesTitle: "Onde eu costumo gerar mais alavancagem",
+      specialtiesBody:
+        "Os tipos de produto e de time em que meu perfil tende a render melhor desde cedo.",
+      specialties: [
+        {
+          title: "Sistemas de produto backend",
+          body:
+            "APIs, camadas de servico, fluxos de aprovacao e superficies de repositorio que continuam fazendo sentido depois da entrega inicial.",
+        },
+        {
+          title: "Operacao SaaS de verdade",
+          body:
+            "Billing, auth, jobs em fila, isolamento entre tenants e o detalhe operacional que faz um produto pequeno parecer serio.",
+        },
+        {
+          title: "IA aplicada com limite",
+          body:
+            "Features com IA usando teto de custo, fallback previsivel, passos auditaveis e decisoes que nao tiram o produto do controle de quem opera.",
+        },
+      ],
+      capabilitiesLabel: "Capacidades",
+      capabilitiesTitle: "O que eu costumo conseguir assumir bem",
+      capabilitiesBody:
+        "O tipo de escopo que costuma fazer sentido me entregar quando o problema pede execucao com pensamento de sistema.",
       capabilities: [
-        "Design de API, autenticacao, integracoes de billing, jobs em background e runbooks operacionais.",
-        "Produtos multi-tenant com isolamento de dados, controle de cotas e padroes de repositorio voltados para DX.",
-        "Comunicacao docs-first: notas de arquitetura, checklists de lancamento, guias de deploy e estudos de caso.",
+        {
+          title: "Contratos, APIs e integracoes",
+          body:
+            "Design de API, autenticacao, webhooks, integracoes de billing e fronteiras entre servicos com falhas mais legiveis.",
+        },
+        {
+          title: "Jobs, pipelines e comportamento operacional",
+          body:
+            "Filas, tarefas assincronas, pipelines de upload, checklists de release, runbooks e pontos de inspecao para manter o sistema previsivel.",
+        },
+        {
+          title: "Documentacao e handoff tecnico",
+          body:
+            "Notas de arquitetura, READMEs, guias de deploy, estudos de caso e organizacao de repositorio que ajudam outra pessoa a entrar em contexto mais rapido.",
+        },
       ],
-      stack: [
-        "TypeScript, Node.js, Next.js, Express, Fastify, React Native, Python",
-        "PostgreSQL, Prisma, Drizzle ORM, Supabase, object storage, Redis, BullMQ",
-        "GitHub Actions, Vitest, Jest, pytest, OpenAPI, Docker Compose",
+      stackLabel: "Stack",
+      stackTitle: "Ferramentas e camadas em que trabalho com mais conforto",
+      stackBody:
+        "O foco aqui nao e volume de ferramenta. E familiaridade real com o que costuma aparecer em sistemas de produto que precisam sobreviver ao uso.",
+      stackGroups: [
+        {
+          title: "Linguagens e runtimes",
+          items: [
+            "TypeScript",
+            "Node.js",
+            "Next.js",
+            "Express e Fastify",
+            "Python",
+            "React Native",
+          ],
+        },
+        {
+          title: "Dados e infraestrutura",
+          items: [
+            "PostgreSQL",
+            "Prisma e Drizzle ORM",
+            "Supabase",
+            "Redis e BullMQ",
+            "Object storage",
+            "Docker Compose",
+          ],
+        },
+        {
+          title: "Qualidade e entrega",
+          items: [
+            "GitHub Actions",
+            "Vitest e Jest",
+            "pytest",
+            "OpenAPI",
+            "Documentacao tecnica",
+            "Padroes de repositorio",
+          ],
+        },
       ],
+      readFirstLabel: "Comece por estes casos",
+      readFirstTitle: "Tres leituras que explicam melhor meu trabalho do que uma lista",
+      readFirstBody:
+        "Se eu estivesse me apresentando para um founder, recrutador ou tech lead serio, eu comecaria por estes caminhos.",
+      closingLabel: "Fechamento direto",
+      closingTitle:
+        "Se a vaga pede backend de produto com clareza operacional, provavelmente faz sentido conversar.",
+      closingBody:
+        "O retrato mais fiel do meu trabalho esta na combinacao entre GitHub, estudos de caso e escrita tecnica. O resumo ajuda, mas a prova fica mais forte quando essas tres camadas sao lidas juntas.",
+      closingChecklist: [
+        "Produtos com billing, auth, filas, uploads ou automacao que precisam continuar legiveis depois do lancamento.",
+        "Times que valorizam documentacao, trade-offs explicitos e ownership alem do caminho feliz.",
+        "Ambientes remotos ou hibridos em que clareza escrita e handoff tecnico realmente contam.",
+      ],
+      contactTitle: "Caminhos diretos",
+      contactBody:
+        "Email, GitHub e LinkedIn continuam sendo as formas mais rapidas de chegar em contato e abrir mais contexto.",
     },
     detail: {
       publicRepo: "Repo publico",
