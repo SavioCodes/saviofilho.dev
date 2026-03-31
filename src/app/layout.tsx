@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Newsreader } from "next/font/google";
+import { DM_Sans, Fraunces, IBM_Plex_Mono } from "next/font/google";
 
 import "@/app/globals.css";
 
@@ -7,14 +7,15 @@ import { DocumentLocale } from "@/components/chrome/document-locale";
 import { getSiteCopy } from "@/config/site";
 import { absoluteUrl, siteUrl, toSitePath } from "@/lib/site-config";
 
-const displayFont = Newsreader({
+const displayFont = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
+  weight: ["500", "600", "700"],
 });
 
-const bodyFont = IBM_Plex_Sans({
+const bodyFont = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "700"],
   variable: "--font-body",
 });
 
