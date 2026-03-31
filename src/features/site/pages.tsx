@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { SectionRule } from "@/components/section-rule";
 import { SiteShell } from "@/components/chrome/site-shell";
 import type { Locale } from "@/config/i18n";
 import { localizePath, toHreflang } from "@/config/i18n";
@@ -212,6 +213,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
+        <SectionRule label={copy.home.dispatchLabel} />
         <section className="cover-ledger">
           <article className="paper-panel cover-ledger__intro">
             <p className="section-label">{copy.home.dispatchLabel}</p>
@@ -276,6 +278,8 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </article>
         </section>
 
+        <SectionRule label={copy.home.selectedWorkLabel} />
+        <SectionRule label={copy.home.writingLabel} />
         <section className="section-block section-block-editorial">
           <div className="section-heading-row">
             <div>
@@ -434,6 +438,7 @@ export async function HomePage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <SectionRule label={copy.home.systemsLabel} />
         <section className="section-block section-block-editorial">
           <div className="section-heading-row">
             <div>
@@ -520,6 +525,7 @@ export async function WorkPage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
+        <SectionRule label={copy.work.repoLabel} />
         <section className="work-group">
           <div className="section-heading-row">
             <div className="section-heading-copy">
@@ -564,6 +570,7 @@ export async function WorkPage({ locale }: { locale: Locale }) {
           </section>
         </section>
 
+        <SectionRule label={copy.work.privateLabel} />
         <section className="work-group">
           <div className="section-heading-row">
             <div className="section-heading-copy">
@@ -630,6 +637,7 @@ export async function WritingPage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
+        <SectionRule label={copy.writing.featuredLabel} />
         <section className="section-block section-block-editorial">
           <div className="section-heading-row">
             <div>
@@ -699,6 +707,7 @@ export async function WritingPage({ locale }: { locale: Locale }) {
           ))}
         </section>
 
+        <SectionRule label={copy.writing.ledgerLabel} />
         <section className="section-block section-block-editorial">
           <div className="section-heading-row">
             <div>
@@ -797,6 +806,7 @@ export async function ResumePage({ locale }: { locale: Locale }) {
           </aside>
         </section>
 
+        <SectionRule label={copy.resume.specialtiesLabel} />
         <section className="resume-feature-grid">
           <article className="paper-panel resume-panel">
             <div className="resume-panel__header">
@@ -837,6 +847,7 @@ export async function ResumePage({ locale }: { locale: Locale }) {
           </article>
         </section>
 
+        <SectionRule label={copy.resume.stackLabel} />
         <section className="section-block section-block-editorial">
           <div className="section-heading-row">
             <div className="section-heading-copy">
@@ -860,6 +871,7 @@ export async function ResumePage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <SectionRule label={copy.resume.readFirstLabel} />
         <section className="section-block section-block-editorial">
           <div className="section-heading-row">
             <div className="section-heading-copy">
@@ -905,6 +917,7 @@ export async function ResumePage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <SectionRule label={copy.resume.closingLabel} />
         <section className="resume-closing">
           <article className="paper-panel paper-panel-accent resume-closing__copy">
             <p className="section-label">{copy.resume.closingLabel}</p>

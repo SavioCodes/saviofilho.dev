@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Fraunces, IBM_Plex_Mono } from "next/font/google";
+import { DM_Sans, IBM_Plex_Mono, Instrument_Serif } from "next/font/google";
 
 import "@/app/globals.css";
 
@@ -7,22 +7,26 @@ import { DocumentLocale } from "@/components/chrome/document-locale";
 import { getSiteCopy } from "@/config/site";
 import { absoluteUrl, siteUrl, toSitePath } from "@/lib/site-config";
 
-const displayFont = Fraunces({
+const displayFont = Instrument_Serif({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["500", "600", "700"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const bodyFont = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-body",
+  display: "swap",
 });
 
 const monoFont = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono",
+  display: "swap",
 });
 
 const defaultCopy = getSiteCopy("en");

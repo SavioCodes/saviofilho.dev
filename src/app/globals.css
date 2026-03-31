@@ -403,7 +403,7 @@ img {
   color: var(--text);
   font-family: var(--font-display), serif;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.02em;
   line-height: 1.04;
 }
@@ -732,7 +732,7 @@ img {
 .detail-copy h1,
 .resume-hero__copy h1 {
   font-family: var(--font-display), serif;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 0.96;
   letter-spacing: -0.035em;
   font-size: clamp(3rem, 6vw, 5.4rem);
@@ -932,6 +932,7 @@ img {
   color: var(--accent-warm);
   font-family: var(--font-display), serif;
   font-size: clamp(1.95rem, 3vw, 2.45rem);
+  font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.04em;
 }
@@ -1083,6 +1084,29 @@ img {
   font-variant-numeric: tabular-nums;
 }
 
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  margin-top: 0.15rem;
+}
+
+.section-rule::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.section-rule__label {
+  color: var(--c-text-3);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .section-label,
 .micro-label {
   margin-bottom: 0.9rem;
@@ -1166,7 +1190,7 @@ img {
 .card h3,
 .next-card h2 {
   font-family: var(--font-display), serif;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.025em;
   line-height: 1.04;
 }
@@ -1281,7 +1305,7 @@ img {
 }
 
 .text-link::after {
-  content: "→";
+  content: "->";
   transition: transform 160ms ease;
 }
 
@@ -1327,32 +1351,55 @@ img {
 .folio-list,
 .notes-ledger {
   display: grid;
-  gap: 0.8rem;
-  border-top: 1px solid rgba(49, 41, 31, 0.16);
-  padding-top: 0.55rem;
+  gap: 0.9rem;
 }
 
 .work-group {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.75rem;
 }
 
 .case-index__item,
 .folio-entry,
 .notes-ledger__row {
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: 1rem;
-  padding: 1.25rem 1.15rem;
+  padding: 1.35rem 1.2rem;
   border: 1px solid rgba(49, 41, 31, 0.16);
-  border-radius: 1rem;
+  border-radius: 0.95rem;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 255, 255, 0)),
-    rgba(251, 246, 236, 0.86);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0)),
+    rgba(248, 242, 234, 0.88);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.case-index__item::before,
+.folio-entry::before,
+.notes-ledger__row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-warm), rgba(200, 82, 42, 0.02));
+}
+
+.case-index__item:hover,
+.folio-entry:hover,
+.notes-ledger__row:hover {
+  transform: translateY(-2px);
+  border-color: rgba(112, 47, 32, 0.24);
+  box-shadow: var(--shadow);
 }
 
 .case-index__item,
 .folio-entry {
-  grid-template-columns: 4rem minmax(150px, 0.75fr) minmax(0, 1.6fr) auto;
+  grid-template-columns: 3.5rem minmax(160px, 0.7fr) minmax(0, 1.7fr) auto;
 }
 
 .case-index__item-public,
@@ -1374,7 +1421,17 @@ img {
 
 .case-index__number,
 .folio-entry__number,
-.notes-ledger__index,
+.notes-ledger__index {
+  color: var(--accent-warm);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  align-self: start;
+}
+
 .bet-card__index {
   color: var(--accent-warm);
   font-family: var(--font-display), serif;
@@ -1389,15 +1446,16 @@ img {
 .notes-ledger__meta {
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
+  font-size: 0.74rem;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
 .case-index__meta,
 .folio-entry__meta {
-  display: grid;
-  align-content: start;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
   gap: 0.55rem;
 }
 
@@ -1405,22 +1463,22 @@ img {
 .folio-entry__body,
 .notes-ledger__body {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.78rem;
 }
 
 .case-index__body h3,
 .folio-entry__body h2,
 .notes-ledger__body h2 {
   font-family: var(--font-display), serif;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.02;
   letter-spacing: -0.03em;
 }
 
 .case-index__body h3,
 .folio-entry__body h2 {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-  max-width: 14ch;
+  font-size: clamp(1.65rem, 2.7vw, 2.2rem);
+  max-width: 15ch;
 }
 
 .notes-ledger__body h2 {
@@ -1432,9 +1490,10 @@ img {
 .folio-entry__links,
 .notes-ledger__meta {
   display: grid;
-  align-content: end;
+  align-content: start;
   justify-items: end;
   gap: 0.7rem;
+  min-width: 9rem;
 }
 
 .folio-entry__links a:last-child {
@@ -1484,6 +1543,7 @@ img {
 .featured-note-card strong {
   font-family: var(--font-display), serif;
   font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  font-weight: 400;
   line-height: 1.04;
   letter-spacing: -0.03em;
 }
@@ -1531,7 +1591,7 @@ img {
 .bet-card h3 {
   font-family: var(--font-display), serif;
   font-size: 1.55rem;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.05;
 }
 
@@ -1579,6 +1639,7 @@ img {
   color: var(--accent-warm);
   font-family: var(--font-display), serif;
   font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.04em;
 }
@@ -1599,6 +1660,7 @@ img {
 .atlas-card__body h3 {
   font-family: var(--font-display), serif;
   font-size: clamp(1.55rem, 2.4vw, 2rem);
+  font-weight: 400;
   line-height: 1.03;
   letter-spacing: -0.03em;
 }
@@ -1692,6 +1754,7 @@ img {
   font-size: clamp(1.9rem, 3vw, 2.6rem);
   line-height: 1.04;
   letter-spacing: -0.03em;
+  font-weight: 400;
   max-width: 15ch;
 }
 
@@ -1796,6 +1859,7 @@ img {
   color: var(--accent-warm);
   font-family: var(--font-display), serif;
   font-size: clamp(1.65rem, 2.6vw, 2.1rem);
+  font-weight: 400;
   line-height: 0.94;
   letter-spacing: -0.04em;
 }
@@ -1808,6 +1872,7 @@ img {
 .resume-case-card__body h3 {
   font-family: var(--font-display), serif;
   font-size: clamp(1.55rem, 2.5vw, 2rem);
+  font-weight: 400;
   line-height: 1.04;
   letter-spacing: -0.03em;
 }
@@ -1934,7 +1999,7 @@ img {
 .detail-dossier__quote h2 {
   font-family: var(--font-display), serif;
   font-size: clamp(1.75rem, 2.8vw, 2.35rem);
-  font-weight: 600;
+  font-weight: 400;
   line-height: 1.06;
   letter-spacing: -0.03em;
 }
@@ -1993,7 +2058,7 @@ img {
 .mdx-heading,
 .rich-article h2 {
   font-family: var(--font-display), serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: clamp(1.9rem, 3vw, 2.7rem);
   line-height: 1.05;
   margin-top: 0.6rem;
