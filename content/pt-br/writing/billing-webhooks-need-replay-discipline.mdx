@@ -1,6 +1,6 @@
 ---
 title: "Webhooks de billing precisam de disciplina de replay"
-summary: "A parte dificil de billing quase nunca e o caminho feliz. E replay seguro, idempotencia e manter transicao de estado boring sob pressao."
+summary: "A parte difícil de billing quase nunca é o caminho feliz. É replay seguro, idempotência e manter transição de estado boring sob pressão."
 order: 6
 publishedAt: "2026-03-14"
 tags:
@@ -13,21 +13,21 @@ featured: true
 
 ## Onde billing fica perigoso
 
-O primeiro pagamento bem-sucedido quase sempre e a parte facil. O dificil esta em volta: entrega duplicada, evento atrasado, retry e estado do produto derivando porque o handler nao foi estrito o bastante.
+O primeiro pagamento bem-sucedido quase sempre é a parte fácil. O difícil está em volta: entrega duplicada, evento atrasado, retry e estado do produto derivando porque o handler não foi estrito o bastante.
 
 ## O que eu procuro
 
-Codigo de webhook de billing deveria deixar replay seguro evidente:
+Código de webhook de billing deveria deixar replay seguro evidente:
 
 - escrita idempotente,
 - log de eventos,
-- identificadores estaveis,
-- e transicoes estreitas para o estado da assinatura.
+- identificadores estáveis,
+- e transições estreitas para o estado da assinatura.
 
 ## Por que isso importa
 
-Quando dinheiro entra na historia, ambiguidade escondida fica cara. Disciplina de replay e um dos sinais mais claros de que o produto aguenta trafego real, nao so trafego de demo.
+Quando dinheiro entra na história, ambiguidade escondida fica cara. Disciplina de replay é um dos sinais mais claros de que o produto aguenta tráfego real, não só tráfego de demo.
 
-## Sinal de portfolio
+## Sinal de portfólio
 
-Eu quero que repositorios SaaS no portfolio mostrem que billing nao e so integracao. E uma fronteira operacional que precisa de tratamento cuidadoso e boring.
+Eu quero que repositórios SaaS no portfólio mostrem que billing não é só integração. É uma fronteira operacional que precisa de tratamento cuidadoso e boring.

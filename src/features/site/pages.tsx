@@ -151,42 +151,62 @@ export async function HomePage({ locale }: { locale: Locale }) {
     <SiteShell locale={locale}>
       <div className="page-section-stack home-stack">
         <section className="home-masthead">
-          <div className="home-masthead__copy">
-            <p className="eyebrow">{copy.home.eyebrow}</p>
-            <p className="home-kicker">{copy.home.kicker}</p>
-            <h1>{copy.home.title}</h1>
-            <p className="lead">{copy.home.lead}</p>
-            <div className="hero-actions">
-              <Link className="button-primary" href={localizePath(locale, "/work")}>
-                {copy.home.primaryCta}
-              </Link>
-              <Link className="button-secondary" href={localizePath(locale, "/resume")}>
-                {copy.home.secondaryCta}
-              </Link>
+          <article className="paper-panel paper-panel-cover home-cover">
+            <div className="home-cover__header">
+              <p className="eyebrow">{copy.home.eyebrow}</p>
+              <p className="home-kicker">{copy.home.kicker}</p>
             </div>
-          </div>
 
-          <aside className="home-masthead__rail">
-            <article className="paper-panel paper-panel-accent home-command-sheet">
-              <div className="home-command-sheet__section">
-                <p className="micro-label">{copy.home.currentFocusTitle}</p>
-                <ul className="dossier-list">
-                  {copy.home.currentFocus.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+            <div className="home-cover__body">
+              <h1>{copy.home.title}</h1>
+              <p className="lead">{copy.home.lead}</p>
+            </div>
+
+            <div className="home-cover__footer">
+              <div className="hero-actions">
+                <Link className="button-primary" href={localizePath(locale, "/work")}>
+                  {copy.home.primaryCta}
+                </Link>
+                <Link className="button-secondary" href={localizePath(locale, "/resume")}>
+                  {copy.home.secondaryCta}
+                </Link>
               </div>
 
-              <div className="home-command-sheet__section home-command-sheet__section--facts">
-                <p className="micro-label">{copy.home.insideTitle}</p>
-                <div className="fact-list">
-                  {notebookFacts.map((fact) => (
-                    <div className="fact-list__item" key={fact.label}>
-                      <span>{fact.label}</span>
-                      <strong>{fact.value}</strong>
-                    </div>
-                  ))}
-                </div>
+              <div className="home-cover__proof">
+                {copy.home.proofMarks.slice(0, 2).map((mark, index) => (
+                  <div className="home-cover__proof-item" key={mark}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <p>{mark}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
+
+          <aside className="home-masthead__rail">
+            <article className="paper-panel paper-panel-accent home-focus-sheet">
+              <div className="home-focus-sheet__header">
+                <p className="micro-label">{copy.home.currentFocusTitle}</p>
+                <span className="home-focus-sheet__stamp">
+                  {locale === "pt-br" ? "Agora" : "Now"}
+                </span>
+              </div>
+              <ul className="dossier-list">
+                {copy.home.currentFocus.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="paper-panel home-fact-sheet">
+              <p className="micro-label">{copy.home.insideTitle}</p>
+              <div className="fact-list">
+                {notebookFacts.map((fact) => (
+                  <div className="fact-list__item" key={fact.label}>
+                    <span>{fact.label}</span>
+                    <strong>{fact.value}</strong>
+                  </div>
+                ))}
               </div>
             </article>
           </aside>

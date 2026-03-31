@@ -12,11 +12,16 @@ type SiteShellProps = {
 
 export function SiteShell({ locale, children }: SiteShellProps) {
   const copy = getSiteCopy(locale);
+  const sectionCountLabel = `${copy.navigation.length} ${locale === "pt-br" ? "seções" : "sections"}`;
+  const utilityLabel = locale === "pt-br" ? "Sinal do portfólio" : "Portfolio signal";
 
   return (
     <div className="site-shell">
       <div className="site-utility">
-        <p className="site-utility__line">{copy.utilityLine}</p>
+        <div className="site-utility__copy">
+          <span className="site-utility__eyebrow">{utilityLabel}</span>
+          <p className="site-utility__line">{copy.utilityLine}</p>
+        </div>
         <div className="site-utility__actions">
           <span className="site-utility__status">{copy.utilityStatus}</span>
           <span className="site-utility__divider" aria-hidden="true"></span>
@@ -26,18 +31,23 @@ export function SiteShell({ locale, children }: SiteShellProps) {
 
       <header className="site-header">
         <div className="site-header__identity">
-          <Link className="site-mark" href={localizePath(locale, "/")}>
-            <span className="site-mark-monogram">SF</span>
-            <span className="site-mark-copy">
-              <strong>Savio Filho</strong>
-              <span className="site-mark-role">{copy.roleLabel}</span>
-            </span>
-          </Link>
-          <p className="site-header__note">{copy.headerNote}</p>
+          <article className="site-identity-sheet">
+            <Link className="site-mark" href={localizePath(locale, "/")}>
+              <span className="site-mark-monogram">SF</span>
+              <span className="site-mark-copy">
+                <strong>Savio Filho</strong>
+                <span className="site-mark-role">{copy.roleLabel}</span>
+              </span>
+            </Link>
+            <p className="site-header__note">{copy.headerNote}</p>
+          </article>
         </div>
 
         <div className="site-header__panel">
-          <p className="micro-label">{copy.headerLabel}</p>
+          <div className="site-header__panel-top">
+            <p className="micro-label">{copy.headerLabel}</p>
+            <span className="site-header__panel-count">{sectionCountLabel}</span>
+          </div>
           <nav className="site-nav" aria-label="Primary">
             {copy.navigation.map((item, index) => (
               <Link key={item.href} className="site-nav__item" href={localizePath(locale, item.href)}>

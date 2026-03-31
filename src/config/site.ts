@@ -565,25 +565,25 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     },
   },
   "pt-br": {
-    utilityLine: "Brasil / sistemas de produto backend / nativo em PT-BR / portfolio bilingue",
+    utilityLine: "Brasil / sistemas de produto backend / nativo em PT-BR / portfólio bilíngue",
     utilityStatus: "Aberto a vagas de engenharia de software",
     roleLabel: "Engenheiro de produto backend",
     headerLabel: "Mapa do site",
     headerNote:
-      "Estudos de caso, notas de sistema e encaixe de vaga organizados na mesma superficie editorial.",
+      "Estudos de caso, notas de sistema e encaixe de vaga organizados na mesma superfície editorial.",
     navigation: [
-      { href: "/", label: "Inicio", blurb: "Capa" },
+      { href: "/", label: "Início", blurb: "Capa" },
       { href: "/work", label: "Projetos", blurb: "Sistemas" },
       { href: "/writing", label: "Textos", blurb: "Notas" },
       { href: "/resume", label: "Resumo", blurb: "Vaga" },
     ],
     footer: {
-      eyebrow: "Colofao",
-      stamp: "Superficie do portfolio",
+      eyebrow: "Colofão",
+      stamp: "Superfície do portfólio",
       copy:
-        "Construido como um indice editorial bilingue de estudos de caso, notas e sistemas. Limites claros primeiro, brilho depois.",
-      surfaceLabel: "O que este rodape faz",
-      surfaceValue: "Ele mantem portfolio, GitHub e leitura bilingue alinhados na mesma superficie.",
+        "Construído como um índice editorial bilíngue de estudos de caso, notas e sistemas. Limites claros primeiro, brilho depois.",
+      surfaceLabel: "O que este rodapé faz",
+      surfaceValue: "Ele mantém portfólio, GitHub e leitura bilíngue alinhados na mesma superfície.",
       contactLabel: "Caminho direto",
       contactValue: "Email, GitHub e LinkedIn continuam a um clique.",
       connectTitle: "Contato",
@@ -592,30 +592,30 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       openLabel: "Abrir",
     },
     home: {
-      eyebrow: "Savio Filho / Portfolio / 2026",
+      eyebrow: "Savio Filho / Portfólio / 2026",
       kicker: "Engenheiro de produto backend no Brasil",
       title:
-        "Eu construo sistemas de produto com caminhos de aprovacao, operacao previsivel e prova tecnica visivel.",
+        "Eu construo sistemas de produto com caminhos de aprovação, operação previsível e prova técnica visível.",
       lead:
-        "O trabalho aqui gira em torno de camadas de confianca, isolamento entre tenants, ciclos de webhook, pipelines de upload, estados de cobranca, limites de custo para IA e documentacao que mantem esses sistemas compreensiveis depois do lancamento.",
+        "O trabalho aqui gira em torno de camadas de confiança, isolamento entre tenants, ciclos de webhook, pipelines de upload, estados de cobrança, limites de custo para IA e documentação que mantém esses sistemas compreensíveis depois do lançamento.",
       primaryCta: "Ver estudos de caso",
       secondaryCta: "Abrir resumo",
       currentFocusTitle: "Foco atual",
       currentFocus: [
-        "Fluxos de aprovacao e execucao que tornam acoes com IA mais seguras.",
-        "Sistemas com billing, auth e filas que continuam saudaveis depois do dia um.",
-        "Escrita de portfolio que mostra restricoes, falhas provaveis e detalhes para operadores.",
+        "Fluxos de aprovação e execução que tornam ações com IA mais seguras.",
+        "Sistemas com billing, auth e filas que continuam saudáveis depois do dia um.",
+        "Escrita de portfólio que mostra restrições, falhas prováveis e detalhes para operadores.",
       ],
-      insideTitle: "O que existe neste portfolio",
+      insideTitle: "O que existe neste portfólio",
       dispatchLabel: "Comece por aqui",
-      dispatchTitle: "Leia este portfolio como um dossier operacional.",
+      dispatchTitle: "Leia este portfólio como um dossier operacional.",
       dispatchBody:
-        "O caminho mais rapido nao e cronologico. Comece pelos sistemas, depois olhe as notas por tras das decisoes e termine no resumo tecnico e de disponibilidade.",
+        "O caminho mais rápido não é cronológico. Comece pelos sistemas, depois olhe as notas por trás das decisões e termine no resumo técnico e de disponibilidade.",
       dispatchRoutes: [
         {
           href: "/work",
           title: "Inspecione os sistemas",
-          body: "Comece pelos repos publicos e depois compare com os casos privados que explicam fluxos e fronteiras mais profundas.",
+          body: "Comece pelos repos públicos e depois compare com os casos privados que explicam fluxos e fronteiras mais profundas.",
           cta: "Abrir projetos",
         },
         {
@@ -631,44 +631,44 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
           cta: "Abrir resumo",
         },
       ],
-      readingRulesLabel: "Logica de leitura",
-      readingRulesTitle: "Como esta superficie e curada",
+      readingRulesLabel: "Lógica de leitura",
+      readingRulesTitle: "Como esta superfície é curada",
       readingRules: [
-        "Repos publicos so continuam visiveis quando README, setup e evidencia tecnica se sustentam em inspecao real.",
-        "Estudos de caso privados ainda precisam explicar fluxo, limites do sistema e impacto operacional de forma util.",
-        "Os textos continuam curtos e concretos para o site parecer documentacao de campo, nao conteudo generico.",
+        "Repos públicos só continuam visíveis quando README, setup e evidência técnica se sustentam em inspeção real.",
+        "Estudos de caso privados ainda precisam explicar fluxo, limites do sistema e impacto operacional de forma útil.",
+        "Os textos continuam curtos e concretos para o site parecer documentação de campo, não conteúdo genérico.",
       ],
       factLabels: {
-        publicSurface: "Superficie publica de engenharia",
+        publicSurface: "Superfície pública de engenharia",
         privateSurface: "Sistemas privados ainda documentados",
         writing: "Ritmo de escrita",
       },
       proofMarks: [
-        "Runbooks, checklists de QA e notas de arquitetura ficam visiveis.",
-        "Repositorios publicos vem com testes, build e trade-offs explicitos.",
-        "Sistemas privados ainda mostram fluxo, restricoes e trilha de decisao.",
+        "Runbooks, checklists de QA e notas de arquitetura ficam visíveis.",
+        "Repositórios públicos vêm com testes, build e trade-offs explícitos.",
+        "Sistemas privados ainda mostram fluxo, restrições e trilha de decisão.",
       ],
       whyExistsLabel: "Por que este site existe",
-      whyExistsTitle: "Isto e um dossier de campo, nao uma parede de screenshots.",
+      whyExistsTitle: "Isto é um dossier de campo, não uma parede de screenshots.",
       whyExistsBody:
-        "O GitHub e onde eu guardo o codigo. Este site e onde eu explico o que o sistema faz, onde ele pode quebrar e por que as decisoes importam quando outra pessoa precisa manter ou operar o projeto.",
-      principlesLabel: "Principios de operacao",
+        "O GitHub é onde eu guardo o código. Este site é onde eu explico o que o sistema faz, onde ele pode quebrar e por que as decisões importam quando outra pessoa precisa manter ou operar o projeto.",
+      principlesLabel: "Princípios de operação",
       selectedWorkLabel: "Projetos selecionados",
-      selectedWorkTitle: "Sistemas principais com limites tecnicos claros",
+      selectedWorkTitle: "Sistemas principais com limites técnicos claros",
       selectedWorkCta: "Ver todos os casos",
-      privateWorkLabel: "Projetos privados, ainda legiveis",
-      privateWorkTitle: "O codigo pode ser privado. O raciocinio do sistema nao.",
+      privateWorkLabel: "Projetos privados, ainda legíveis",
+      privateWorkTitle: "O código pode ser privado. O raciocínio do sistema não.",
       privateWorkBody:
-        "Os projetos privados aqui continuam mostrando limites de fluxo, restricoes operacionais e trade-offs reais. VOWGRID, AcessoQR e ORCEI ainda ajudam a explicar como eu penso mesmo com o codigo fechado.",
-      surfaceLabel: "Superficie publica no GitHub",
+        "Os projetos privados aqui continuam mostrando limites de fluxo, restrições operacionais e trade-offs reais. VOWGRID, AcessoQR e ORCEI ainda ajudam a explicar como eu penso mesmo com o código fechado.",
+      surfaceLabel: "Superfície pública no GitHub",
       surfaceTitle:
-        "Os repositorios publicos carregam a primeira prova. Os casos privados carregam a historia mais profunda do sistema.",
+        "Os repositórios públicos carregam a primeira prova. Os casos privados carregam a história mais profunda do sistema.",
       surfaceBody:
-        "Eu mantenho o lado publico enxuto de proposito. Cada repo precisa ter prova executavel, docs limpas e um sinal tecnico ou de produto crivel antes de continuar visivel.",
+        "Eu mantenho o lado público enxuto de propósito. Cada repo precisa ter prova executável, docs limpas e um sinal técnico ou de produto crível antes de continuar visível.",
       writingLabel: "Textos",
-      writingTitle: "Notas curtas escritas como relatorios de engenharia.",
+      writingTitle: "Notas curtas escritas como relatórios de engenharia.",
       writingBody:
-        "A area de escrita agora fica organizada pelos limites de sistema que mais importam para mim: guardrails de IA, operacao SaaS, contratos de backend e notas de construcao.",
+        "A área de escrita agora fica organizada pelos limites de sistema que mais importam para mim: guardrails de IA, operação SaaS, contratos de backend e notas de construção.",
       writingCta: "Ver todos os textos",
       systemsLabel: "Mapa operacional",
       systemsTitle: "Os sistemas que eu quero que um recrutador entenda primeiro",
@@ -677,7 +677,7 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
           tag: "Flagship privado",
           title: "VOWGRID",
           summary:
-            "VOWGRID agora aparece como estudo de caso privado com foco em simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback.",
+            "VOWGRID agora aparece como estudo de caso privado com foco em simulação, avaliação de política, aprovações, comprovantes de execução e visibilidade de rollback.",
           href: "/work/vowgrid",
           cta: "Abrir caso do VOWGRID",
           diagram: [
@@ -687,23 +687,23 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
           ],
         },
         {
-          tag: "Repo publico",
+          tag: "Repo público",
           title: "OnboardPulse",
           summary:
-            "OnboardPulse mostra isolamento entre tenants, cobranca, jobs de follow-up, uploads e limites de custo para IA.",
+            "OnboardPulse mostra isolamento entre tenants, cobrança, jobs de follow-up, uploads e limites de custo para IA.",
           href: "/work/onboardpulse",
           cta: "Abrir OnboardPulse",
           diagram: [
             { step: "01", label: "Tenant" },
-            { step: "02", label: "Cobranca" },
+            { step: "02", label: "Cobrança" },
             { step: "03", label: "Follow-up" },
           ],
         },
         {
-          tag: "Repo publico",
+          tag: "Repo público",
           title: "MailSieve",
           summary:
-            "MailSieve e os textos de apoio mostram como produtos pequenos ainda precisam de contrato, verificacao e disciplina operacional.",
+            "MailSieve e os textos de apoio mostram como produtos pequenos ainda precisam de contrato, verificação e disciplina operacional.",
           href: "/work/mailsieve",
           cta: "Abrir MailSieve",
           diagram: [
@@ -713,10 +713,10 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
           ],
         },
         {
-          tag: "Repo publico",
+          tag: "Repo público",
           title: "Neural Network From Scratch",
           summary:
-            "O repositorio de rede neural continua visivel porque mostra avaliacao deterministica, logs, testes e um pipeline de estudo reproduzivel.",
+            "O repositório de rede neural continua visível porque mostra avaliação determinística, logs, testes e um pipeline de estudo reproduzível.",
           href: "/work/rede-neural-do-zero",
           cta: "Abrir caso da rede",
           diagram: [
@@ -729,62 +729,62 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
     },
     work: {
       eyebrow: "Projetos",
-      title: "Seis sistemas que se sustentam em avaliacao tecnica.",
+      title: "Seis sistemas que se sustentam em avaliação técnica.",
       lead:
-        "Tres sao repositorios publicos com prova de engenharia reproduzivel. Tres continuam privados, mas os casos ainda mostram arquitetura, restricoes, fluxos operacionais e o motivo de cada decisao.",
-      statsLabel: "Notas do indice",
+        "Três são repositórios públicos com prova de engenharia reproduzível. Três continuam privados, mas os casos ainda mostram arquitetura, restrições, fluxos operacionais e o motivo de cada decisão.",
+      statsLabel: "Notas do índice",
       stats: {
-        publicRepos: "Repos publicos",
+        publicRepos: "Repos públicos",
         privateSystems: "Sistemas privados",
-        rule: "Regra de selecao",
+        rule: "Regra de seleção",
       },
-      repoLabel: "Repositorio publico",
+      repoLabel: "Repositório público",
       privateLabel: "Estudo de caso privado",
-      publicTitle: "Repositorios publicos com prova reproduzivel",
+      publicTitle: "Repositórios públicos com prova reproduzível",
       publicBody:
-        "Estes sao os repos que eu posso colocar primeiro na frente de um recrutador ou de outro engenheiro: cada um tem escopo claro, evidencia tecnica e uma superficie de repo que vale a inspecao.",
-      privateTitle: "Estudos de caso privados com explicacao publica suficiente",
+        "Estes são os repos que eu posso colocar primeiro na frente de um recrutador ou de outro engenheiro: cada um tem escopo claro, evidência técnica e uma superfície de repo que vale a inspeção.",
+      privateTitle: "Estudos de caso privados com explicação pública suficiente",
       privateBody:
-        "Estes sistemas continuam fechados por enquanto, mas os casos ainda documentam o essencial: formato do fluxo, fronteiras de confianca, preocupacoes operacionais e os trade-offs que moldaram o produto.",
+        "Estes sistemas continuam fechados por enquanto, mas os casos ainda documentam o essencial: formato do fluxo, fronteiras de confiança, preocupações operacionais e os trade-offs que moldaram o produto.",
       readCase: "Ler estudo de caso",
-      openRepo: "Repositorio",
+      openRepo: "Repositório",
       repoPrivate: "Repo continua privado",
     },
     writing: {
       eyebrow: "Textos",
       title: "Notas organizadas pelos limites de sistema que importam em produto real.",
       lead:
-        "Isto nao e um feed generico de artigos. E um indice editorial sobre contratos de backend, operacao SaaS, guardrails de IA e decisoes de construcao por tras do portfolio.",
+        "Isto não é um feed genérico de artigos. É um índice editorial sobre contratos de backend, operação SaaS, guardrails de IA e decisões de construção por trás do portfólio.",
       ruleLabel: "Regra dos textos",
       ruleBody:
-        "Cada nota precisa esclarecer uma decisao ou restricao que eu realmente considero importante em produtos: dinheiro, operacao, interfaces e onde IA ajuda sem dominar o produto.",
+        "Cada nota precisa esclarecer uma decisão ou restrição que eu realmente considero importante em produtos: dinheiro, operação, interfaces e onde IA ajuda sem dominar o produto.",
       featuredLabel: "Textos em destaque",
-      featuredTitle: "Tres notas para ler primeiro",
+      featuredTitle: "Três notas para ler primeiro",
       themeLabel: "Tema",
       themes: {
         "ai-guardrails": {
           title: "Guardrails de IA",
           description:
-            "Limites de custo, caminhos de aprovacao, simulacao e as fronteiras de produto que tornam IA mais segura de colocar no ar.",
+            "Limites de custo, caminhos de aprovação, simulação e as fronteiras de produto que tornam IA mais segura de colocar no ar.",
         },
         "saas-ops": {
-          title: "Operacao SaaS",
+          title: "Operação SaaS",
           description:
-            "Billing, separacao entre tenants, disciplina de replay e os detalhes operacionais que fazem SaaS pequeno parecer serio.",
+            "Billing, separação entre tenants, disciplina de replay e os detalhes operacionais que fazem SaaS pequeno parecer sério.",
         },
         "backend-systems": {
           title: "Sistemas de Backend",
           description:
-            "Contratos, filas, formato de resposta e os habitos que mantem APIs legiveis depois da primeira release.",
+            "Contratos, filas, formato de resposta e os hábitos que mantêm APIs legíveis depois da primeira release.",
         },
         "builder-notes": {
-          title: "Notas de Construcao",
+          title: "Notas de Construção",
           description:
-            "Notas curtas sobre posicionamento de portfolio, estudos de caso e como apresentar trabalho tecnico sem esconder trade-offs.",
+            "Notas curtas sobre posicionamento de portfólio, estudos de caso e como apresentar trabalho técnico sem esconder trade-offs.",
         },
       },
       ledgerLabel: "Arquivo",
-      ledgerTitle: "Todos os textos em ordem cronologica",
+      ledgerTitle: "Todos os textos em ordem cronológica",
       readNote: "Ler nota",
       minutes: "min de leitura",
     },
@@ -793,23 +793,23 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       title: "Savio Filho",
       headline: "Engenheiro de software para sistemas de produto backend, SaaS e IA aplicada.",
       lead:
-        "Meu melhor encaixe esta em produtos que precisam de backend claro, operacao previsivel, contratos confiaveis e documentacao que continue util depois da primeira release.",
+        "Meu melhor encaixe está em produtos que precisam de backend claro, operação previsível, contratos confiáveis e documentação que continue útil depois da primeira release.",
       summary:
-        "Eu sou mais util em sistemas que nao vivem so do caminho feliz: billing, auth, filas, uploads, isolamento entre tenants, trilhas de aprovacao e features com IA que precisam de limite de custo e guardrails legiveis. Tambem me importo com a superficie do repositorio, com a qualidade do handoff e com a parte chata que ajuda outro engenheiro ou operador a entender o produto rapido.",
+        "Eu sou mais útil em sistemas que não vivem só do caminho feliz: billing, auth, filas, uploads, isolamento entre tenants, trilhas de aprovação e features com IA que precisam de limite de custo e guardrails legíveis. Também me importo com a superfície do repositório, com a qualidade do handoff e com a parte chata que ajuda outro engenheiro ou operador a entender o produto rápido.",
       primaryCta: "Ver estudos de caso",
       secondaryCta: "Abrir GitHub",
       availabilityLabel: "Disponibilidade",
       availability:
-        "Aberto a vagas de Software Engineer com componente forte de backend ou sistemas de produto, remoto ou hibrido.",
+        "Aberto a vagas de Software Engineer com componente forte de backend ou sistemas de produto, remoto ou híbrido.",
       availabilityNote:
-        "Eu costumo render mais em times que valorizam clareza de sistema, comunicacao escrita e ownership alem da entrega inicial.",
+        "Eu costumo render mais em times que valorizam clareza de sistema, comunicação escrita e ownership além da entrega inicial.",
       quickFactsLabel: "Encaixe",
       quickFacts: [
-        { label: "Base", value: "Brasil / remoto ou hibrido" },
-        { label: "Idioma", value: "PT-BR nativo / comunicacao tecnica em English" },
+        { label: "Base", value: "Brasil / remoto ou híbrido" },
+        { label: "Idioma", value: "PT-BR nativo / comunicação técnica em inglês" },
         {
           label: "Melhor uso",
-          value: "Sistemas de produto backend, operacao SaaS e fluxos com IA",
+          value: "Sistemas de produto backend, operação SaaS e fluxos com IA",
         },
       ],
       specialtiesLabel: "Melhor encaixe",
@@ -820,44 +820,44 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
         {
           title: "Sistemas de produto backend",
           body:
-            "APIs, camadas de servico, fluxos de aprovacao e superficies de repositorio que continuam fazendo sentido depois da entrega inicial.",
+            "APIs, camadas de serviço, fluxos de aprovação e superfícies de repositório que continuam fazendo sentido depois da entrega inicial.",
         },
         {
-          title: "Operacao SaaS de verdade",
+          title: "Operação SaaS de verdade",
           body:
-            "Billing, auth, jobs em fila, isolamento entre tenants e o detalhe operacional que faz um produto pequeno parecer serio.",
+            "Billing, auth, jobs em fila, isolamento entre tenants e o detalhe operacional que faz um produto pequeno parecer sério.",
         },
         {
           title: "IA aplicada com limite",
           body:
-            "Features com IA usando teto de custo, fallback previsivel, passos auditaveis e decisoes que nao tiram o produto do controle de quem opera.",
+            "Features com IA usando teto de custo, fallback previsível, passos auditáveis e decisões que não tiram o produto do controle de quem opera.",
         },
       ],
       capabilitiesLabel: "Capacidades",
       capabilitiesTitle: "O que eu costumo conseguir assumir bem",
       capabilitiesBody:
-        "O tipo de escopo que costuma fazer sentido me entregar quando o problema pede execucao com pensamento de sistema.",
+        "O tipo de escopo que costuma fazer sentido me entregar quando o problema pede execução com pensamento de sistema.",
       capabilities: [
         {
-          title: "Contratos, APIs e integracoes",
+          title: "Contratos, APIs e integrações",
           body:
-            "Design de API, autenticacao, webhooks, integracoes de billing e fronteiras entre servicos com falhas mais legiveis.",
+            "Design de API, autenticação, webhooks, integrações de billing e fronteiras entre serviços com falhas mais legíveis.",
         },
         {
           title: "Jobs, pipelines e comportamento operacional",
           body:
-            "Filas, tarefas assincronas, pipelines de upload, checklists de release, runbooks e pontos de inspecao para manter o sistema previsivel.",
+            "Filas, tarefas assíncronas, pipelines de upload, checklists de release, runbooks e pontos de inspeção para manter o sistema previsível.",
         },
         {
-          title: "Documentacao e handoff tecnico",
+          title: "Documentação e handoff técnico",
           body:
-            "Notas de arquitetura, READMEs, guias de deploy, estudos de caso e organizacao de repositorio que ajudam outra pessoa a entrar em contexto mais rapido.",
+            "Notas de arquitetura, READMEs, guias de deploy, estudos de caso e organização de repositório que ajudam outra pessoa a entrar em contexto mais rápido.",
         },
       ],
       stackLabel: "Stack",
       stackTitle: "Ferramentas e camadas em que trabalho com mais conforto",
       stackBody:
-        "O foco aqui nao e volume de ferramenta. E familiaridade real com o que costuma aparecer em sistemas de produto que precisam sobreviver ao uso.",
+        "O foco aqui não é volume de ferramenta. É familiaridade real com o que costuma aparecer em sistemas de produto que precisam sobreviver ao uso.",
       stackGroups: [
         {
           title: "Linguagens e runtimes",
@@ -888,31 +888,31 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
             "Vitest e Jest",
             "pytest",
             "OpenAPI",
-            "Documentacao tecnica",
-            "Padroes de repositorio",
+            "Documentação técnica",
+            "Padrões de repositório",
           ],
         },
       ],
       readFirstLabel: "Comece por estes casos",
-      readFirstTitle: "Tres leituras que explicam melhor meu trabalho do que uma lista",
+      readFirstTitle: "Três leituras que explicam melhor meu trabalho do que uma lista",
       readFirstBody:
-        "Se eu estivesse me apresentando para um founder, recrutador ou tech lead serio, eu comecaria por estes caminhos.",
+        "Se eu estivesse me apresentando para um founder, recrutador ou tech lead sério, eu começaria por estes caminhos.",
       closingLabel: "Fechamento direto",
       closingTitle:
         "Se a vaga pede backend de produto com clareza operacional, provavelmente faz sentido conversar.",
       closingBody:
-        "O retrato mais fiel do meu trabalho esta na combinacao entre GitHub, estudos de caso e escrita tecnica. O resumo ajuda, mas a prova fica mais forte quando essas tres camadas sao lidas juntas.",
+        "O retrato mais fiel do meu trabalho está na combinação entre GitHub, estudos de caso e escrita técnica. O resumo ajuda, mas a prova fica mais forte quando essas três camadas são lidas juntas.",
       closingChecklist: [
-        "Produtos com billing, auth, filas, uploads ou automacao que precisam continuar legiveis depois do lancamento.",
-        "Times que valorizam documentacao, trade-offs explicitos e ownership alem do caminho feliz.",
-        "Ambientes remotos ou hibridos em que clareza escrita e handoff tecnico realmente contam.",
+        "Produtos com billing, auth, filas, uploads ou automação que precisam continuar legíveis depois do lançamento.",
+        "Times que valorizam documentação, trade-offs explícitos e ownership além do caminho feliz.",
+        "Ambientes remotos ou híbridos em que clareza escrita e handoff técnico realmente contam.",
       ],
       contactTitle: "Caminhos diretos",
       contactBody:
-        "Email, GitHub e LinkedIn continuam sendo as formas mais rapidas de chegar em contato e abrir mais contexto.",
+        "Email, GitHub e LinkedIn continuam sendo as formas mais rápidas de chegar em contato e abrir mais contexto.",
     },
     detail: {
-      publicRepo: "Repo publico",
+      publicRepo: "Repo público",
       privateCase: "Estudo de caso privado",
       role: "Papel",
       year: "Ano",
@@ -921,26 +921,26 @@ export const siteCopy: Record<Locale, SiteLocaleCopy> = {
       highlight: "Por que este caso importa",
       inspectFirst: "O que inspecionar primeiro",
       inspectPublic:
-        "Comece pela superficie do repositorio: README, caminho de setup, CI, docs e os blocos de evidencia que mostram que o sistema sobrevive fora do caminho feliz.",
+        "Comece pela superfície do repositório: README, caminho de setup, CI, docs e os blocos de evidência que mostram que o sistema sobrevive fora do caminho feliz.",
       inspectPrivate:
-        "Comece pela arquitetura, pelas restricoes e pelos blocos de evidencia. O codigo fica privado de proposito, entao o valor aqui esta na explicacao do sistema e nos trade-offs operacionais.",
-      openRepository: "Abrir repositorio",
-      repoPrivate: "Repositorio mantido como privado",
-      nextCase: "Proximo estudo de caso",
+        "Comece pela arquitetura, pelas restrições e pelos blocos de evidência. O código fica privado de propósito, então o valor aqui está na explicação do sistema e nos trade-offs operacionais.",
+      openRepository: "Abrir repositório",
+      repoPrivate: "Repositório mantido como privado",
+      nextCase: "Próximo estudo de caso",
       continueReading: "Continuar leitura",
       writingEyebrow: "Textos",
       theme: "Tema",
       relatedNotes: "Notas relacionadas",
       relatedNotesBody:
-        "Mais algumas notas do mesmo trilho editorial, para a area de escrita ficar organizada e coerente.",
+        "Mais algumas notas do mesmo trilho editorial, para a área de escrita ficar organizada e coerente.",
       minutes: "min de leitura",
     },
     metadata: {
       title: "Savio Filho | Engenheiro de Produto Backend",
       description:
-        "Portfolio bilingue e estudos de caso de Savio Filho, com foco em produtos backend, sistemas SaaS e IA aplicada.",
+        "Portfólio bilíngue e estudos de caso de Savio Filho, com foco em produtos backend, sistemas SaaS e IA aplicada.",
       ogDescription:
-        "Estudos de caso, escrita tecnica e sistemas de produto em camadas de confianca, operacao SaaS, automacao e IA aplicada.",
+        "Estudos de caso, escrita técnica e sistemas de produto em camadas de confiança, operação SaaS, automação e IA aplicada.",
     },
   },
 };

@@ -1,11 +1,11 @@
 ---
 title: "VOWGRID"
-summary: "Um estudo de caso privado para uma plataforma de confianca entre agentes, com simulacao, avaliacao de politica, aprovacoes, comprovantes de execucao e visibilidade de rollback."
+summary: "Um estudo de caso privado para uma plataforma de confiança entre agentes, com simulação, avaliação de política, aprovações, comprovantes de execução e visibilidade de rollback."
 order: 4
 year: "2026"
 role: "Solo builder"
-status: "Estudo de caso privado, projeto principal de sistemas de confianca"
-highlight: "O sinal central nao e so orquestrar IA. E a camada de confianca antes da execucao: propor, simular, avaliar, aprovar, executar, gerar recibo e expor rollback."
+status: "Estudo de caso privado, projeto principal de sistemas de confiança"
+highlight: "O sinal central não é só orquestrar IA. É a camada de confiança antes da execução: propor, simular, avaliar, aprovar, executar, gerar recibo e expor rollback."
 kind: "private"
 stack:
   - "Fastify"
@@ -18,30 +18,30 @@ stack:
 
 ## Contexto
 
-Eu queria um projeto que tratasse acoes disparadas por IA como um problema real de sistema, nao como um fluxo de demo. O VOWGRID virou isso: uma camada de confianca entre agentes e acoes no mundo real, com checagem de politica, aprovacao, rastreio de execucao, recibos e visibilidade de rollback. O repositorio agora fica privado enquanto a superficie do produto amadurece, mas o desenho do sistema continua forte o bastante para documentacao publica.
+Eu queria um projeto que tratasse ações disparadas por IA como um problema real de sistema, não como um fluxo de demo. O VOWGRID virou isso: uma camada de confiança entre agentes e ações no mundo real, com checagem de política, aprovação, rastreio de execução, recibos e visibilidade de rollback. O repositório agora fica privado enquanto a superfície do produto amadurece, mas o desenho do sistema continua forte o bastante para documentação pública.
 
 ## Problema
 
-A maior parte dos projetos com agentes foca no que o modelo consegue decidir. Eu quis focar no que acontece depois. Quando uma acao pode tocar um conector real, o projeto precisa de simulacao, avaliacao de politica, auditabilidade, execucao com fila e uma control plane legivel.
+A maior parte dos projetos com agentes foca no que o modelo consegue decidir. Eu quis focar no que acontece depois. Quando uma ação pode tocar um conector real, o projeto precisa de simulação, avaliação de política, auditabilidade, execução com fila e uma control plane legível.
 
-## Restricoes
+## Restrições
 
-- O produto precisava explicar um ciclo completo de acao, nao so um endpoint.
+- O produto precisava explicar um ciclo completo de ação, não só um endpoint.
 - O backend precisava de fronteiras claras dentro de um monolito modular.
-- O setup local precisava ser reproduzivel com Docker, migrations do Prisma e seed de desenvolvimento.
-- O web app precisava funcionar contra a API real, mas tambem continuar util quando o backend estivesse indisponivel.
+- O setup local precisava ser reproduzível com Docker, migrations do Prisma e seed de desenvolvimento.
+- O web app precisava funcionar contra a API real, mas também continuar útil quando o backend estivesse indisponível.
 
 <SignalGrid>
   <SignalCard
     label="Prova central"
-    value="Simulacao + politica + aprovacao + execucao"
+    value="Simulação + política + aprovação + execução"
   />
   <SignalCard
-    label="Sinal do repositorio"
+    label="Sinal do repositório"
     value="Monorepo com docs, contratos e runbook"
   />
   <SignalCard
-    label="Preocupacao operacional"
+    label="Preocupação operacional"
     value="Recibos, auditoria e visibilidade de rollback"
   />
 </SignalGrid>
@@ -58,57 +58,57 @@ monorepo
 ```
 
 <SystemDiagram
-  title="Rota de confianca"
+  title="Rota de confiança"
   subtitle="Propor, simular, avaliar, aprovar, executar e emitir recibo"
-  footer="O valor do produto esta na camada de controle em volta da acao, nao em uma demo de modelo."
+  footer="O valor do produto está na camada de controle em volta da ação, não em uma demo de modelo."
 >
   <FlowStep
     step="01"
-    title="Propor a acao"
-    detail="O sistema guarda a intencao como draft em vez de saltar direto para execucao, o que mantem a control plane legivel."
+    title="Propor a ação"
+    detail="O sistema guarda a intenção como draft em vez de saltar direto para execução, o que mantém a control plane legível."
   />
   <FlowStep
     step="02"
     title="Simular antes de tocar conectores"
-    detail="A simulacao mostra efeito colateral previsto e shape de payload antes que qualquer conector mude algo no mundo externo."
+    detail="A simulação mostra efeito colateral previsto e shape de payload antes que qualquer conector mude algo no mundo externo."
   />
   <FlowStep
     step="03"
-    title="Avaliar politica e aprovacao"
-    detail="Regras, papeis e estado de aprovacao viram gates explicitos, nao detalhe escondido de implementacao."
+    title="Avaliar política e aprovação"
+    detail="Regras, papéis e estado de aprovação viram gates explícitos, não detalhe escondido de implementação."
   />
   <FlowStep
     step="04"
     title="Executar via fila"
-    detail="BullMQ assume retries, visibilidade e transicoes de execucao para que a operacao continue inspecionavel depois do caminho feliz."
+    detail="BullMQ assume retries, visibilidade e transições de execução para que a operação continue inspecionável depois do caminho feliz."
   />
   <FlowStep
     step="05"
-    title="Emitir recibos e rollback visivel"
-    detail="A execucao termina com evidencia: recibos, trilha de auditoria e visibilidade de como o rollback seria tratado se a acao precisasse ser desfeita."
+    title="Emitir recibos e rollback visível"
+    detail="A execução termina com evidência: recibos, trilha de auditoria e visibilidade de como o rollback seria tratado se a ação precisasse ser desfeita."
   />
 </SystemDiagram>
 
-## Decisoes e trade-offs
+## Decisões e trade-offs
 
-- Eu mantive o backend como monolito modular porque simplicidade operacional importava mais do que espalhar servicos.
-- O modelo de confianca e explicito em camadas: primeiro simulacao, depois politica, depois aprovacao, depois execucao.
-- Eu usei BullMQ porque execucao enfileirada e visibilidade de retry fazem parte da historia do produto.
-- O repo inclui docs e fluxo funcional porque um produto de confianca precisa ser compreensivel antes de ser impressionante.
+- Eu mantive o backend como monolito modular porque simplicidade operacional importava mais do que espalhar serviços.
+- O modelo de confiança é explícito em camadas: primeiro simulação, depois política, depois aprovação, depois execução.
+- Eu usei BullMQ porque execução enfileirada e visibilidade de retry fazem parte da história do produto.
+- O repo inclui docs e fluxo funcional porque um produto de confiança precisa ser compreensível antes de ser impressionante.
 
 ## O que funcionou
 
-- O projeto tem uma identidade de sistema muito mais forte do que um repo generico de "AI agents".
-- O runbook, o seed e o setup local com Docker tornam o sistema facil de avaliar tecnicamente.
-- A estrutura de monorepo mantem contratos, UI, API e docs alinhados em torno do mesmo ciclo de intent.
+- O projeto tem uma identidade de sistema muito mais forte do que um repo genérico de "AI agents".
+- O runbook, o seed e o setup local com Docker tornam o sistema fácil de avaliar tecnicamente.
+- A estrutura de monorepo mantém contratos, UI, API e docs alinhados em torno do mesmo ciclo de intent.
 
-## O que ainda esta incompleto
+## O que ainda está incompleto
 
-- O processamento de rollback ainda nao foi fechado por um worker dedicado.
-- Ainda falta autenticacao JWT para o dashboard.
-- Gestao de API key para usuarios finais e cobertura E2E mais forte ainda precisam entrar.
+- O processamento de rollback ainda não foi fechado por um worker dedicado.
+- Ainda falta autenticação JWT para o dashboard.
+- Gestão de API key para usuários finais e cobertura E2E mais forte ainda precisam entrar.
 
-## Evidencia
+## Evidência
 
 <TerminalFrame title="Fluxo validado do workspace" subtitle="Workspace privado do VOWGRID">
 {`$ pnpm install
@@ -125,7 +125,7 @@ Ciclo do intent:
 - criar draft
 - propor
 - simular
-- avaliar politica
+- avaliar política
 - aprovar
 - executar
 - gerar recibo

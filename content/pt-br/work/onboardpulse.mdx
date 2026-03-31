@@ -1,11 +1,11 @@
 ---
 title: "OnboardPulse"
-summary: "Um SaaS multi-tenant de onboarding com billing, automacao de follow-up, storage controlado e documentacao operacional."
+summary: "Um SaaS multi-tenant de onboarding com billing, automação de follow-up, storage controlado e documentação operacional."
 order: 1
 year: "2026"
 role: "Solo builder"
-status: "Repo publico, projeto ativo do portfolio"
-highlight: "Este projeto mostra trabalho alem de CRUD: isolamento entre tenants, orcamento de IA, webhooks de cobranca, politica de storage e follow-ups via cron."
+status: "Repo público, projeto ativo do portfólio"
+highlight: "Este projeto mostra trabalho além de CRUD: isolamento entre tenants, orçamento de IA, webhooks de cobrança, política de storage e follow-ups via cron."
 kind: "public"
 stack:
   - "Next.js"
@@ -19,17 +19,17 @@ repo: "https://github.com/SavioCodes/OnboardPulse"
 
 ## Contexto
 
-Eu queria um projeto SaaS que parecesse mais com operacao de dia dois do que com landing page bonita. OnboardPulse e um produto de onboarding para agencias e times B2B onde a parte dificil nao sao os formularios, mas sim isolamento entre tenants, ciclo de cobranca, uploads e jobs de follow-up.
+Eu queria um projeto SaaS que parecesse mais com operação de dia dois do que com landing page bonita. OnboardPulse é um produto de onboarding para agências e times B2B em que a parte difícil não são os formulários, mas sim isolamento entre tenants, ciclo de cobrança, uploads e jobs de follow-up.
 
 ## Problema
 
-Onboarding de cliente se fragmenta rapido: pedidos de documento, lembretes, estado de pagamento, trial e isolamento de conta acabam virando trabalho manual. O produto precisava centralizar esse fluxo em um sistema que tambem fosse explicavel para outro engenheiro.
+Onboarding de cliente se fragmenta rápido: pedidos de documento, lembretes, estado de pagamento, trial e isolamento de conta acabam virando trabalho manual. O produto precisava centralizar esse fluxo em um sistema que também fosse explicável para outro engenheiro.
 
-## Restricoes
+## Restrições
 
-- Toda entidade de dominio precisava ficar escopada por `organizationId`.
+- Toda entidade de domínio precisava ficar escopada por `organizationId`.
 - Billing precisava de tratamento idempotente para webhooks do Mercado Pago.
-- Uploads precisavam suportar desenvolvimento local e producao com S3 compativel.
+- Uploads precisavam suportar desenvolvimento local e produção com S3 compatível.
 - Uso de IA precisava de teto de custo em vez de chamadas irrestritas.
 
 <SignalGrid>
@@ -38,11 +38,11 @@ Onboarding de cliente se fragmenta rapido: pedidos de documento, lembretes, esta
     value="Isolamento multi-tenant + ciclo de billing"
   />
   <SignalCard
-    label="Sinal do repositorio"
+    label="Sinal do repositório"
     value="Docs de launch e runbook de deploy"
   />
   <SignalCard
-    label="Preocupacao operacional"
+    label="Preocupação operacional"
     value="Cron, webhooks e modos de storage"
   />
 </SignalGrid>
@@ -52,7 +52,7 @@ Onboarding de cliente se fragmenta rapido: pedidos de documento, lembretes, esta
 ```text
 Next.js App Router
   -> server actions / routes
-  -> services de dominio
+  -> services de domínio
   -> Prisma + Postgres
   -> Mercado Pago + Gemini + storage S3-compatible
 ```
@@ -60,52 +60,52 @@ Next.js App Router
 <SystemDiagram
   title="Rota operacional"
   subtitle="Fronteira do tenant, billing, storage e follow-up automatizado"
-  footer="O sinal de produto vem de como esses estados se conectam, nao da interface do formulario."
+  footer="O sinal de produto vem de como esses estados se conectam, não da interface do formulário."
 >
   <FlowStep
     step="01"
     title="Criar a fronteira do tenant"
-    detail="O signup cria um espaco escopado por organizacao, com trial e ownership definidos para tudo o que vem depois."
+    detail="O signup cria um espaço escopado por organização, com trial e ownership definidos para tudo o que vem depois."
   />
   <FlowStep
     step="02"
     title="Passar upgrade pelo billing"
-    detail="Preferencias do Mercado Pago e replay seguro de webhook decidem quando a assinatura pode ficar ativa sem duplicar estado."
+    detail="Preferências do Mercado Pago e replay seguro de webhook decidem quando a assinatura pode ficar ativa sem duplicar estado."
   />
   <FlowStep
     step="03"
     title="Mover documentos em storage controlado"
-    detail="Uploads funcionam no ambiente local e depois trocam de forma limpa para storage compativel com S3 quando o deploy fica real."
+    detail="Uploads funcionam no ambiente local e depois trocam de forma limpa para storage compatível com S3 quando o deploy fica real."
   />
   <FlowStep
     step="04"
     title="Gerar follow-up com cheque de custo"
-    detail="Os follow-ups via cron so avancam quando teto de uso e estado da conta continuam dentro do que o produto permite."
+    detail="Os follow-ups via cron só avançam quando teto de uso e estado da conta continuam dentro do que o produto permite."
   />
 </SystemDiagram>
 
-## Decisoes e trade-offs
+## Decisões e trade-offs
 
-- O isolamento entre tenants e explicito na aplicacao, em vez de depender de RLS desde o primeiro dia.
-- O controle de orcamento de IA e conservador e aproximado, que e o trade certo para custo inicial.
+- O isolamento entre tenants é explícito na aplicação, em vez de depender de RLS desde o primeiro dia.
+- O controle de orçamento de IA é conservador e aproximado, que é o trade certo para custo inicial.
 - Storage fica local no desenvolvimento, mas troca de forma limpa para S3/R2 em deploy real.
-- A documentacao e pratica de proposito: launch guide, deploy em Vercel e checklist de QA em vez de so texto abstrato.
+- A documentação é prática de propósito: launch guide, deploy em Vercel e checklist de QA em vez de só texto abstrato.
 
 ## O que funcionou
 
 - O repo demonstra amplitude de engenharia de produto: auth, cotas, billing, cron, storage e CSP.
-- A documentacao de deploy faz o projeto parecer operacional, nao aspiracional.
-- O checklist de QA e bom material de entrevista porque mostra exatamente os modos de falha considerados.
+- A documentação de deploy faz o projeto parecer operacional, não aspiracional.
+- O checklist de QA é bom material de entrevista porque mostra exatamente os modos de falha considerados.
 
-## O que ainda esta incompleto
+## O que ainda está incompleto
 
 - Alguns itens do roadmap ainda precisam de cobertura automatizada mais forte, principalmente em billing.
-- Ainda nao existe URL publica de producao anexada.
-- RLS esta documentado como etapa futura, mas ainda nao foi implementado.
+- Ainda não existe URL pública de produção anexada.
+- RLS está documentado como etapa futura, mas ainda não foi implementado.
 
-## Evidencia
+## Evidência
 
-<TerminalFrame title="Quality gates" subtitle="Repositorio OnboardPulse">
+<TerminalFrame title="Quality gates" subtitle="Repositório OnboardPulse">
 {`$ npm run lint
 $ npm test
 $ npm run build`}
@@ -115,8 +115,8 @@ $ npm run build`}
 Target do cron no Vercel:
 POST /api/jobs/run-followups?secret=CRON_SECRET
 
-QA rapido:
-- trial expirado bloqueia acoes com 402
-- replay de webhook nao duplica PaymentLog
-- org A nao acessa dados da org B
+QA rápido:
+- trial expirado bloqueia ações com 402
+- replay de webhook não duplica PaymentLog
+- org A não acessa dados da org B
 ```
